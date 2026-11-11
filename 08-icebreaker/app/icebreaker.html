@@ -1,0 +1,1405 @@
+<title>08 Icebreaker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: one calm column; tabs on top; each tab is a short stack of panels. Black and white like 08 print, one pen-blue accent for the current step and the reply bars. */
+:root{
+  --paper:#fafaf7; --panel:#ffffff; --ink:#171717; --muted:#66665f; --line:#e2e1da; --chip:#f1f0ea;
+  --pen:#2446c9; --pen-soft:#e9edfb; --ok:#1d7a46; --ok-soft:#e5f3eb; --warn:#8f5600; --warn-soft:#fbf1e1; --bad:#b3261e; --bad-soft:#fbe9e7;
+  --serif:"EB Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Source Sans 3","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121211; --panel:#1a1a18; --ink:#ecebe6; --muted:#a3a29b; --line:#2e2e2a; --chip:#24241f;
+    --pen:#93a6ff; --pen-soft:#1f2440; --ok:#5cc28a; --ok-soft:#173023; --warn:#e0a54a; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1a17;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121211; --panel:#1a1a18; --ink:#ecebe6; --muted:#a3a29b; --line:#2e2e2a; --chip:#24241f;
+  --pen:#93a6ff; --pen-soft:#1f2440; --ok:#5cc28a; --ok-soft:#173023; --warn:#e0a54a; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1a17;
+  color-scheme:dark;
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+.wrap{max-width:780px;margin:0 auto;padding-block:18px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+header.top{display:flex;flex-direction:column;gap:12px}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.1;margin:0;letter-spacing:-0.01em}
+.brand .ver{font-size:13px;color:var(--muted)}
+nav.tabs{display:flex;gap:5px;flex-wrap:wrap}
+nav.tabs button{font:600 14px var(--sans);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+nav.tabs button[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+nav.tabs .count{font-variant-numeric:tabular-nums;font-size:12px;background:var(--pen);color:#fff;border-radius:999px;padding:0 7px;line-height:18px}
+.note{font-size:14px;color:var(--muted)}
+.banner{border:1px solid var(--line);background:var(--chip);border-radius:10px;padding:10px 14px;font-size:14px}
+.banner.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+section.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+h2{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.15;margin:0;text-wrap:balance}
+h3{font:700 13px var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0}
+p{margin:0}
+.steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.steps li button{font:600 14px var(--sans);border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer}
+.steps li button[aria-current="step"]{border-color:var(--pen);color:var(--pen);background:var(--pen-soft)}
+.steps li button:disabled{opacity:.45;cursor:default}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:5px;font-weight:600;font-size:14px;min-width:0}
+label.f span.h{font-weight:400;color:var(--muted);font-size:13px}
+input[type=text],input[type=date],input[type=search],select,textarea{font:400 16px var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%;box-sizing:border-box}
+textarea{min-height:96px;resize:vertical;line-height:1.45}
+textarea.out{min-height:150px;background:var(--panel)}
+textarea.out.sm{min-height:48px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:600 14px var(--sans);padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:700 15px var(--sans);padding:11px 16px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.small{padding:6px 10px;font-size:13px;border-radius:7px}
+.btn:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.chip{display:inline-flex;align-items:center;gap:4px;font:600 12px var(--sans);padding:2px 9px;border-radius:999px;background:var(--chip);color:var(--ink);white-space:nowrap}
+.chip.ok{background:var(--ok-soft);color:var(--ok)} .chip.warn{background:var(--warn-soft);color:var(--warn)} .chip.bad{background:var(--bad-soft);color:var(--bad)} .chip.pen{background:var(--pen-soft);color:var(--pen)}
+ul.plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.sq{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.quote{border-left:3px solid var(--line);padding-left:10px;color:var(--ink)}
+.quote small{display:block;color:var(--muted);font-size:12px}
+.finding{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer;background:var(--paper)}
+.finding[aria-checked="true"]{border-color:var(--pen);box-shadow:0 0 0 1px var(--pen) inset}
+.finding .hd{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.2}
+.finding .ev{font-size:13px;color:var(--muted)}
+.checks{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.checks .c-bad{color:var(--bad)} .checks .c-warn{color:var(--warn)} .checks .c-ok{color:var(--ok)} .checks .c-info{color:var(--muted)}
+details{border-top:1px solid var(--line);padding-top:8px}
+details summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.cards figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cards img{width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+.cards figcaption{font-size:13px;color:var(--muted)}
+.vlist{display:flex;flex-direction:column}
+.vrow{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 2px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;background:none;border-left:0;border-right:0;border-top:0;color:var(--ink);font:inherit}
+.vrow .nm{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.2}
+.vrow .meta{font-size:13px;color:var(--muted);grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tl{display:flex;flex-direction:column;gap:10px}
+.tl .t{border-left:2px solid var(--line);padding-left:12px;display:flex;flex-direction:column;gap:6px}
+.today{display:flex;flex-direction:column;gap:10px}
+.today .it{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
+.today .it .what{font-weight:600}
+.ab-row{display:grid;grid-template-columns:minmax(110px,160px) 1fr;gap:6px 12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.ab-row .lbl{font-weight:600;font-size:14px}
+.bar{position:relative;height:22px;background:var(--chip);border-radius:6px;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--pen);border-radius:6px}
+.ab-row .sub{grid-column:2;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ab-row .sub b{color:var(--ink)}
+.num{font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);font-size:15px;padding:8px 0}
+.busy{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--pen);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.dot{animation:none}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:14px;max-width:calc(100% - 32px);z-index:20}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.small{font-size:13px;color:var(--muted)}
+pre.review{white-space:pre-wrap;font:400 15px/1.55 var(--sans);margin:0}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><h1>08 Icebreaker</h1><span class="ver" id="ver"></span></div>
+    <nav class="tabs" id="tabs" aria-label="Разделы"></nav>
+    <div id="banners"></div>
+  </header>
+  <main id="main"></main>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- Rules (copy of 08-icebreaker/reference/rules.md, rules v1) ---------- */
+const RULES_VERSION = 'rules v1';
+const PROMISE_LINE = "Three months together. If the numbers haven't moved, the third month is on me.";
+const PRICE_LINES = [
+  'First step: a full check and the first fix, £99.',
+  'Then £139 a month: AI visibility and guest surveys. Or £79 a month for the report only.',
+  PROMISE_LINE,
+  'Stop any month.'
+];
+const SIGN = {site:'zeroeight.app/start', wa:'+44 7586 533390'};
+const RULES = `08 ICEBREAKER RULES v1
+
+WHO
+Kirill is the founder of 08 (zeroeight.app), a London-based startup. He visits independent places in London
+(cafés, restaurants, bars, salons, barbers, hotels, shops, studios) and helps them in two ways:
+1) AI visibility: what ChatGPT, Claude and other assistants tell guests about the place, and fixing the facts and
+   descriptions those assistants read (Google profile, website, listings, menus, posts).
+2) A short QR guest survey: how guests found the place ("asked AI" is one option), what they loved, what to improve.
+   Every guest sees the same review link (Google or Tripadvisor), or there is no link at all.
+
+VOICE
+- First person singular: "I", Kirill. 08 is the name of the service. Never "we", "our team", "our manager", "platform".
+- "I'm Kirill from 08, a London-based startup" is fine once, not at the start of the message.
+- Plain British English. Short sentences, simple words: many owners are not native speakers.
+- Reference line: "I can't control what AI says, nobody can."
+
+TONE
+- Warm, respectful, specific to this place. Write about them and their guests, not about technology.
+- The first line is the finding. Politeness goes at the end.
+- Problems are named gently and only if they sit on the surface (an AI mistake, a gap, a strength AI misses).
+  No blame. Never scary: "invisible", "losing customers", "nobody will find you" are banned.
+
+HONESTY
+- Never promise rankings, guests or bookings.
+- No numbers in a first message. Elsewhere only with source and date.
+- AI answers change from day to day: say "when I asked ChatGPT on 11 November", never "ChatGPT says".
+  An AI "mistake" needs two confirmations (two runs or two assistants); otherwise call it "worth checking".
+- Never present sample or invented AI answers as real. If there is no AI evidence, make no claim about AI.
+- Never claim clients or cases that do not exist ("I work with well-known places" is banned).
+- Quotes from reviews, posts or the website are word for word from the inputs. Never a staff name inside a quote.
+  Never use criticism from reviews.
+- Competitors stay anonymous: "Café A", "Restaurant B".
+
+BANNED
+we, our team, our manager, platform, guarantee, promise, free (only "free check" is allowed), minutes
+(say "a quick look"), the long dash, P.S., "collaboration", and "visibility" or "idea" in an email subject.
+
+ONE CHEAP ASK PER MESSAGE (answerable in five seconds)
+- owner: "Want me to send you the screenshots?"
+- manager or staff: "Who's the best person to show this to?" plus a short paragraph they can forward
+- social media person: "Want a few post ideas from your guests' own words?"
+- events or bookings: "Which email is best for the details?"
+- after a warm visit: "Can I drop it in on [day] after [time]?"
+
+PRICE (never in a first message; second step or a meeting only, always with what they get and how to stop)
+- First step: a full check and the first fix, £99.
+- Then £139 a month (AI visibility and guest surveys), or £79 a month (report only). Stop any month.
+- A discount only in exchange for a case study or a review, for the first five partners.
+- Promise line: "${PROMISE_LINE}"
+  The numbers: how often the same questions name the place, and facts corrected.
+
+CHANNELS (text cascade: write the email first, compress it to WhatsApp, then to Instagram)
+- Email: 80 to 120 words. Personal subject with a name or a visit detail. Ends with
+  "If you'd rather not hear from me, just reply 'stop'." Signature: Kirill, 08, zeroeight.app/start,
+  WhatsApp ${SIGN.wa}. One or two cards attached.
+- WhatsApp: 40 to 60 words, two to five short lines, ends with "Kirill". One or two cards.
+- Instagram: 20 to 40 words, one to three lines, ends with "Kirill". Text only until they accept the request.
+  Part 2 is one or two lines to send with the card after they accept, like or reply.
+
+FINDING TYPES
+ai_error (a wrong fact in an AI answer), gap (the website or posts say X, AI does not know X),
+hidden_strength (guests love X, AI never mentions it), new_place (a new opening AI does not know yet),
+occasion (weddings, private hire, catering, delivery, gifts, events), languages (tourists ask in their language),
+reviews (the place asks for reviews: the survey gives every guest the same easy invite).`;
+
+/* ---------- Dictionaries ---------- */
+const TYPES = [['cafe','Кафе'],['restaurant','Ресторан'],['bar','Бар'],['salon','Салон или барбер'],['hotel','Отель'],['shop','Магазин'],['studio','Студия или мастер-класс'],['events','Площадка для событий'],['other','Другое']];
+const CHANNELS = [['instagram','Instagram'],['whatsapp','WhatsApp'],['email','Почта']];
+const BASIS = [['','Выбери'],['given','Дали контакт лично'],['asked','Сами попросили подробности'],['public_company','Публичный адрес компании (Ltd)'],['none','Нет основания']];
+const READERS = [['unknown','Не знаю'],['owner','Владелец'],['manager','Менеджер или персонал'],['smm','SMM'],['events','Мероприятия или брони']];
+const KINDS = [['lost_letter','Письмо не дошло'],['follow_up','Тишина 3–4 дня'],['january','Январский список'],['live_lead','Живой лид']];
+const FTYPES = {ai_error:'Ошибка ИИ',gap:'Пробел',hidden_strength:'Сильная сторона',new_place:'Новая точка',occasion:'Повод',languages:'Языки',reviews:'Отзывы'};
+const RTYPES = {details:'Подробности',proposal:'Предложение',ask_owner:'Спросят владельца',later:'Позже',price:'Цена',not_sure:'Не уверены',no:'Нет',other:'Другое',none:'Без ответа'};
+const TESTS = {
+  subject:{label:'Стиль темы', values:['name','detail'], names:{name:'имя в теме',detail:'деталь визита'}},
+  cards:{label:'Карточки', values:[1,2], names:{1:'1 карточка',2:'2 карточки'}},
+  length:{label:'Длина', values:['short','shorter'], names:{short:'коротко',shorter:'ещё короче'}},
+  images:{label:'Картинка', values:[0,1], names:{0:'без картинки',1:'с картинкой'}}
+};
+const CH_TESTS = {email:['subject','cards','length'], whatsapp:['cards','images','length'], instagram:['length']};
+const DEFAULT_AB = {email:'subject', whatsapp:'cards', instagram:'length'};
+const label = (list, v) => (list.find(x => x[0] === v) || [v, v || ''])[1];
+
+/* ---------- State ---------- */
+const S = {
+  tab:'new', venues:[], stop:[], ab:{...DEFAULT_AB},
+  loaded:false, loadNote:'', cap:{}, capReady:false, canWrite:true, imgMax:5,
+  cur:null, step:1, busy:null, ctl:null,
+  open:null, panel:null, pdata:{}, review:'', toastT:null, imgs:{}
+};
+
+/* ---------- Helpers ---------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const todayISO = () => new Date().toISOString().slice(0,10);
+const fmtDate = t => t ? new Date(t).toLocaleDateString('ru-RU',{day:'numeric',month:'short'}) : '';
+const fmtLong = iso => { try { return new Date(iso + 'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'}); } catch(e) { return iso; } };
+const nWords = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
+const newId = () => 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const clone = o => JSON.parse(JSON.stringify(o || null));
+const DAY = 864e5;
+function newDraft(){
+  return {id:null, mode:'after_visit', kind:'lost_letter', name:'', area:'', type:'cafe', channel:'whatsapp', contact:'', basis:'', reader:'unknown',
+    notes:'', siteText:'', history:'', aiDate:todayISO(), brief:null, aiQuestions:[], missing:[], ai:null, chosen:0, out:null, variant:null, sentChannel:null,
+    shots:[], aiShots:[]};
+}
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(S.toastT); S.toastT = setTimeout(() => { t.hidden = true; }, 3200);
+}
+async function copyText(txt){
+  try { await navigator.clipboard.writeText(txt); toast('Скопировано'); }
+  catch(e){ toast('Не удалось скопировать: выдели текст и скопируй вручную'); }
+}
+
+/* ---------- Local draft (per viewer convenience) ---------- */
+const LS = '08ice.draft.v1';
+let lsT = null;
+function saveLocal(){
+  clearTimeout(lsT);
+  lsT = setTimeout(() => {
+    try { const {shots, aiShots, ...rest} = S.cur; localStorage.setItem(LS, JSON.stringify({cur:rest, step:S.step})); } catch(e) {}
+  }, 400);
+}
+function loadLocal(){
+  try {
+    const j = JSON.parse(localStorage.getItem(LS) || 'null');
+    if (j && j.cur) { S.cur = {...newDraft(), ...j.cur, shots:[], aiShots:[]}; S.step = j.step || 1; return true; }
+  } catch(e) {}
+  return false;
+}
+function clearLocal(){ try { localStorage.removeItem(LS); } catch(e) {} }
+
+/* ---------- Capabilities ---------- */
+async function initCaps(){
+  const C = window.claude;
+  if (!C || !C.use) { S.capReady = true; S.loaded = true; render(); return; }
+  const [sample, db, user, downloads] = await Promise.all(['sample','db','user','downloads'].map(n => C.use(n).catch(() => null)));
+  S.cap = {sample, db, user, downloads};
+  if (sample && sample.limits) {
+    try { const lim = await sample.limits(); S.imgMax = lim && lim.images ? lim.images.maxCount : 0; } catch(e) { S.imgMax = 0; }
+  }
+  if (user && user.can) { try { const w = await user.can('data.write'); S.canWrite = (w !== false); } catch(e) {} }
+  S.capReady = true;
+  subscribe();
+  render();
+}
+function dbErr(e){
+  const c = e && e.code;
+  if (c === 'quota_exceeded') return 'Журнал переполнен: удали старые места.';
+  if (c === 'revoked') return 'Доступ к журналу закрыт в этом просмотре.';
+  if (c === 'invalid_argument') return 'Нет прав на запись в журнал. Попроси владельца дать доступ Contributor.';
+  return 'Журнал сейчас недоступен. Попробуй позже.';
+}
+function subscribe(){
+  const db = S.cap.db;
+  if (!db) { S.loaded = true; return; }
+  const timer = setTimeout(() => { if (!S.loaded) { S.loadNote = 'Журнал пока не отвечает. Данные могут быть неполными.'; render(); } }, 10000);
+  db.collection('venues').orderBy('updatedAt','desc').limit(500).onSnapshot(snap => {
+    S.venues = snap.docs.map(d => ({...d.data(), id:d.id}));
+    if (!snap.metadata.fromCache) { S.loaded = true; S.loadNote = ''; clearTimeout(timer); }
+    softRender();
+  }, e => { S.loaded = true; S.loadNote = dbErr(e); clearTimeout(timer); softRender(); });
+  db.collection('stoplist').onSnapshot(s => { S.stop = s.docs.map(d => ({...d.data(), id:d.id})); softRender(); }, () => {});
+  db.doc('settings/ab').onSnapshot(s => { if (s.exists) S.ab = {...DEFAULT_AB, ...s.data()}; softRender(); }, () => {});
+}
+const writes = {};
+function queueWrite(path, fn){
+  const p = (writes[path] || Promise.resolve()).then(fn, fn);
+  writes[path] = p.catch(() => {});
+  return p;
+}
+async function putVenue(v){
+  v.updatedAt = Date.now();
+  const i = S.venues.findIndex(x => x.id === v.id);
+  if (i >= 0) S.venues[i] = v; else S.venues.unshift(v);
+  if (!S.cap.db) return;
+  const body = clone(v);
+  try { await queueWrite('venues/' + v.id, () => S.cap.db.doc('venues/' + v.id).set(body)); }
+  catch(e) { toast(dbErr(e)); }
+}
+const stopId = c => String(c || '').toLowerCase().replace(/[^a-z0-9_\-.~:@+]/g, '').slice(0, 180) || 'x';
+function isStopped(contact){
+  const id = stopId(contact);
+  return !!contact && S.stop.some(s => s.id === id);
+}
+async function addStop(contact){
+  const c = String(contact || '').trim(); if (!c) return;
+  const id = stopId(c);
+  if (!S.stop.some(s => s.id === id)) S.stop.push({id, contact:c, at:Date.now()});
+  if (S.cap.db) { try { await queueWrite('stoplist/' + id, () => S.cap.db.doc('stoplist/' + id).set({contact:c, at:Date.now()})); } catch(e) { toast(dbErr(e)); } }
+  toast('Добавлено в стоп-лист');
+}
+
+/* ---------- Claude ---------- */
+function errCopy(e){
+  const c = e && e.code;
+  return ({
+    not_granted:'Странице не разрешено спрашивать Claude. Разреши в меню «Разрешения» артефакта.',
+    sampling_disabled:'Claude недоступен для этого аккаунта.',
+    rate_limited:'Слишком много запросов подряд. Подожди минуту и нажми ещё раз.',
+    session_expired:'Войди в claude.ai заново.',
+    image_rejected:'Одна из картинок не подошла. Попробуй другой скриншот (JPEG или PNG).',
+    images_unavailable:'В этом просмотре нельзя отправлять картинки. Вставь текст вместо скриншотов.',
+    prompt_too_large:'Слишком много текста. Сократи текст сайта.',
+    refused:'Claude не стал отвечать на этот запрос. Измени входные данные.',
+    invalid_json:'Ответ пришёл в неверном формате. Нажми ещё раз.',
+    empty_completion:'Пустой ответ. Попробуй ещё раз.',
+    cancelled:'Остановлено.'
+  })[c] || 'Не получилось. Попробуй ещё раз через минуту.';
+}
+async function shrink(file){
+  try {
+    const bmp = await createImageBitmap(file);
+    const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    return await new Promise(r => c.toBlob(b => r(b || file), 'image/jpeg', 0.85));
+  } catch(e) { return file; }
+}
+async function ask(label, prompt, files, tier){
+  const sample = S.cap.sample;
+  if (!sample) { toast('Claude доступен, когда страница открыта на claude.ai.'); return null; }
+  let imgs = [];
+  if (files && files.length) {
+    if (!S.imgMax) { toast('В этом просмотре нельзя отправлять картинки: скриншоты пропущены.'); }
+    else {
+      const use = files.slice(0, S.imgMax);
+      if (files.length > S.imgMax) toast('Отправлю первые ' + S.imgMax + ' скриншотов из ' + files.length + '.');
+      imgs = await Promise.all(use.map(f => shrink(f.file || f)));
+    }
+  }
+  S.ctl = new AbortController();
+  S.busy = {label, chars:0};
+  render();
+  try {
+    const opts = {signal:S.ctl.signal, modelTier:tier || 'default', cache:false, onText:({text}) => { if (S.busy) { S.busy.chars = text.length; updBusy(); } }};
+    if (imgs.length) opts.images = imgs;
+    return await sample.json(prompt, opts);
+  } catch(e) {
+    if (e && e.code !== 'cancelled') toast(errCopy(e));
+    return null;
+  } finally {
+    S.busy = null; S.ctl = null; render();
+  }
+}
+function updBusy(){ const el = $('#busyChars'); if (el && S.busy) el.textContent = S.busy.chars ? 'Claude пишет: ' + S.busy.chars + ' знаков' : 'Claude думает…'; }
+
+/* ---------- Prompts ---------- */
+function placeJSON(v, extra){
+  return JSON.stringify(Object.assign({name:v.name, area:v.area, type:label(TYPES, v.type), channel:v.channel, reader:v.reader,
+    contact_basis:v.basis, segment:v.segment || (v.brief && v.brief.segment) || null}, extra || {}), null, 1);
+}
+const cut = (s, n) => String(s || '').slice(0, n);
+function promptBrief(v){
+  return `You are the research and writing assistant for 08. Follow the rules exactly.
+
+<rules>
+${RULES}
+</rules>
+
+TASK
+Read everything about this place and write a short brief for Kirill, plus 6 to 8 questions that a real guest would
+ask an AI assistant. Kirill will paste those questions into ChatGPT and Claude in a clean chat and screenshot the answers.
+
+PLACE
+${placeJSON(v)}
+
+VISIT NOTES (Kirill's own words, may be in Russian)
+"""${cut(v.notes, 6000)}"""
+
+WEBSITE TEXT (pasted by Kirill, may be empty)
+"""${cut(v.siteText, 12000)}"""
+
+IMAGES
+${(v.shots || []).length} screenshots of the place's Instagram, Google Maps and/or website, numbered in the order given (image 1, image 2 ...).
+
+INSTRUCTIONS
+- Use the inputs only. Do not invent facts. If something is unknown, say so in Russian in "missing_ru".
+- guests_love: quotes copied word for word from the inputs, with the source ("image 2", "website text", "visit notes").
+  No staff names inside quotes. List every staff first name you see in staff_names.
+- signals: pick only what the inputs support from: asks_for_reviews, new_place, events_private_hire, weddings, catering,
+  delivery, tourists, languages:<language>, gifts, classes, late_opening, groups, kids, halal, vegan, other:<short>.
+- already_has: tools or partners you can see (guest survey, loyalty card, booking system, agency, online ordering).
+- segment: "A" if guests plan ahead and spend a lot (weddings, private dining, events, boutique hotel, classes and
+  experience gifts, tastings), otherwise "B". Explain in Russian.
+- write_or_not: "skip" if the place looks stuck (few or very old reviews, rating under 4, abandoned socials, cash only),
+  "maybe" if unsure, otherwise "write". Reason in Russian.
+- summary_ru: 2 or 3 sentences in Russian for Kirill.
+- ai_questions: 6 to 8 short questions in a guest's voice, specific to this area, offer and occasions, the way people
+  really ask ("Where can I get ... near ...?", "A quiet place for ... in ...?"). Never include the place's name.
+  Add one question in the guests' other language if the inputs show one. why_ru: one line in Russian.
+
+Reply with only this JSON:
+{"brief":{"what_they_sell":"","proud_of":[""],"guests_love":[{"quote":"","source":""}],"who_comes":[""],"signals":[""],"already_has":[""],"staff_names":[""],"segment":"A","segment_reason_ru":"","write_or_not":{"verdict":"write","reason_ru":""},"summary_ru":""},"ai_questions":[{"q":"","why_ru":""}],"missing_ru":[""]}`;
+}
+function variantText(v){
+  const vr = v.variant || {};
+  const lines = [];
+  lines.push('cards: ' + (vr.cards == null ? 1 : vr.cards));
+  if (v.channel === 'email' && vr.test === 'subject') lines.push('email subject style: ' + (vr.value === 'name' ? 'the reader\'s or place\'s name ("Hi Craig", "The Roses")' : 'a concrete visit or place detail ("The Roses: the wedding room")'));
+  if (vr.test === 'length' && vr.value === 'shorter') lines.push('length: use the LOWER end of every range (email about 80 words, WhatsApp about 40, Instagram about 20)');
+  return lines.join('\n');
+}
+function promptFinding(v){
+  const qs = (v.aiQuestions || []).map((q, i) => (i + 1) + '. ' + q.q).join('\n');
+  const n = (v.aiShots || []).length;
+  return `You are the research and writing assistant for 08. Follow the rules exactly.
+
+<rules>
+${RULES}
+</rules>
+
+TASK
+Find the one best thing to tell this place, with evidence, then write the messages and the cards.
+
+PLACE
+${placeJSON(v)}
+
+BRIEF (from step 1)
+${JSON.stringify(v.brief || {}, null, 1)}
+
+VISIT NOTES (Kirill's own words)
+"""${cut(v.notes, 6000)}"""
+
+WEBSITE TEXT
+"""${cut(v.siteText, 10000)}"""
+
+AI CHECK
+${n ? n + ' screenshots of AI assistant answers to the questions below, taken by Kirill on ' + fmtLong(v.aiDate) + ' in a clean chat, numbered image 1 to image ' + n + '.' : 'No AI screenshots. There is NO AI evidence: make no claim about AI at all; build the finding from the website, posts, reviews or the visit.'}
+Questions:
+${qs || '(none)'}
+
+VARIANT
+${variantText(v)}
+
+STEPS
+1. ai_evidence: for each image, read the assistant (ChatGPT, Claude, Gemini or unknown), the question, whether the place
+   is named, its position, which other places are named (replace their names with Café A, Café B ... in order of
+   first appearance, consistently), and wrong facts about the place (compare with the website text and brief).
+   Only what the image shows. Empty array if there are no images.
+2. findings: 2 to 4 candidates, best first: type (rules FINDING TYPES), headline (English, at most 12 words,
+   positive, specific), detail (English, 1 or 2 gentle sentences), evidence (strings such as
+   "image 3, ChatGPT, ${fmtLong(v.aiDate)}: 'quote'" or "website text: 'quote'"), confidence high|medium|low,
+   needs_check_ru (Russian: what Kirill must verify, for example a second run for an AI error or a quote read from a
+   screenshot; empty string if nothing). An ai_error with one confirmation only gets confidence "low".
+3. chosen: index of the best finding for this reader and channel. entry_ru: why, in Russian.
+4. texts for the chosen finding, as a cascade: write the email first, compress it to WhatsApp, then to Instagram.
+   Follow the channel rules, lengths, voice and the cheap ask for this reader. Mention the visit naturally if the
+   notes describe one. No price, no numbers. forward: if the reader is not the owner, 2 or 3 lines the reader can
+   forward to the owner as is; otherwise an empty string. Instagram part1 has no link; part2 is 1 or 2 lines to send
+   with the card after they accept.
+5. cards: exactly the number in VARIANT (cards). Card 1 kind "found": kicker "For <place name>", title = the headline
+   (at most 10 words), lines = 1 or 2 short lines, evidence = one line with date and assistant (or the website or
+   review source). Card 2 kind "start": kicker "For <place name>", title "Where I'd start", lines = 3 short steps
+   (at most 8 words each), no price, ask = the cheap ask.
+6. visit_card: a printable card for the next visit: place, finding (at most 12 words), line (at most 14 words),
+   evidence (short).
+7. texts_ru: faithful Russian translations of the email (subject and body), WhatsApp, Instagram (both parts) and forward.
+8. reader_check, in Russian: would the reader open it from the first line, would they reply, the friction, one fix.
+
+Reply with only this JSON:
+{"ai_evidence":[{"image":1,"assistant":"","question":"","venue_named":false,"position":null,"named_instead":["Café A"],"facts_wrong":[""],"note_ru":""}],"findings":[{"type":"","headline":"","detail":"","evidence":[""],"confidence":"high","needs_check_ru":""}],"chosen":0,"entry_ru":"","ask":"","texts":{"email":{"subject":"","body":""},"whatsapp":{"body":""},"instagram":{"part1":"","part2":""},"forward":{"body":""}},"texts_ru":{"email":"","whatsapp":"","instagram":"","forward":""},"cards":[{"kind":"found","kicker":"","title":"","lines":[""],"evidence":"","ask":""}],"visit_card":{"place":"","finding":"","line":"","evidence":""},"reader_check":{"opens_ru":"","replies_ru":"","friction_ru":"","fix_ru":""}}`;
+}
+function promptRewrite(v, f){
+  return `You are the writing assistant for 08. Follow the rules exactly.
+
+<rules>
+${RULES}
+</rules>
+
+TASK
+Write the messages and cards for THIS finding (Kirill chose it). Same output rules as before: email first, then compress
+to WhatsApp, then Instagram; one cheap ask for this reader; no price, no numbers; forward paragraph only if the reader
+is not the owner.
+
+PLACE
+${placeJSON(v)}
+
+FINDING
+${JSON.stringify(f, null, 1)}
+
+VISIT NOTES
+"""${cut(v.notes, 4000)}"""
+
+VARIANT
+${variantText(v)}
+
+Reply with only this JSON:
+{"ask":"","texts":{"email":{"subject":"","body":""},"whatsapp":{"body":""},"instagram":{"part1":"","part2":""},"forward":{"body":""}},"texts_ru":{"email":"","whatsapp":"","instagram":"","forward":""},"cards":[{"kind":"found","kicker":"","title":"","lines":[""],"evidence":"","ask":""}],"visit_card":{"place":"","finding":"","line":"","evidence":""},"reader_check":{"opens_ru":"","replies_ru":"","friction_ru":"","fix_ru":""}}`;
+}
+function historyJSON(v){
+  const f = v.ai && v.ai.findings ? v.ai.findings[v.chosen || 0] : null;
+  return JSON.stringify({
+    place:{name:v.name, area:v.area, type:label(TYPES, v.type), segment:v.segment, reader:v.reader, contact_basis:v.basis},
+    brief_summary_ru:v.brief ? v.brief.summary_ru : '',
+    chosen_finding:f,
+    touches:(v.touches || []).slice(-6).map(t => ({date:new Date(t.at).toISOString().slice(0,10), mode:t.mode, channel:t.channel, sent:cut(t.text, 600), replied:t.replied, reply:t.reply, reply_type:t.reply_type}))
+  }, null, 1);
+}
+function promptReply(v, replyText, nImgs){
+  return `You are the writing assistant for 08. Follow the rules exactly. Price is allowed now (this is the second step).
+
+<rules>
+${RULES}
+</rules>
+
+TASK
+Someone replied to Kirill. Read the reply and prepare the next step.
+
+HISTORY
+${historyJSON(v)}
+
+THE REPLY (may be empty if only screenshots are given)
+"""${cut(replyText, 4000)}"""
+${nImgs ? nImgs + ' screenshots of the conversation are attached.' : ''}
+
+Decide reply_type: details | proposal | ask_owner | later | price | not_sure | no | other. Then:
+- details or proposal: one_pager with title "<place name> and 08", finding (one sentence), first_month (3 or 4 short
+  lines: what Kirill does), price_lines exactly these four lines:
+  ${PRICE_LINES.map(l => '"' + l + '"').join('\n  ')}
+  and next (one line proposing a quick look together, with a placeholder like [Thursday after 3]).
+  next_message: 2 or 3 lines in the same channel to send with it.
+- ask_owner: forward (a short paragraph the person can forward to the owner as is) and a short thank-you next_message.
+- later: next_message proposing a start date and a December "before" check; next_date_days until that date.
+- price or not_sure: next_message offering the £99 first step and the promise line. Mention the partner discount for
+  a case study only if they said it is expensive.
+- no: a short, kind thank-you, no pressure.
+next_message.channel is the channel they replied in. Add Russian translations and next_step_ru for Kirill.
+
+Reply with only this JSON:
+{"reply_type":"","reply_summary_ru":"","next_message":{"channel":"whatsapp","subject":"","body":""},"next_message_ru":"","one_pager":{"title":"","finding":"","first_month":[""],"price_lines":[""],"next":""},"forward":"","next_step_ru":"","next_date_days":3}
+Use "one_pager": null when no one-pager is needed.`;
+}
+function promptRecontact(v, kind, notes){
+  const what = {
+    lost_letter:'Kirill\'s earlier email did not reach them. Start with "My email didn\'t go through, sorry!" (or the WhatsApp/Instagram equivalent), then the finding and one cheap ask.',
+    follow_up:'No reply for 3 or 4 days. Write ONE new message with a NEW angle or finding, not a repeat. Short.',
+    january:'They said "January". Propose a start date in January and a December "before" check.',
+    live_lead:'A live lead that is thinking. One line on what changed since last time, plus one ask.'
+  }[kind] || '';
+  return `You are the writing assistant for 08. Follow the rules exactly.
+
+<rules>
+${RULES}
+</rules>
+
+TASK
+Re-contact without a new visit. KIND: ${kind}. ${what}
+Write for all three channels as a cascade (email first, then WhatsApp, then Instagram). No price unless the history
+shows they asked about price.
+
+HISTORY
+${historyJSON(v)}
+
+KIRILL'S NOTES
+"""${cut(notes, 3000)}"""
+
+Reply with only this JSON:
+{"ask":"","texts":{"email":{"subject":"","body":""},"whatsapp":{"body":""},"instagram":{"part1":"","part2":""}},"texts_ru":{"email":"","whatsapp":"","instagram":""},"cards":[{"kind":"found","kicker":"","title":"","lines":[""],"evidence":""}],"next_step_ru":""}
+Use "cards": [] when a card would not help.`;
+}
+function promptResult(v, t){
+  return `Read the screenshots of a conversation after Kirill's message and report the result. Reply in JSON only.
+
+CONTEXT
+Place: ${v.name}. Channel: ${t.channel}. Sent on: ${new Date(t.at).toISOString().slice(0,10)}.
+What was sent (start): """${cut(t.text, 300)}"""
+
+Look for:
+- WhatsApp: one grey tick = sent, two grey ticks = delivered, two blue ticks = read.
+- Instagram: "Seen" = read, "Invite sent" = not accepted yet, "can't receive your message" = not delivered.
+- Email: "Delivery Status Notification", "Письмо не доставлено", "blocked" = not delivered.
+- Whether they replied, and their reply word for word.
+
+{"delivered":null,"read":null,"ig_accepted":null,"replied":false,"reply":"","reply_type":"none","note_ru":""}
+Use true, false or null (unknown). reply_type: details|proposal|ask_owner|later|price|not_sure|no|other|none.`;
+}
+
+/* ---------- Checks ---------- */
+const BANNED = [
+  [/\bwe\b/i, '«we»: пиши от «I»'], [/\bwe['’](re|ve|ll|d)\b/i, '«we’re / we’ve»: пиши от «I»'],
+  [/\bour (team|manager)\b/i, '«our team / our manager»'], [/\bplatform\b/i, '«platform»'],
+  [/guarantee/i, '«guarantee»'], [/\bpromis/i, '«promise»'], [/\bfree\b(?!\s+check)/i, '«free» (можно только «free check»)'],
+  [/\bminutes?\b/i, '«minutes»: лучше «a quick look»'], [/—/, 'длинное тире'], [/\bP\.\s?S\b/, 'P.S.'],
+  [/\bSAMPLE\b/, 'SAMPLE'], [/well-known places/i, '«well-known places»'],
+  [/\binvisible\b/i, '«invisible»: пугает'], [/\blos(e|ing) (customers|guests)\b/i, '«losing customers»: пугает']
+];
+const LIM = {email:[80,120], whatsapp:[40,60], instagram:[20,40]};
+function sourceText(v){
+  const b = v.brief || {};
+  return [v.siteText, v.notes, v.history, ...(b.guests_love || []).map(g => g.quote), ...(b.proud_of || [])].join(' \n ').toLowerCase().replace(/\s+/g, ' ');
+}
+function checkTexts(v, texts, firstTouch, noLengths){
+  const out = [];
+  const add = (lvl, msg) => out.push({lvl, msg});
+  if (!texts) return out;
+  const chunks = {email:(texts.email ? (texts.email.subject || '') + '\n' + (texts.email.body || '') : ''), whatsapp:(texts.whatsapp || {}).body || '',
+    instagram:((texts.instagram || {}).part1 || '') + '\n' + ((texts.instagram || {}).part2 || ''), forward:(texts.forward || {}).body || ''};
+  for (const [ch, txt] of Object.entries(chunks)) {
+    if (!txt.trim()) continue;
+    const nm = {email:'Почта', whatsapp:'WhatsApp', instagram:'Instagram', forward:'Абзац для пересылки'}[ch];
+    for (const [re, msg] of BANNED) if (re.test(txt)) add('bad', nm + ': ' + msg);
+    if (firstTouch && /£\s?\d/.test(txt)) add('bad', nm + ': цена в первом сообщении');
+    if (firstTouch && /\d+\s?%|\b\d+([.,]\d+)?\s?(million|billion|m)\b/i.test(txt)) add('bad', nm + ': цифры в первом сообщении');
+  }
+  if (texts.email && /collaboration|visibility|\bidea\b/i.test(texts.email.subject || '')) add('warn', 'Тема письма похожа на рассылку: сделай её личной');
+  const wc = {email:nWords((texts.email || {}).body), whatsapp:nWords((texts.whatsapp || {}).body), instagram:nWords((texts.instagram || {}).part1)};
+  for (const ch of (noLengths ? [] : ['email','whatsapp','instagram'])) {
+    const [lo, hi] = LIM[ch];
+    if (wc[ch] && (wc[ch] < lo * 0.7 || wc[ch] > hi * 1.15)) add('warn', label(CHANNELS, ch) + ': ' + wc[ch] + ' слов, цель ' + lo + '–' + hi);
+  }
+  if (/https?:\/\/|zeroeight\.app/i.test((texts.instagram || {}).part1 || '')) add('warn', 'Instagram: ссылка в первой части может не пройти');
+  const staff = ((v.brief || {}).staff_names || []).filter(Boolean);
+  const all = Object.values(chunks).join('\n');
+  for (const s of staff) {
+    const re = new RegExp('["“][^"”]*\\b' + s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b[^"”]*["”]', 'i');
+    if (re.test(all)) add('bad', 'Имя сотрудника «' + s + '» внутри цитаты');
+  }
+  const src = sourceText(v);
+  const qs = [...all.matchAll(/["“]([^"”]{12,})["”]/g)].map(m => m[1]);
+  for (const q of qs) {
+    const norm = q.toLowerCase().replace(/\s+/g, ' ').trim();
+    if (src && src.includes(norm)) add('ok', 'Цитата найдена во входных данных: «' + q.slice(0, 60) + '»');
+    else add('info', 'Сверь цитату по скриншоту: «' + q.slice(0, 60) + '»');
+  }
+  if (!out.some(c => c.lvl === 'bad' || c.lvl === 'warn')) add('ok', 'Правила соблюдены');
+  return out;
+}
+function renderChecks(list){
+  const ic = {bad:'✕', warn:'!', ok:'✓', info:'·'};
+  return '<div class="checks">' + list.map(c => `<div class="c-${c.lvl}">${ic[c.lvl]} ${esc(c.msg)}</div>`).join('') + '</div>';
+}
+
+/* ---------- A/B ---------- */
+function countSent(channel, test, value){
+  let n = 0;
+  for (const v of S.venues) for (const t of (v.touches || [])) if (t.channel === channel && t.variant && t.variant.test === test && String(t.variant.value) === String(value)) n++;
+  return n;
+}
+function pickVariant(channel, segment){
+  const test = S.ab[channel] || DEFAULT_AB[channel];
+  const vals = (TESTS[test] || {values:[]}).values;
+  const counts = vals.map(x => countSent(channel, test, x));
+  const min = Math.min(...counts);
+  const cands = vals.filter((x, i) => counts[i] === min);
+  const total = counts.reduce((a, b) => a + b, 0);
+  const value = cands[total % cands.length];
+  let cards = 1;
+  if (test === 'cards') cards = value;
+  if (test === 'images') cards = value;
+  if (channel === 'instagram') cards = 1;
+  return {segment:segment || null, test, value, cards};
+}
+function blank(){ return {sent:0, delivered:0, read:0, replied:0, meeting:0, paid:0}; }
+function addT(acc, t){
+  acc.sent++; if (t.delivered === true) acc.delivered++; if (t.read === true) acc.read++;
+  if (t.replied) acc.replied++; if (t.meeting) acc.meeting++; if (t.paid) acc.paid++;
+}
+function abStats(){
+  const ch = {email:{}, whatsapp:{}, instagram:{}}, seg = {A:blank(), B:blank()};
+  for (const v of S.venues) for (const t of (v.touches || [])) {
+    if (!ch[t.channel]) continue;
+    const key = t.variant && t.variant.test ? t.variant.test + ':' + t.variant.value : 'none';
+    (ch[t.channel][key] = ch[t.channel][key] || blank());
+    addT(ch[t.channel][key], t);
+    const sg = (t.variant && t.variant.segment) || v.segment;
+    if (seg[sg]) addT(seg[sg], t);
+  }
+  return {ch, seg};
+}
+
+/* ---------- Cards (canvas) ---------- */
+const F_SERIF = '"EB Garamond", Georgia, serif', F_SANS = '"Source Sans 3", Arial, sans-serif';
+const INK = '#141414', GREY = '#6b6b66', RULE = '#d9d8d2';
+async function fontsReady(){
+  try { await Promise.all([document.fonts.load('600 80px "EB Garamond"'), document.fonts.load('400 40px "Source Sans 3"'), document.fonts.load('600 32px "Source Sans 3"')]); await document.fonts.ready; } catch(e) {}
+}
+function wrapLines(g, text, maxW){
+  const words = String(text || '').split(/\s+/).filter(Boolean); const lines = []; let line = '';
+  for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width <= maxW || !line) line = t; else { lines.push(line); line = w; } }
+  if (line) lines.push(line); return lines;
+}
+function para(g, text, x, y, maxW, lh, maxLines){
+  let lines = wrapLines(g, text, maxW);
+  if (maxLines && lines.length > maxLines) { lines = lines.slice(0, maxLines); lines[maxLines - 1] = lines[maxLines - 1].replace(/\s*\S*$/, '') + '…'; }
+  for (const l of lines) { g.fillText(l, x, y); y += lh; }
+  return y;
+}
+function canvas(W, H){ const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d'); g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H); g.textBaseline = 'alphabetic'; return [c, g]; }
+function footer(g, W, H, M, line1){
+  g.fillStyle = RULE; g.fillRect(M, H - M - 96, W - 2 * M, 2);
+  g.fillStyle = INK; g.font = '600 32px ' + F_SANS; g.fillText(line1 || ('Kirill · 08 · ' + SIGN.site), M, H - M - 44);
+  g.fillStyle = GREY; g.font = '400 30px ' + F_SANS; g.fillText('WhatsApp ' + SIGN.wa, M, H - M);
+}
+function drawMessageCard(card, place){
+  const W = 1080, H = 1350, M = 88, [c, g] = canvas(W, H);
+  g.fillStyle = GREY; g.font = '600 30px ' + F_SANS; g.fillText(card.kicker || ('For ' + place), M, M + 20);
+  g.textAlign = 'right'; g.fillText('08', W - M, M + 20); g.textAlign = 'left';
+  g.fillStyle = RULE; g.fillRect(M, M + 48, W - 2 * M, 2);
+  g.fillStyle = INK; g.font = '600 78px ' + F_SERIF;
+  let y = para(g, card.title, M, M + 160, W - 2 * M, 86, 5) + 26;
+  if (card.kind === 'start') {
+    g.font = '400 42px ' + F_SANS;
+    for (const l of (card.lines || []).slice(0, 3)) { g.fillRect(M, y - 30, 18, 18); y = para(g, l, M + 42, y, W - 2 * M - 42, 56, 2) + 22; }
+    if (card.ask) { y += 18; g.font = '600 42px ' + F_SANS; for (const l of wrapLines(g, card.ask, W - 2 * M).slice(0, 3)) { g.fillText(l, M, y); g.fillRect(M, y + 12, g.measureText(l).width, 3); y += 62; } }
+  } else {
+    g.font = '400 42px ' + F_SANS;
+    for (const l of (card.lines || []).slice(0, 2)) y = para(g, l, M, y, W - 2 * M, 58, 4) + 16;
+    if (card.evidence) {
+      y += 14; g.font = '400 32px ' + F_SANS;
+      const lines = wrapLines(g, card.evidence, W - 2 * M - 64).slice(0, 4); const bh = lines.length * 44 + 44;
+      if (y + bh < H - M - 120) { g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(M, y, W - 2 * M, bh); let yy = y + 54; g.fillStyle = INK; for (const l of lines) { g.fillText(l, M + 32, yy); yy += 44; } }
+    }
+  }
+  footer(g, W, H, M);
+  return c;
+}
+function drawVisitCard(vc){
+  const W = 1240, H = 1748, M = 110, [c, g] = canvas(W, H);
+  g.fillStyle = INK; g.font = '400 44px ' + F_SANS; g.fillText('For:', M, M + 40);
+  g.fillStyle = INK; g.fillRect(M + 110, M + 48, W - 2 * M - 110, 3);
+  g.fillStyle = GREY; g.font = '600 40px ' + F_SANS; g.fillText(vc.place || '', M, M + 160);
+  g.fillStyle = INK; g.font = '600 88px ' + F_SERIF; let y = para(g, vc.finding, M, M + 290, W - 2 * M, 98, 5) + 24;
+  g.font = '400 46px ' + F_SANS; y = para(g, vc.line, M, y, W - 2 * M, 62, 3) + 30;
+  if (vc.evidence) { g.font = '400 36px ' + F_SANS; const lines = wrapLines(g, vc.evidence, W - 2 * M - 70).slice(0, 3); const bh = lines.length * 50 + 50; if (y + bh < H - M - 200) { g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(M, y, W - 2 * M, bh); let yy = y + 60; for (const l of lines) { g.fillText(l, M + 35, yy); yy += 50; } } }
+  g.fillStyle = RULE; g.fillRect(M, H - M - 150, W - 2 * M, 2);
+  g.fillStyle = INK; g.font = '600 40px ' + F_SANS; g.fillText("I'm Kirill from 08, a London-based startup.", M, H - M - 86);
+  g.fillStyle = GREY; g.font = '400 36px ' + F_SANS; g.fillText('WhatsApp ' + SIGN.wa + ' · ' + SIGN.site, M, H - M - 30);
+  return c;
+}
+function drawOnePager(op){
+  const W = 1240, H = 1754, M = 110, [c, g] = canvas(W, H);
+  g.fillStyle = INK; g.font = '600 74px ' + F_SERIF; let y = para(g, op.title, M, M + 70, W - 2 * M, 82, 2) + 6;
+  g.fillStyle = RULE; g.fillRect(M, y, W - 2 * M, 2); y += 70;
+  const head = t => { g.fillStyle = GREY; g.font = '600 32px ' + F_SANS; g.fillText(t, M, y); y += 56; g.fillStyle = INK; };
+  head('What I found'); g.font = '600 52px ' + F_SERIF; y = para(g, op.finding, M, y, W - 2 * M, 62, 4) + 40;
+  head('The first month'); g.font = '400 40px ' + F_SANS;
+  for (const l of (op.first_month || []).slice(0, 4)) { g.fillRect(M, y - 28, 16, 16); y = para(g, l, M + 40, y, W - 2 * M - 40, 54, 2) + 14; }
+  y += 30; head('Price and terms');
+  g.font = '400 38px ' + F_SANS; const pl = (op.price_lines && op.price_lines.length ? op.price_lines : PRICE_LINES).slice(0, 5);
+  const lines = []; for (const l of pl) lines.push(...wrapLines(g, l, W - 2 * M - 70));
+  const bh = lines.length * 52 + 50; g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(M, y - 10, W - 2 * M, bh);
+  let yy = y + 46; for (const l of lines) { g.fillText(l, M + 35, yy); yy += 52; } y += bh + 50;
+  if (op.next) { g.font = '600 42px ' + F_SANS; for (const l of wrapLines(g, op.next, W - 2 * M).slice(0, 2)) { g.fillText(l, M, y); g.fillRect(M, y + 12, g.measureText(l).width, 3); y += 64; } }
+  footer(g, W, H, M);
+  return c;
+}
+async function toImg(key, c){
+  const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+  if (!blob) return null;
+  if (S.imgs[key]) URL.revokeObjectURL(S.imgs[key].url);
+  S.imgs[key] = {url:URL.createObjectURL(blob), blob};
+  return S.imgs[key];
+}
+async function buildCards(v, out, prefix){
+  await fontsReady();
+  const res = [];
+  const cards = (out && out.cards) || [];
+  for (let i = 0; i < cards.length; i++) { const im = await toImg(prefix + 'c' + i, drawMessageCard(cards[i], v.name)); if (im) res.push({key:prefix + 'c' + i, name:'Карточка ' + (i + 1), file:slug(v.name) + '-card-' + (i + 1) + '.png'}); }
+  if (out && out.visit_card && out.visit_card.finding) { const im = await toImg(prefix + 'visit', drawVisitCard(out.visit_card)); if (im) res.push({key:prefix + 'visit', name:'Карточка на визит (A6, для печати)', file:slug(v.name) + '-visit-a6.png'}); }
+  if (out && out.one_pager) { const im = await toImg(prefix + 'op', drawOnePager(out.one_pager)); if (im) res.push({key:prefix + 'op', name:'Одностраничник', file:slug(v.name) + '-one-pager.png'}); }
+  return res;
+}
+const slug = s => String(s || 'place').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'place';
+async function saveFile(name, data){
+  const d = S.cap.downloads;
+  if (!d) { toast('Сохранение недоступно здесь. Картинку можно сохранить долгим нажатием.'); return; }
+  try { await d.save({filename:name, data}); toast('Готово'); }
+  catch(e) { if (e && e.code !== 'declined') toast('Не получилось сохранить файл.'); }
+}
+
+/* ---------- Today ---------- */
+function todayItems(){
+  const now = Date.now(), items = [];
+  for (const v of S.venues) {
+    if (v.status === 'stopped') continue;
+    const ts = v.touches || [];
+    ts.forEach((t, i) => {
+      const age = now - (t.at || 0);
+      if (t.channel === 'email' && t.delivered == null && age > 5 * 60e3 && age < 7 * DAY) items.push({v, i, kind:'delivery', pri:1});
+      if (t.channel === 'instagram' && !t.ig_part2 && t.delivered !== false && !t.replied && age < 14 * DAY) items.push({v, i, kind:'ig2', pri:2});
+      if (!t.result_at && !t.replied && age > 2 * DAY && age <= 3 * DAY) items.push({v, i, kind:'result', pri:3});
+    });
+    const li = ts.length - 1, last = ts[li];
+    if (last && !last.replied && !last.followed && now - (last.at || 0) > 3 * DAY && now - (last.at || 0) < 30 * DAY) items.push({v, i:li, kind:'follow', pri:4});
+    if (v.next_at && v.next_at <= now + DAY) items.push({v, kind:'next', pri:5});
+  }
+  return items.sort((a, b) => a.pri - b.pri);
+}
+
+/* ---------- Render ---------- */
+let renderPending = false;
+function softRender(){
+  const a = document.activeElement;
+  if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && $('#main').contains(a)) { renderTabs(); return; }
+  render();
+}
+function render(){
+  if (renderPending) return; renderPending = true;
+  requestAnimationFrame(() => { renderPending = false; doRender(); });
+}
+function renderTabs(){
+  const n = todayItems().length;
+  const tabs = [['today','Сегодня', n], ['places','Места', S.venues.length], ['new','Новое касание'], ['ab','A/B']];
+  $('#tabs').innerHTML = tabs.map(([id, nm, c]) => `<button data-act="tab" data-v="${id}" ${S.tab === id ? 'aria-current="page"' : ''}>${nm}${c ? `<span class="count">${c}</span>` : ''}</button>`).join('');
+  $('#ver').textContent = RULES_VERSION;
+}
+function doRender(){
+  renderTabs();
+  const b = [];
+  if (S.capReady && !S.cap.sample) b.push('<div class="banner">Claude отвечает, когда страница открыта на claude.ai. Здесь можно смотреть и заполнять формы.</div>');
+  if (S.capReady && !S.cap.db && window.claude) b.push('<div class="banner">Журнал недоступен в этом просмотре: записи не сохранятся.</div>');
+  if (S.loadNote) b.push(`<div class="banner bad">${esc(S.loadNote)}</div>`);
+  if (S.busy) b.push(`<div class="banner"><div class="busy"><span class="dot"></span><span>${esc(S.busy.label)}. <span id="busyChars">Claude думает…</span> Обычно до 1–2 минут.</span><button class="btn ghost small" data-act="stop">Остановить</button></div></div>`);
+  $('#banners').innerHTML = b.join('');
+  const m = $('#main');
+  if (S.tab === 'today') m.innerHTML = viewToday();
+  else if (S.tab === 'places') m.innerHTML = S.open ? viewVenue(S.venues.find(x => x.id === S.open)) : viewPlaces();
+  else if (S.tab === 'ab') m.innerHTML = viewAB();
+  else m.innerHTML = viewNew();
+  updBusy();
+}
+
+function sel(name, list, val, attrs){ return `<select data-f="${name}" ${attrs || ''}>${list.map(([v, t]) => `<option value="${esc(v)}" ${String(val) === String(v) ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>`; }
+function segBtns(name, list, val){ return `<div class="seg" role="group">${list.map(([v, t]) => `<button data-act="setf" data-f="${name}" data-v="${esc(v)}" aria-pressed="${String(val) === String(v)}">${esc(t)}</button>`).join('')}</div>`; }
+function thumbs(key){ return `<div class="thumbs">${(S.cur[key] || []).map(f => `<img src="${esc(f.url)}" alt="">`).join('')}</div>`; }
+
+function viewNew(){
+  const c = S.cur;
+  const steps = [['1','Место'],['2','Проверка ИИ'],['3','Находка'],['4','Тексты'],['5','Отправка']];
+  const can = {1:true, 2:!!c.brief, 3:!!c.ai, 4:!!c.out, 5:!!c.out};
+  const recon = c.mode === 'recontact';
+  const stepNav = recon ? '' : `<ol class="steps">${steps.map(([n, t]) => `<li><button data-act="step" data-v="${n}" ${String(S.step) === n ? 'aria-current="step"' : ''} ${can[n] ? '' : 'disabled'}>${n}. ${t}</button></li>`).join('')}</ol>`;
+  let body = '';
+  if (S.step === 1) body = viewStep1();
+  else if (S.step === 2) body = viewStep2();
+  else if (S.step === 3) body = viewStep3();
+  else if (S.step === 4) body = viewStep4();
+  else body = viewStep5();
+  return `<div style="display:flex;flex-direction:column;gap:14px">
+    <div class="row" style="justify-content:space-between"><h2>${c.name ? esc(c.name) : 'Новое касание'}</h2><button class="btn ghost small" data-act="reset">Начать заново</button></div>
+    ${stepNav}${body}</div>`;
+}
+function viewStep1(){
+  const c = S.cur, recon = c.mode === 'recontact';
+  const block = c.basis === 'none' ? '<div class="banner bad">Без основания для контакта текст не готовим. Спроси на визите: «Can I send you what I find?»</div>' : '';
+  const stopped = isStopped(c.contact) ? '<div class="banner bad">Этот контакт в стоп-листе. Писать нельзя.</div>' : '';
+  return `<section class="panel">
+    <h3>Что за касание</h3>
+    ${segBtns('mode', [['after_visit','После визита'],['recontact','Повторный контакт без визита']], c.mode)}
+    ${recon ? `<label class="f">Причина ${sel('kind', KINDS, c.kind)}</label>` : ''}
+    <div class="grid2">
+      <label class="f">Название места<input type="text" data-f="name" value="${esc(c.name)}" placeholder="The Roses of Elagabalus"></label>
+      <label class="f">Район<input type="text" data-f="area" value="${esc(c.area)}" placeholder="Stoke Newington"></label>
+      <label class="f">Тип места ${sel('type', TYPES, c.type)}</label>
+      <label class="f">Кто будет читать ${sel('reader', READERS, c.reader)}</label>
+    </div>
+    <h3>Куда пишем</h3>
+    ${segBtns('channel', CHANNELS, c.channel)}
+    <div class="grid2">
+      <label class="f">Контакт<input type="text" data-f="contact" value="${esc(c.contact)}" placeholder="@account, номер или почта"></label>
+      <label class="f">Основание для контакта ${sel('basis', BASIS, c.basis)}</label>
+    </div>
+    ${block}${stopped}
+    <label class="f">${recon ? 'Что было раньше и что изменилось' : 'Заметки с визита'}<span class="h">${recon ? 'Кому писали, что ответили, что обещал.' : 'С кем говорил, что проверили вместе на телефоне, что человек сказал, что обещал прислать. На телефоне можно надиктовать микрофоном клавиатуры.'}</span>
+      <textarea data-f="${recon ? 'history' : 'notes'}">${esc(recon ? c.history : c.notes)}</textarea></label>
+    ${recon ? '' : `<label class="f">Текст сайта<span class="h">Вставь главное с их сайта: о нас, меню, мероприятия. Страница сама в интернет не ходит.</span><textarea data-f="siteText">${esc(c.siteText)}</textarea></label>
+    <label class="f">Скриншоты Instagram, Google Maps, сайта<span class="h">${S.imgMax ? 'До ' + S.imgMax + ' картинок за раз.' : 'Картинки отправляются, когда страница открыта на claude.ai.'}</span><input type="file" accept="image/*" multiple data-files="shots"></label>
+    ${thumbs('shots')}`}
+    <div class="row"><button class="btn" data-act="${recon ? 'recontactNew' : 'brief'}" ${S.busy || c.basis === 'none' || !c.basis || isStopped(c.contact) || !c.name ? 'disabled' : ''}>${recon ? 'Подготовить сообщение' : 'Разобрать место'}</button>
+    <span class="small">${!c.name ? 'Нужно название. ' : ''}${!c.basis ? 'Нужно основание для контакта.' : ''}</span></div>
+  </section>`;
+}
+function viewStep2(){
+  const c = S.cur, b = c.brief || {};
+  const wn = b.write_or_not || {};
+  const vcls = wn.verdict === 'skip' ? 'bad' : wn.verdict === 'maybe' ? 'warn' : 'ok';
+  const vtxt = wn.verdict === 'skip' ? 'Лучше не писать' : wn.verdict === 'maybe' ? 'Под вопросом' : 'Писать';
+  return `<section class="panel">
+    <div class="row"><span class="chip ${vcls}">${vtxt}</span><span class="chip pen">Сегмент ${esc(b.segment || '?')}</span>${(b.signals || []).filter(Boolean).map(s => `<span class="chip">${esc(s)}</span>`).join('')}</div>
+    <p>${esc(b.summary_ru || '')}</p>
+    ${wn.reason_ru ? `<p class="small">${esc(wn.reason_ru)}</p>` : ''}
+    ${(b.guests_love || []).length ? `<h3>Что любят гости</h3><div style="display:flex;flex-direction:column;gap:8px">${b.guests_love.map(g => `<div class="quote">${esc(g.quote)}<small>${esc(g.source)}</small></div>`).join('')}</div>` : ''}
+    ${(b.proud_of || []).filter(Boolean).length ? `<h3>Чем гордятся</h3><ul class="sq">${b.proud_of.filter(Boolean).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+    ${(c.missing || []).filter(Boolean).length ? `<details><summary>Чего не хватает</summary><ul class="sq">${c.missing.filter(Boolean).map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
+  </section>
+  <section class="panel">
+    <h3>Вопросы для проверки ИИ</h3>
+    <p class="small">Задай их в ChatGPT и Claude в новом чистом чате и сделай скриншоты ответов.</p>
+    <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px">${(c.aiQuestions || []).map(q => `<li>${esc(q.q)}<div class="small">${esc(q.why_ru || '')}</div></li>`).join('')}</ol>
+    <div class="row"><button class="btn ghost small" data-act="copyQs">Скопировать вопросы</button></div>
+    <div class="grid2">
+      <label class="f">Скриншоты ответов ИИ<input type="file" accept="image/*" multiple data-files="aiShots"></label>
+      <label class="f">Когда спрашивал<input type="date" data-f="aiDate" value="${esc(c.aiDate)}"></label>
+    </div>
+    ${thumbs('aiShots')}
+    <div class="row"><button class="btn" data-act="finding" ${S.busy ? 'disabled' : ''}>Найти находку и написать</button>
+    <button class="btn ghost" data-act="finding" data-v="noai" ${S.busy ? 'disabled' : ''}>Без проверки ИИ</button></div>
+  </section>`;
+}
+function viewStep3(){
+  const c = S.cur, a = c.ai || {};
+  const ev = (a.ai_evidence || []).filter(e => e && e.question);
+  return `<section class="panel">
+    <h3>Находки</h3>
+    <div role="radiogroup" style="display:flex;flex-direction:column;gap:10px">
+    ${(a.findings || []).map((f, i) => `<div class="finding" role="radio" tabindex="0" aria-checked="${i === c.chosen}" data-act="choose" data-v="${i}">
+      <div class="row"><span class="chip pen">${esc(FTYPES[f.type] || f.type)}</span><span class="chip ${f.confidence === 'high' ? 'ok' : f.confidence === 'low' ? 'bad' : 'warn'}">${esc({high:'уверенно',medium:'средне',low:'проверь'}[f.confidence] || f.confidence)}</span></div>
+      <div class="hd">${esc(f.headline)}</div><p>${esc(f.detail)}</p>
+      ${(f.evidence || []).filter(Boolean).map(e => `<div class="ev">${esc(e)}</div>`).join('')}
+      ${f.needs_check_ru ? `<div class="small" style="color:var(--warn)">${esc(f.needs_check_ru)}</div>` : ''}
+    </div>`).join('')}
+    </div>
+    ${a.entry_ru ? `<p class="small">${esc(a.entry_ru)}</p>` : ''}
+    <div class="row"><button class="btn" data-act="toStep" data-v="4">К текстам</button>
+    ${c.out && c.out.chosenAt !== c.chosen ? `<button class="btn ghost" data-act="rewrite" ${S.busy ? 'disabled' : ''}>Переписать под выбранную</button>` : ''}</div>
+  </section>
+  ${ev.length ? `<section class="panel"><h3>Что ответил ИИ</h3><ul class="plain">${ev.map(e => `<li><b>${esc(e.assistant || '?')}</b>, картинка ${esc(e.image)}: ${esc(e.question)}<div class="small">${e.venue_named ? 'Называет место' + (e.position ? ', позиция ' + esc(e.position) : '') : 'Не называет место'}${(e.named_instead || []).filter(Boolean).length ? '. Вместо: ' + esc(e.named_instead.join(', ')) : ''}${(e.facts_wrong || []).filter(Boolean).length ? '. Ошибки: ' + esc(e.facts_wrong.join('; ')) : ''}</div></li>`).join('')}</ul></section>` : ''}`;
+}
+function textBlock(key, title, en, ru, extra){
+  if (!en) return '';
+  return `<div style="display:flex;flex-direction:column;gap:8px">
+    <div class="row" style="justify-content:space-between"><b>${esc(title)}</b><span class="small num">${nWords(en)} слов</span></div>
+    <textarea class="out${/subject$/.test(key) ? ' sm' : ''}" data-out="${key}" ${/subject$/.test(key) ? 'rows="2"' : ''}>${esc(en)}</textarea>
+    <div class="row"><button class="btn small" data-act="copyOut" data-v="${key}">Скопировать</button>${extra || ''}</div>
+    ${ru ? `<details><summary>Перевод на русский</summary><p style="white-space:pre-wrap">${esc(ru)}</p></details>` : ''}
+  </div>`;
+}
+function outTexts(prefix, out, ch){
+  const t = out.texts || {}, r = out.texts_ru || {};
+  if (ch === 'email' && t.email) return textBlock(prefix + 'email.subject', 'Тема письма', t.email.subject, '') + textBlock(prefix + 'email.body', 'Письмо', t.email.body, r.email);
+  if (ch === 'whatsapp' && t.whatsapp) return textBlock(prefix + 'whatsapp.body', 'WhatsApp', t.whatsapp.body, r.whatsapp);
+  if (ch === 'instagram' && t.instagram) return textBlock(prefix + 'instagram.part1', 'Instagram, часть 1 (только текст)', t.instagram.part1, r.instagram) +
+    `<div class="banner">Когда примут запрос, лайкнут или ответят: отправь часть 2 и карточку.</div>` + textBlock(prefix + 'instagram.part2', 'Instagram, часть 2 (с карточкой)', t.instagram.part2, '');
+  return '<p class="empty">Для этого канала текста нет.</p>';
+}
+function viewStep4(){
+  const c = S.cur, o = c.out;
+  if (!o) return '<p class="empty">Тексты появятся после шага 3.</p>';
+  const first = c.mode === 'after_visit' || c.kind !== 'live_lead';
+  const vr = c.variant || {};
+  const ch = S.pdata.newCh || c.channel;
+  const cardsHtml = (S.pdata.newCards || []).map(x => `<figure><img src="${esc((S.imgs[x.key] || {}).url || '')}" alt="${esc(x.name)}"><figcaption>${esc(x.name)}</figcaption><button class="btn ghost small" data-act="saveImg" data-v="${esc(x.key)}" data-n="${esc(x.file)}">Сохранить PNG</button></figure>`).join('');
+  return `<section class="panel">
+    <div class="row"><span class="chip pen">Вариант: ${esc((TESTS[vr.test] || {}).label || '')} · ${esc(((TESTS[vr.test] || {}).names || {})[vr.value] || '')}</span>${vr.segment ? `<span class="chip">Сегмент ${esc(vr.segment)}</span>` : ''}</div>
+    <div class="seg" role="group">${CHANNELS.map(([v, t]) => `<button data-act="newCh" data-v="${v}" aria-pressed="${ch === v}">${t}${v === c.channel ? ' ·' : ''}</button>`).join('')}</div>
+    ${outTexts('', o, ch)}
+    ${o.texts && o.texts.forward && o.texts.forward.body ? textBlock('forward.body', 'Абзац для пересылки владельцу', o.texts.forward.body, (o.texts_ru || {}).forward) : ''}
+    <h3>Проверка</h3>${renderChecks(checkTexts(c, o.texts, first))}
+    ${o.reader_check ? `<details open><summary>Глазами читателя</summary><ul class="sq"><li>${esc(o.reader_check.opens_ru)}</li><li>${esc(o.reader_check.replies_ru)}</li><li>${esc(o.reader_check.friction_ru)}</li><li><b>${esc(o.reader_check.fix_ru)}</b></li></ul></details>` : ''}
+  </section>
+  <section class="panel"><h3>Карточки</h3>${cardsHtml ? `<div class="cards">${cardsHtml}</div><p class="small">На телефоне картинку можно сохранить долгим нажатием.</p>` : '<p class="empty">Карточки рисуются…</p>'}
+    <div class="row"><button class="btn" data-act="toStep" data-v="5">Готово, к отправке</button></div></section>`;
+}
+function viewStep5(){
+  const c = S.cur;
+  if (!c.out) return '<p class="empty">Сначала тексты.</p>';
+  const ch = c.sentChannel || c.channel;
+  return `<section class="panel">
+    <h2>Отправил?</h2>
+    <p>Отметь канал, через который реально отправил. Агент поставит напоминания на вкладку «Сегодня».</p>
+    ${segBtns('sentChannel', CHANNELS, ch)}
+    <ul class="sq small">
+      <li>Почта: через 5 минут проверь, нет ли уведомления о недоставке.</li>
+      <li>Instagram: когда примут запрос, отправь вторую часть с карточкой.</li>
+      <li>Через 2–3 дня агент попросит скриншот переписки.</li>
+    </ul>
+    <div class="row"><button class="btn" data-act="sent" ${S.busy ? 'disabled' : ''}>Отправил</button><button class="btn ghost" data-act="tab" data-v="today">Позже</button></div>
+  </section>`;
+}
+
+function statusChip(v){
+  const st = v.status || 'draft';
+  const map = {draft:['Черновик',''], ready:['Готово к отправке','pen'], sent:['Отправлено',''], replied:['Ответили','ok'], meeting:['Встреча','ok'], paid:['Оплата','ok'], stopped:['Стоп','bad']};
+  const [t, cl] = map[st] || [st, ''];
+  return `<span class="chip ${cl}">${t}</span>`;
+}
+function viewPlaces(){
+  const q = (S.pdata.q || '').toLowerCase();
+  const f = S.pdata.filter || 'all';
+  let list = S.venues.filter(v => !q || (v.name || '').toLowerCase().includes(q) || (v.area || '').toLowerCase().includes(q));
+  if (f === 'waiting') list = list.filter(v => v.status === 'sent');
+  if (f === 'replied') list = list.filter(v => ['replied','meeting','paid'].includes(v.status));
+  if (f === 'stopped') list = list.filter(v => v.status === 'stopped');
+  const rows = list.map(v => {
+    const t = (v.touches || [])[ (v.touches || []).length - 1 ];
+    return `<button class="vrow" data-act="openV" data-v="${esc(v.id)}"><span class="nm">${esc(v.name || 'Без названия')}</span>${statusChip(v)}
+      <span class="meta">${esc(v.area || '')}${v.segment ? ` <span class="chip">Сегмент ${esc(v.segment)}</span>` : ''}${t ? ` · ${esc(label(CHANNELS, t.channel))}, ${fmtDate(t.at)}` : ''}${v.next_at ? ` · следующий шаг ${fmtDate(v.next_at)}` : ''}</span></button>`;
+  }).join('');
+  return `<section class="panel">
+    <div class="row" style="justify-content:space-between"><h2>Места</h2><button class="btn ghost small" data-act="csv">Выгрузить CSV</button></div>
+    <input type="search" data-pf="q" value="${esc(S.pdata.q || '')}" placeholder="Поиск по названию или району" aria-label="Поиск">
+    <div class="seg" role="group">${[['all','Все'],['waiting','Ждут ответа'],['replied','Ответили'],['stopped','Стоп']].map(([v, t]) => `<button data-act="pfilter" data-v="${v}" aria-pressed="${f === v}">${t}</button>`).join('')}</div>
+    ${rows ? `<div class="vlist">${rows}</div>` : `<p class="empty">${S.venues.length ? 'Ничего не нашлось.' : 'Здесь будет история по каждому месту: касания, ответы, следующий шаг. Начни с вкладки «Новое касание».'}</p>`}
+  </section>
+  <section class="panel"><details><summary>Стоп-лист (${S.stop.length})</summary>
+    <ul class="plain small" style="margin-top:8px">${S.stop.map(s => `<li>${esc(s.contact)}</li>`).join('') || '<li>Пусто</li>'}</ul>
+    <div class="row" style="margin-top:8px"><input type="text" id="stopIn" placeholder="Контакт, который ответил «stop»" style="flex:1;min-width:180px"><button class="btn small" data-act="addStop">Добавить</button></div>
+  </details></section>`;
+}
+function touchLine(v, t, i){
+  const st = [];
+  st.push(t.delivered === true ? '<span class="chip ok">дошло</span>' : t.delivered === false ? '<span class="chip bad">не дошло</span>' : '<span class="chip">доставка ?</span>');
+  if (t.read) st.push('<span class="chip ok">прочитано</span>');
+  if (t.channel === 'instagram') st.push(t.ig_part2 ? '<span class="chip ok">часть 2 отправлена</span>' : '<span class="chip warn">часть 2 ждёт</span>');
+  if (t.replied) st.push(`<span class="chip ok">ответили${t.reply_type ? ': ' + esc(RTYPES[t.reply_type] || t.reply_type) : ''}</span>`);
+  if (t.meeting) st.push('<span class="chip ok">встреча</span>'); if (t.paid) st.push('<span class="chip ok">оплата</span>');
+  const vr = t.variant || {};
+  return `<div class="t">
+    <div class="row"><b>${fmtDate(t.at)} · ${esc(label(CHANNELS, t.channel))}</b><span class="small">${esc({after_visit:'после визита', reply:'ответ на ответ', recontact:'повторный контакт'}[t.mode] || '')}</span>${vr.test ? `<span class="chip pen">${esc((TESTS[vr.test] || {}).label || '')}: ${esc(((TESTS[vr.test] || {}).names || {})[vr.value] || vr.value)}</span>` : ''}</div>
+    <div class="row">${st.join('')}</div>
+    ${t.reply ? `<div class="quote">${esc(t.reply)}</div>` : ''}
+    <details><summary>Текст</summary><p style="white-space:pre-wrap">${esc(t.text || '')}</p></details>
+    <div class="row">${quickBtns(v.id, i, t)}</div>
+  </div>`;
+}
+function quickBtns(id, i, t){
+  const b = (k, txt) => `<button class="btn ghost small" data-act="mark" data-v="${esc(id)}" data-i="${i}" data-k="${k}">${txt}</button>`;
+  return [t.delivered == null ? b('delivered', 'Дошло') + b('undelivered', 'Не дошло') : '', !t.read ? b('read', 'Прочитано') : '',
+    t.channel === 'instagram' && !t.ig_part2 ? b('ig2', 'Часть 2 отправлена') : '', !t.replied ? b('replied', 'Ответили') : '',
+    !t.meeting ? b('meeting', 'Встреча') : '', !t.paid ? b('paid', 'Оплата') : '', !t.replied && !t.result_at ? b('silence', 'Тишина') : ''].join('');
+}
+function viewVenue(v){
+  if (!v) { S.open = null; return viewPlaces(); }
+  const ts = v.touches || [];
+  const p = S.panel;
+  let panel = '';
+  if (p === 'reply') panel = `<section class="panel"><h3>Ответ получен</h3>
+      <label class="f">Что ответили (дословно)<textarea data-pf="replyText">${esc(S.pdata.replyText || '')}</textarea></label>
+      <label class="f">Или скриншоты переписки<input type="file" accept="image/*" multiple data-pfiles="replyShots"></label>
+      <div class="row"><button class="btn" data-act="doReply" ${S.busy ? 'disabled' : ''}>Разобрать ответ</button></div>
+      ${S.pdata.replyOut ? viewReplyOut(v, S.pdata.replyOut) : ''}</section>`;
+  if (p === 'recon') panel = `<section class="panel"><h3>Повторный контакт</h3>
+      <label class="f">Причина ${`<select data-pf="kind">${KINDS.map(([k, t]) => `<option value="${k}" ${S.pdata.kind === k ? 'selected' : ''}>${t}</option>`).join('')}</select>`}</label>
+      <label class="f">Заметки<textarea data-pf="reconNotes">${esc(S.pdata.reconNotes || '')}</textarea></label>
+      <div class="row"><button class="btn" data-act="doRecon" ${S.busy ? 'disabled' : ''}>Подготовить</button></div>
+      ${S.pdata.reconOut ? viewReconOut(v, S.pdata.reconOut) : ''}</section>`;
+  if (p === 'result') panel = `<section class="panel"><h3>Результат по скриншоту</h3>
+      <p class="small">Скриншот переписки после последнего сообщения: галочки, «Seen», ответ, уведомление о недоставке.</p>
+      <input type="file" accept="image/*" multiple data-pfiles="resultShots">
+      <div class="row"><button class="btn" data-act="doResult" ${S.busy || !ts.length ? 'disabled' : ''}>Прочитать результат</button></div></section>`;
+  return `<div style="display:flex;flex-direction:column;gap:14px">
+    <div class="row"><button class="btn ghost small" data-act="back">Все места</button></div>
+    <section class="panel">
+      <div class="row" style="justify-content:space-between"><h2>${esc(v.name)}</h2>${statusChip(v)}</div>
+      <div class="row small">${esc(v.area || '')} · ${esc(label(TYPES, v.type))}${v.segment ? ` · сегмент ${esc(v.segment)}` : ''} · ${esc(label(CHANNELS, v.channel))}: ${esc(v.contact || 'контакт не указан')} · ${esc(label(BASIS, v.basis))}</div>
+      ${v.brief && v.brief.summary_ru ? `<p>${esc(v.brief.summary_ru)}</p>` : ''}
+      ${v.ai && v.ai.findings && v.ai.findings[v.chosen || 0] ? `<div class="quote"><b>${esc(v.ai.findings[v.chosen || 0].headline)}</b><small>${esc(FTYPES[v.ai.findings[v.chosen || 0].type] || '')}</small></div>` : ''}
+      ${v.next ? `<p class="small">Следующий шаг: ${esc(v.next)}${v.next_at ? ', ' + fmtDate(v.next_at) : ''}</p>` : ''}
+      <div class="row">
+        <button class="btn small" data-act="panel" data-v="reply">Ответ получен</button>
+        <button class="btn ghost small" data-act="panel" data-v="recon">Повторный контакт</button>
+        <button class="btn ghost small" data-act="panel" data-v="result">Результат по скриншоту</button>
+        <button class="btn ghost small" data-act="stopV" data-v="${esc(v.id)}">В стоп-лист</button>
+      </div>
+    </section>
+    ${panel}
+    <section class="panel"><h3>История касаний</h3>${ts.length ? `<div class="tl">${ts.map((t, i) => touchLine(v, t, i)).reverse().join('')}</div>` : '<p class="empty">Касаний пока нет.</p>'}</section>
+  </div>`;
+}
+function viewReplyOut(v, r){
+  const nm = r.next_message || {};
+  const cardsHtml = (S.pdata.replyCards || []).map(x => `<figure><img src="${esc((S.imgs[x.key] || {}).url || '')}" alt="${esc(x.name)}"><figcaption>${esc(x.name)}</figcaption><button class="btn ghost small" data-act="saveImg" data-v="${esc(x.key)}" data-n="${esc(x.file)}">Сохранить PNG</button></figure>`).join('');
+  return `<div style="display:flex;flex-direction:column;gap:10px">
+    <div class="row"><span class="chip pen">${esc(RTYPES[r.reply_type] || r.reply_type)}</span></div>
+    <p>${esc(r.reply_summary_ru || '')}</p>
+    ${nm.subject ? textBlock('r.subject', 'Тема', nm.subject, '') : ''}
+    ${textBlock('r.body', 'Ответ (' + label(CHANNELS, nm.channel) + ')', nm.body, r.next_message_ru)}
+    ${r.forward ? textBlock('r.forward', 'Абзац для пересылки', r.forward, '') : ''}
+    ${renderChecks(checkTexts(v, {[nm.channel === 'email' ? 'email' : nm.channel]: nm.channel === 'email' ? {subject:nm.subject, body:nm.body} : nm.channel === 'instagram' ? {part1:nm.body} : {body:nm.body}}, false, true))}
+    ${cardsHtml ? `<div class="cards">${cardsHtml}</div>` : ''}
+    ${r.next_step_ru ? `<p class="small">Дальше: ${esc(r.next_step_ru)}</p>` : ''}
+    <div class="row"><button class="btn" data-act="sentReply">Отправил</button></div>
+  </div>`;
+}
+function viewReconOut(v, r){
+  const ch = S.pdata.reconCh || v.channel;
+  const cardsHtml = (S.pdata.reconCards || []).map(x => `<figure><img src="${esc((S.imgs[x.key] || {}).url || '')}" alt="${esc(x.name)}"><figcaption>${esc(x.name)}</figcaption><button class="btn ghost small" data-act="saveImg" data-v="${esc(x.key)}" data-n="${esc(x.file)}">Сохранить PNG</button></figure>`).join('');
+  return `<div style="display:flex;flex-direction:column;gap:10px">
+    <div class="seg" role="group">${CHANNELS.map(([k, t]) => `<button data-act="reconCh" data-v="${k}" aria-pressed="${ch === k}">${t}</button>`).join('')}</div>
+    ${outTexts('rc.', r, ch)}
+    ${renderChecks(checkTexts(v, r.texts, S.pdata.kind !== 'live_lead'))}
+    ${cardsHtml ? `<div class="cards">${cardsHtml}</div>` : ''}
+    ${r.next_step_ru ? `<p class="small">Дальше: ${esc(r.next_step_ru)}</p>` : ''}
+    <div class="row"><button class="btn" data-act="sentRecon">Отправил</button></div>
+  </div>`;
+}
+
+function viewToday(){
+  const items = todayItems();
+  const what = {delivery:'Проверь почту: нет ли уведомления о недоставке', ig2:'Instagram: приняли запрос? Отправь вторую часть с карточкой', result:'Пришли результат: скриншот переписки или отметь вручную', follow:'Пора фоллоу-ап: одно новое сообщение с новой находкой', next:'Запланированный шаг'};
+  const html = items.map(it => {
+    const t = it.i != null ? (it.v.touches || [])[it.i] : null;
+    return `<div class="it">
+      <div class="row" style="justify-content:space-between"><span class="what">${esc(what[it.kind])}</span>${t ? `<span class="small">${esc(label(CHANNELS, t.channel))}, ${fmtDate(t.at)}</span>` : ''}</div>
+      <div><b>${esc(it.v.name)}</b>${it.kind === 'next' && it.v.next ? `: ${esc(it.v.next)}` : ''}</div>
+      <div class="row">${t ? quickBtns(it.v.id, it.i, t) : ''}${it.kind === 'follow' ? `<button class="btn small" data-act="followUp" data-v="${esc(it.v.id)}" data-i="${it.i}">Подготовить фоллоу-ап</button>` : ''}<button class="btn ghost small" data-act="openV" data-v="${esc(it.v.id)}">Открыть</button></div>
+    </div>`;
+  }).join('');
+  return `<section class="panel"><h2>Сегодня</h2>
+    ${html ? `<div class="today">${html}</div>` : `<p class="empty">${S.venues.length ? 'Сегодня проверять нечего. Хорошее время для нового визита.' : 'Здесь появятся проверки доставки, вторые части для Instagram, запросы результатов и фоллоу-апы. Начни с вкладки «Новое касание».'}</p>`}
+  </section>`;
+}
+function pct(a, b){ return b ? Math.round(a / b * 100) : 0; }
+function abRow(name, s){
+  const few = s.sent < 10;
+  return `<div class="ab-row"><div class="lbl">${esc(name)}${few ? ' <span class="chip warn">мало данных</span>' : ''}</div>
+    <div class="bar" role="img" aria-label="Ответили ${s.replied} из ${s.sent}"><i style="width:${pct(s.replied, s.sent)}%"></i></div>
+    <div class="sub"><b>ответили ${s.replied} из ${s.sent}${s.sent ? ' (' + pct(s.replied, s.sent) + '%)' : ''}</b> · дошло ${s.delivered} · прочитано ${s.read} · встречи ${s.meeting} · оплаты ${s.paid}</div></div>`;
+}
+function viewAB(){
+  const st = abStats();
+  const chHtml = CHANNELS.map(([ch, nm]) => {
+    const test = S.ab[ch] || DEFAULT_AB[ch];
+    const T = TESTS[test] || {values:[], names:{}};
+    const rows = T.values.map(val => abRow(T.names[val], st.ch[ch][test + ':' + val] || blank())).join('');
+    const others = Object.entries(st.ch[ch]).filter(([k]) => !k.startsWith(test + ':'));
+    const oth = blank(); for (const [, s] of others) for (const k in oth) oth[k] += s[k];
+    return `<section class="panel"><div class="row" style="justify-content:space-between"><h2>${nm}</h2>
+      <label class="small">Тест: <select data-ab="${ch}">${CH_TESTS[ch].map(t => `<option value="${t}" ${t === test ? 'selected' : ''}>${TESTS[t].label}</option>`).join('')}</select></label></div>
+      ${rows}${oth.sent ? abRow('вне теста и прошлые тесты', oth) : ''}</section>`;
+  }).join('');
+  return `<div style="display:flex;flex-direction:column;gap:14px">
+    <section class="panel"><h2>A/B-лаборатория</h2>
+      <p class="small">В каждом канале одна переменная за раз. Варианты агент назначает по очереди, поровну. Выводы только по данным: пока на вариант меньше 10 отправок, это «мало данных».</p>
+      <h3>Сегменты</h3>${abRow('А: планируют заранее, дорогой гость', st.seg.A)}${abRow('Б: как сейчас', st.seg.B)}
+      <div class="row"><button class="btn" data-act="weekly" ${S.busy ? 'disabled' : ''}>Недельный разбор</button><button class="btn ghost" data-act="csv">Выгрузить CSV</button></div>
+      ${S.review ? `<details open><summary>Разбор</summary><pre class="review">${esc(S.review)}</pre></details>` : ''}
+    </section>${chHtml}</div>`;
+}
+
+/* ---------- Actions ---------- */
+function curToVenue(){
+  const c = S.cur;
+  const prev = c.id ? S.venues.find(v => v.id === c.id) : null;
+  const v = prev ? clone(prev) : {id:newId(), createdAt:Date.now(), touches:[], status:'draft'};
+  Object.assign(v, {name:c.name, area:c.area, type:c.type, channel:c.channel, contact:c.contact, basis:c.basis, reader:c.reader,
+    notes:cut(c.notes, 6000), siteText:cut(c.siteText, 12000), history:cut(c.history, 3000), brief:c.brief, aiQuestions:c.aiQuestions, aiDate:c.aiDate,
+    ai:c.ai, chosen:c.chosen, out:c.out, variant:c.variant, segment:c.segment || (c.brief && c.brief.segment) || null});
+  c.id = v.id;
+  return v;
+}
+async function actBrief(){
+  const c = S.cur;
+  const r = await ask('Разбираю место', promptBrief(c), c.shots, 'default');
+  if (!r || !r.brief) return;
+  c.brief = r.brief; c.aiQuestions = (r.ai_questions || []).filter(q => q && q.q); c.missing = r.missing_ru || [];
+  c.segment = r.brief.segment === 'A' ? 'A' : 'B';
+  S.step = 2; saveLocal(); await putVenue(curToVenue()); render();
+}
+async function actFinding(noai){
+  const c = S.cur;
+  if (noai) c.aiShots = [];
+  c.variant = pickVariant(c.channel, c.segment);
+  const r = await ask('Ищу находку и пишу тексты', promptFinding(c), c.aiShots, 'complex');
+  if (!r || !r.findings) return;
+  c.ai = {ai_evidence:r.ai_evidence || [], findings:r.findings || [], entry_ru:r.entry_ru || ''};
+  c.chosen = Math.min(Math.max(0, r.chosen | 0), (r.findings || []).length - 1);
+  c.out = {ask:r.ask, texts:r.texts, texts_ru:r.texts_ru, cards:(r.cards || []).slice(0, c.variant.cards || 1), visit_card:r.visit_card, reader_check:r.reader_check, chosenAt:c.chosen};
+  S.step = 3; saveLocal(); await putVenue(curToVenue()); render();
+  buildCards(c, c.out, 'n').then(x => { S.pdata.newCards = x; render(); });
+}
+async function actRewrite(){
+  const c = S.cur, f = c.ai.findings[c.chosen];
+  const r = await ask('Переписываю под выбранную находку', promptRewrite(c, f), [], 'default');
+  if (!r || !r.texts) return;
+  c.out = {ask:r.ask, texts:r.texts, texts_ru:r.texts_ru, cards:(r.cards || []).slice(0, (c.variant || {}).cards || 1), visit_card:r.visit_card, reader_check:r.reader_check, chosenAt:c.chosen};
+  S.step = 4; saveLocal(); await putVenue(curToVenue()); render();
+  buildCards(c, c.out, 'n').then(x => { S.pdata.newCards = x; render(); });
+}
+async function actRecontactNew(){
+  const c = S.cur;
+  c.variant = {segment:c.segment || null, test:null, value:null, cards:1};
+  const v = curToVenue();
+  const r = await ask('Готовлю повторный контакт', promptRecontact(v, c.kind, c.history), [], 'default');
+  if (!r || !r.texts) return;
+  c.out = {ask:r.ask, texts:r.texts, texts_ru:r.texts_ru, cards:(r.cards || []).slice(0, 1), next_step_ru:r.next_step_ru};
+  S.step = 4; saveLocal(); await putVenue(curToVenue()); render();
+  buildCards(c, c.out, 'n').then(x => { S.pdata.newCards = x; render(); });
+}
+function sentText(out, ch){
+  const t = (out && out.texts) || {};
+  if (ch === 'email') return t.email ? (t.email.subject ? 'Subject: ' + t.email.subject + '\n\n' : '') + (t.email.body || '') : '';
+  if (ch === 'instagram') return t.instagram ? t.instagram.part1 || '' : '';
+  return t.whatsapp ? t.whatsapp.body || '' : '';
+}
+async function actSent(){
+  const c = S.cur;
+  const ch = c.sentChannel || c.channel;
+  const v = curToVenue();
+  const vr = c.mode === 'after_visit' && c.variant && ch === c.channel ? c.variant : {segment:c.segment || null, test:null, value:null};
+  const f = c.ai && c.ai.findings ? c.ai.findings[c.chosen] : null;
+  v.touches = (v.touches || []).concat([{at:Date.now(), mode:c.mode === 'recontact' ? 'recontact' : 'after_visit', channel:ch, variant:vr,
+    finding_type:f ? f.type : null, ask:(c.out || {}).ask || '', text:sentText(c.out, ch), delivered:null, read:null, ig_part2:false, replied:false}]);
+  v.status = 'sent';
+  await putVenue(v);
+  toast('Записано в журнал');
+  clearLocal(); S.cur = newDraft(); S.step = 1; S.pdata.newCards = []; S.pdata.newCh = null; S.tab = 'today'; render();
+}
+async function mark(id, i, k){
+  const v0 = S.venues.find(x => x.id === id); if (!v0) return;
+  const v = clone(v0); const t = v.touches[i]; if (!t) return;
+  const now = Date.now();
+  if (k === 'delivered') t.delivered = true;
+  if (k === 'undelivered') { t.delivered = false; v.next = 'Письмо не дошло: напиши в другой канал'; v.next_at = now; }
+  if (k === 'read') { t.read = true; if (t.delivered == null) t.delivered = true; }
+  if (k === 'ig2') t.ig_part2 = true;
+  if (k === 'replied') { t.replied = true; t.delivered = true; t.result_at = now; v.status = 'replied'; }
+  if (k === 'meeting') { t.meeting = true; v.status = 'meeting'; }
+  if (k === 'paid') { t.paid = true; v.status = 'paid'; }
+  if (k === 'silence') t.result_at = now;
+  await putVenue(v); render();
+}
+async function actReply(v0){
+  const v = clone(v0);
+  const files = S.pdata.replyShots || [];
+  const r = await ask('Разбираю ответ', promptReply(v, S.pdata.replyText || '', files.length), files, 'complex');
+  if (!r || !r.next_message) return;
+  if (!r.next_message.channel) r.next_message.channel = v.channel;
+  S.pdata.replyOut = r;
+  const li = (v.touches || []).length - 1;
+  if (li >= 0) { const t = v.touches[li]; t.replied = true; t.delivered = true; t.result_at = Date.now(); t.reply = cut(S.pdata.replyText, 2000) || t.reply || ''; t.reply_type = r.reply_type; }
+  v.status = 'replied';
+  if (r.next_date_days) { v.next_at = Date.now() + r.next_date_days * DAY; v.next = r.next_step_ru || ''; }
+  await putVenue(v);
+  render();
+  buildCards(v, {one_pager:r.one_pager || null}, 'r').then(x => { S.pdata.replyCards = x; render(); });
+}
+async function actRecon(v0){
+  const v = clone(v0); const kind = S.pdata.kind || 'follow_up';
+  const r = await ask('Готовлю повторный контакт', promptRecontact(v, kind, S.pdata.reconNotes || ''), [], 'default');
+  if (!r || !r.texts) return;
+  S.pdata.reconOut = r; S.pdata.reconCh = v.channel;
+  render();
+  buildCards(v, {cards:(r.cards || []).slice(0, 1)}, 'rc').then(x => { S.pdata.reconCards = x; render(); });
+}
+async function actSentFrom(v0, mode, ch, text, extra){
+  const v = clone(v0);
+  if (mode === 'recontact' && v.touches && v.touches.length) v.touches[v.touches.length - 1].followed = true;
+  v.touches = (v.touches || []).concat([Object.assign({at:Date.now(), mode, channel:ch, variant:{segment:v.segment || null, test:null, value:null}, text, delivered:null, read:null, ig_part2:false, replied:false}, extra || {})]);
+  v.status = 'sent';
+  await putVenue(v);
+  S.panel = null; S.pdata.replyOut = null; S.pdata.reconOut = null; toast('Записано в журнал'); render();
+}
+async function actResult(v0){
+  const v = clone(v0); const li = (v.touches || []).length - 1; if (li < 0) return;
+  const files = S.pdata.resultShots || [];
+  if (!files.length) { toast('Добавь скриншот переписки'); return; }
+  const r = await ask('Читаю результат', promptResult(v, v.touches[li]), files, 'default');
+  if (!r) return;
+  const t = v.touches[li];
+  if (r.delivered != null) t.delivered = r.delivered;
+  if (r.read != null) t.read = r.read;
+  if (r.ig_accepted === true && t.channel === 'instagram') t.ig_accepted = true;
+  if (r.replied) { t.replied = true; t.reply = cut(r.reply, 2000); t.reply_type = r.reply_type; v.status = 'replied'; }
+  t.result_at = Date.now();
+  await putVenue(v);
+  S.panel = null; toast(r.note_ru || 'Результат записан'); render();
+}
+async function actWeekly(){
+  const st = abStats();
+  const replies = [];
+  for (const v of S.venues) for (const t of (v.touches || [])) if (t.replied) replies.push({place:v.name, channel:t.channel, variant:t.variant, finding:t.finding_type, ask:t.ask, reply:cut(t.reply, 300), segment:v.segment});
+  const prompt = `Weekly A/B review for Kirill (08), in Russian. Be honest about small numbers: under 10 sends per variant is
+"мало данных", never claim a winner on tiny samples.
+
+ACTIVE TESTS: ${JSON.stringify(S.ab)}
+COUNTS BY CHANNEL AND VARIANT (sent, delivered, read, replied, meeting, paid): ${JSON.stringify(st.ch)}
+COUNTS BY SEGMENT (A: plan ahead and spend a lot; B: as usual): ${JSON.stringify(st.seg)}
+REPLIES WORD FOR WORD: ${JSON.stringify(replies).slice(0, 12000)}
+
+Write plain text with these short headings: Что сработало (с цифрами); Насколько можно верить; Лучшие формулировки
+(цитаты); Что поменять в плейбуке; Следующий тест. Under 250 words. No markdown symbols except line breaks.`;
+  const sample = S.cap.sample;
+  if (!sample) { toast('Claude доступен, когда страница открыта на claude.ai.'); return; }
+  S.ctl = new AbortController(); S.busy = {label:'Готовлю недельный разбор', chars:0}; render();
+  try {
+    const {text} = await sample(prompt, {signal:S.ctl.signal, cache:false, onText:({text}) => { if (S.busy) { S.busy.chars = text.length; updBusy(); } }});
+    S.review = text;
+    if (S.cap.db) { const wk = new Date(); const id = wk.getFullYear() + '-' + String(wk.getMonth() + 1).padStart(2, '0') + '-' + String(wk.getDate()).padStart(2, '0'); queueWrite('reviews/' + id, () => S.cap.db.doc('reviews/' + id).set({text, at:Date.now()})).catch(() => {}); }
+  } catch(e) { if (e && e.code !== 'cancelled') toast(errCopy(e)); }
+  finally { S.busy = null; S.ctl = null; render(); }
+}
+function csv(){
+  const cols = ['place','area','type','segment','channel','contact','basis','reader','date','mode','test','variant','finding','ask','delivered','read','replied','reply_type','reply','meeting','paid','status','next','next_at'];
+  const q = x => '"' + String(x == null ? '' : x).replace(/"/g, '""') + '"';
+  const lines = [cols.join(',')];
+  for (const v of S.venues) {
+    const ts = (v.touches && v.touches.length) ? v.touches : [{}];
+    for (const t of ts) lines.push([v.name, v.area, label(TYPES, v.type), v.segment, t.channel, v.contact, label(BASIS, v.basis), label(READERS, v.reader),
+      t.at ? new Date(t.at).toISOString().slice(0, 10) : '', t.mode, t.variant && t.variant.test, t.variant && t.variant.value, t.finding_type, t.ask,
+      t.delivered, t.read, t.replied, t.reply_type, t.reply, t.meeting, t.paid, v.status, v.next, v.next_at ? new Date(v.next_at).toISOString().slice(0, 10) : ''].map(q).join(','));
+  }
+  saveFile('icebreaker-journal-' + todayISO() + '.csv', lines.join('\n'));
+}
+function getOut(key){
+  const c = S.cur;
+  const [a, b, d] = key.split('.');
+  if (a === 'r') { const r = S.pdata.replyOut || {}; return b === 'subject' ? (r.next_message || {}).subject : b === 'forward' ? r.forward : (r.next_message || {}).body; }
+  if (a === 'rc') { const t = ((S.pdata.reconOut || {}).texts || {})[b] || {}; return t[d]; }
+  const t = ((c.out || {}).texts || {})[a] || {}; return t[b];
+}
+function setOut(key, val){
+  const c = S.cur;
+  const [a, b, d] = key.split('.');
+  if (a === 'r') { const r = S.pdata.replyOut; if (!r) return; if (b === 'subject') r.next_message.subject = val; else if (b === 'forward') r.forward = val; else r.next_message.body = val; return; }
+  if (a === 'rc') { const r = S.pdata.reconOut; if (!r || !r.texts || !r.texts[b]) return; r.texts[b][d] = val; return; }
+  if (c.out && c.out.texts && c.out.texts[a]) { c.out.texts[a][b] = val; saveLocal(); }
+}
+
+document.addEventListener('click', async e => {
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const act = el.dataset.act, v = el.dataset.v;
+  if (act === 'tab') { S.tab = v; S.open = null; S.panel = null; render(); window.scrollTo(0, 0); }
+  else if (act === 'stop') { if (S.ctl) S.ctl.abort(); }
+  else if (act === 'setf') { S.cur[el.dataset.f] = v; saveLocal(); render(); }
+  else if (act === 'step' || act === 'toStep') { S.step = +v; saveLocal(); render(); window.scrollTo(0, 0); }
+  else if (act === 'reset') { clearLocal(); S.cur = newDraft(); S.step = 1; S.pdata.newCards = []; S.pdata.newCh = null; render(); }
+  else if (act === 'brief') actBrief();
+  else if (act === 'finding') actFinding(v === 'noai');
+  else if (act === 'rewrite') actRewrite();
+  else if (act === 'recontactNew') actRecontactNew();
+  else if (act === 'choose') { S.cur.chosen = +v; saveLocal(); render(); }
+  else if (act === 'copyQs') copyText((S.cur.aiQuestions || []).map(q => q.q).join('\n'));
+  else if (act === 'copyOut') { const ta = document.querySelector(`[data-out="${CSS.escape(v)}"]`); copyText(ta ? ta.value : (getOut(v) || '')); }
+  else if (act === 'newCh') { S.pdata.newCh = v; render(); }
+  else if (act === 'reconCh') { S.pdata.reconCh = v; render(); }
+  else if (act === 'saveImg') { const im = S.imgs[v]; if (im) saveFile(el.dataset.n, im.blob); }
+  else if (act === 'sent') actSent();
+  else if (act === 'openV') { S.tab = 'places'; S.open = v; S.panel = null; S.pdata.replyOut = null; S.pdata.reconOut = null; render(); window.scrollTo(0, 0); }
+  else if (act === 'back') { S.open = null; S.panel = null; render(); }
+  else if (act === 'panel') { S.panel = S.panel === v ? null : v; render(); }
+  else if (act === 'pfilter') { S.pdata.filter = v; render(); }
+  else if (act === 'mark') mark(v, +el.dataset.i, el.dataset.k);
+  else if (act === 'doReply') { const vv = S.venues.find(x => x.id === S.open); if (vv) actReply(vv); }
+  else if (act === 'doRecon') { const vv = S.venues.find(x => x.id === S.open); if (vv) actRecon(vv); }
+  else if (act === 'doResult') { const vv = S.venues.find(x => x.id === S.open); if (vv) actResult(vv); }
+  else if (act === 'sentReply') { const vv = S.venues.find(x => x.id === S.open); const r = S.pdata.replyOut; if (vv && r) actSentFrom(vv, 'reply', r.next_message.channel || vv.channel, (r.next_message.subject ? 'Subject: ' + r.next_message.subject + '\n\n' : '') + r.next_message.body); }
+  else if (act === 'sentRecon') { const vv = S.venues.find(x => x.id === S.open); const r = S.pdata.reconOut; const ch = S.pdata.reconCh || (vv && vv.channel); if (vv && r) actSentFrom(vv, 'recontact', ch, sentText(r, ch), {ask:r.ask}); }
+  else if (act === 'followUp') { S.tab = 'places'; S.open = v; S.panel = 'recon'; S.pdata.kind = 'follow_up'; S.pdata.reconOut = null; render(); }
+  else if (act === 'stopV') { const vv = S.venues.find(x => x.id === v); if (vv) { const c = clone(vv); c.status = 'stopped'; if (c.contact) await addStop(c.contact); await putVenue(c); render(); } }
+  else if (act === 'addStop') { const inp = $('#stopIn'); if (inp && inp.value.trim()) { await addStop(inp.value); inp.value = ''; render(); } }
+  else if (act === 'csv') csv();
+  else if (act === 'weekly') actWeekly();
+});
+document.addEventListener('keydown', e => {
+  const el = e.target.closest && e.target.closest('[role="radio"][data-act="choose"]');
+  if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); el.click(); }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.dataset.f && S.cur) { S.cur[t.dataset.f] = t.value; saveLocal(); if (t.dataset.f === 'contact' || t.dataset.f === 'name') { const btn = document.querySelector('[data-act="brief"],[data-act="recontactNew"]'); if (btn) btn.disabled = !!S.busy || !S.cur.basis || S.cur.basis === 'none' || isStopped(S.cur.contact) || !S.cur.name; } }
+  if (t.dataset.pf) { S.pdata[t.dataset.pf] = t.value; if (t.dataset.pf === 'q') { clearTimeout(S.qT); S.qT = setTimeout(() => { const pos = t.selectionStart; render(); requestAnimationFrame(() => { const n = document.querySelector('[data-pf="q"]'); if (n) { n.focus(); try { n.setSelectionRange(pos, pos); } catch(err) {} } }); }, 300); } }
+  if (t.dataset.out) setOut(t.dataset.out, t.value);
+});
+document.addEventListener('change', async e => {
+  const t = e.target;
+  if (t.tagName === 'SELECT' && t.dataset.f && S.cur) { S.cur[t.dataset.f] = t.value; saveLocal(); render(); }
+  if (t.dataset.files && t.files) { const key = t.dataset.files; (S.cur[key] || []).forEach(f => URL.revokeObjectURL(f.url)); S.cur[key] = [...t.files].map(f => ({file:f, url:URL.createObjectURL(f)})); render(); }
+  if (t.dataset.pfiles && t.files) { S.pdata[t.dataset.pfiles] = [...t.files]; toast('Скриншотов: ' + t.files.length); }
+  if (t.dataset.ab) { S.ab = {...S.ab, [t.dataset.ab]:t.value}; if (S.cap.db) { try { await queueWrite('settings/ab', () => S.cap.db.doc('settings/ab').set(clone(S.ab))); } catch(err) { toast(dbErr(err)); } } render(); }
+});
+
+/* ---------- Boot ---------- */
+S.cur = newDraft();
+if (loadLocal() && (S.cur.name || S.cur.notes)) S.tab = 'new';
+render();
+initCaps();
+})();
+</script>
