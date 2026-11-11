@@ -58,7 +58,7 @@ textarea.out.sm{min-height:48px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn{font:700 15px var(--sans);padding:11px 16px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.small{padding:6px 10px;font-size:13px;border-radius:7px}
+.btn.small{padding:7px 11px;font-size:14px;border-radius:7px}
 .btn:disabled{opacity:.5;cursor:default}
 :focus-visible{outline:3px solid var(--pen);outline-offset:2px}
 .chip{display:inline-flex;align-items:center;gap:4px;font:600 12px var(--sans);padding:2px 9px;border-radius:999px;background:var(--chip);color:var(--ink);white-space:nowrap}
@@ -527,6 +527,7 @@ function historyJSON(v){
   const f = v.ai && v.ai.findings ? v.ai.findings[v.chosen || 0] : null;
   return JSON.stringify({
     place:{name:v.name, area:v.area, type:label(TYPES, v.type), segment:v.segment, reader:v.reader, contact_basis:v.basis},
+    kirill_notes_ru:cut(v.notes, 1500),
     brief_summary_ru:v.brief ? v.brief.summary_ru : '',
     chosen_finding:f,
     touches:(v.touches || []).slice(-6).map(t => ({date:new Date(t.at).toISOString().slice(0,10), mode:t.mode, channel:t.channel, sent:cut(t.text, 600), replied:t.replied, reply:t.reply, reply_type:t.reply_type}))
@@ -694,7 +695,7 @@ function addT(acc, t){
 function abStats(){
   const ch = {email:{}, whatsapp:{}, instagram:{}}, seg = {A:blank(), B:blank()};
   for (const v of S.venues) for (const t of (v.touches || [])) {
-    if (!ch[t.channel]) continue;
+    if (t.legacy || !ch[t.channel]) continue;
     const key = t.variant && t.variant.test ? t.variant.test + ':' + t.variant.value : 'none';
     (ch[t.channel][key] = ch[t.channel][key] || blank());
     addT(ch[t.channel][key], t);
@@ -813,12 +814,14 @@ function todayItems(){
     ts.forEach((t, i) => {
       const age = now - (t.at || 0);
       if (t.channel === 'email' && t.delivered == null && age > 5 * 60e3 && age < 7 * DAY) items.push({v, i, kind:'delivery', pri:1});
-      if (t.channel === 'instagram' && !t.ig_part2 && t.delivered !== false && !t.replied && age < 14 * DAY) items.push({v, i, kind:'ig2', pri:2});
-      if (!t.result_at && !t.replied && age > 2 * DAY && age <= 3 * DAY) items.push({v, i, kind:'result', pri:3});
+      if (t.legacy) return;
+      if (t.channel === 'instagram' && !t.ig_part2 && t.delivered !== false && !t.replied && age < 14 * DAY) items.push({v, i, kind:'ig2', pri:3});
+      if (!t.result_at && !t.replied && age > 2 * DAY && age <= 3 * DAY) items.push({v, i, kind:'result', pri:4});
     });
     const li = ts.length - 1, last = ts[li];
-    if (last && !last.replied && !last.followed && now - (last.at || 0) > 3 * DAY && now - (last.at || 0) < 30 * DAY) items.push({v, i:li, kind:'follow', pri:4});
-    if (v.next_at && v.next_at <= now + DAY) items.push({v, kind:'next', pri:5});
+    const lrt = last && last.reply_type;
+    if (v.next_at) { if (v.next_at <= now + DAY) items.push({v, kind:'next', pri:v.status === 'replied' ? (lrt === 'proposal' || lrt === 'details' ? -1 : 0) : 2}); }
+    else if (last && !last.replied && !last.followed && now - (last.at || 0) > 3 * DAY && now - (last.at || 0) < 30 * DAY) items.push({v, i:li, kind:'follow', pri:5});
   }
   return items.sort((a, b) => a.pri - b.pri);
 }
@@ -1042,7 +1045,7 @@ function touchLine(v, t, i){
   if (t.meeting) st.push('<span class="chip ok">встреча</span>'); if (t.paid) st.push('<span class="chip ok">оплата</span>');
   const vr = t.variant || {};
   return `<div class="t">
-    <div class="row"><b>${fmtDate(t.at)} · ${esc(label(CHANNELS, t.channel))}</b><span class="small">${esc({after_visit:'после визита', reply:'ответ на ответ', recontact:'повторный контакт'}[t.mode] || '')}</span>${vr.test ? `<span class="chip pen">${esc((TESTS[vr.test] || {}).label || '')}: ${esc(((TESTS[vr.test] || {}).names || {})[vr.value] || vr.value)}</span>` : ''}</div>
+    <div class="row"><b>${fmtDate(t.at)} · ${esc(label(CHANNELS, t.channel))}</b><span class="small">${esc({after_visit:'после визита', reply:'ответ на ответ', recontact:'повторный контакт'}[t.mode] || '')}${t.approx ? ', дата примерная' : ''}</span>${t.legacy ? '<span class="chip">до агента</span>' : ''}${vr.test ? `<span class="chip pen">${esc((TESTS[vr.test] || {}).label || '')}: ${esc(((TESTS[vr.test] || {}).names || {})[vr.value] || vr.value)}</span>` : ''}</div>
     <div class="row">${st.join('')}</div>
     ${t.reply ? `<div class="quote">${esc(t.reply)}</div>` : ''}
     <details><summary>Текст</summary><p style="white-space:pre-wrap">${esc(t.text || '')}</p></details>
@@ -1065,10 +1068,12 @@ function viewVenue(v){
       <label class="f">Или скриншоты переписки<input type="file" accept="image/*" multiple data-pfiles="replyShots"></label>
       <div class="row"><button class="btn" data-act="doReply" ${S.busy ? 'disabled' : ''}>Разобрать ответ</button></div>
       ${S.pdata.replyOut ? viewReplyOut(v, S.pdata.replyOut) : ''}</section>`;
+  const okBasis = v.basis && v.basis !== 'none' && !isStopped(v.contact);
   if (p === 'recon') panel = `<section class="panel"><h3>Повторный контакт</h3>
       <label class="f">Причина ${`<select data-pf="kind">${KINDS.map(([k, t]) => `<option value="${k}" ${S.pdata.kind === k ? 'selected' : ''}>${t}</option>`).join('')}</select>`}</label>
       <label class="f">Заметки<textarea data-pf="reconNotes">${esc(S.pdata.reconNotes || '')}</textarea></label>
-      <div class="row"><button class="btn" data-act="doRecon" ${S.busy ? 'disabled' : ''}>Подготовить</button></div>
+      ${okBasis ? '' : '<div class="banner bad">Укажи основание для контакта (выше, «Контакт и основание»). Если контакт в стоп-листе, писать нельзя.</div>'}
+      <div class="row"><button class="btn" data-act="doRecon" ${S.busy || !okBasis ? 'disabled' : ''}>Подготовить</button></div>
       ${S.pdata.reconOut ? viewReconOut(v, S.pdata.reconOut) : ''}</section>`;
   if (p === 'result') panel = `<section class="panel"><h3>Результат по скриншоту</h3>
       <p class="small">Скриншот переписки после последнего сообщения: галочки, «Seen», ответ, уведомление о недоставке.</p>
@@ -1082,6 +1087,14 @@ function viewVenue(v){
       ${v.brief && v.brief.summary_ru ? `<p>${esc(v.brief.summary_ru)}</p>` : ''}
       ${v.ai && v.ai.findings && v.ai.findings[v.chosen || 0] ? `<div class="quote"><b>${esc(v.ai.findings[v.chosen || 0].headline)}</b><small>${esc(FTYPES[v.ai.findings[v.chosen || 0].type] || '')}</small></div>` : ''}
       ${v.next ? `<p class="small">Следующий шаг: ${esc(v.next)}${v.next_at ? ', ' + fmtDate(v.next_at) : ''}</p>` : ''}
+      ${v.notes ? `<details><summary>Заметки</summary><p style="white-space:pre-wrap">${esc(v.notes)}</p></details>` : ''}
+      <details ${okBasis ? '' : 'open'}><summary>Контакт и основание</summary>
+        <div class="grid2" style="margin-top:8px">
+          <label class="f">Контакт<input type="text" id="vContact" value="${esc(v.contact || '')}"></label>
+          <label class="f">Основание для контакта<select id="vBasis">${BASIS.map(([k, t]) => `<option value="${k}" ${String(v.basis || '') === k ? 'selected' : ''}>${t}</option>`).join('')}</select></label>
+        </div>
+        <div class="row" style="margin-top:8px"><button class="btn small" data-act="saveVMeta" data-v="${esc(v.id)}">Сохранить</button></div>
+      </details>
       <div class="row">
         <button class="btn small" data-act="panel" data-v="reply">Ответ получен</button>
         <button class="btn ghost small" data-act="panel" data-v="recon">Повторный контакт</button>
@@ -1123,13 +1136,14 @@ function viewReconOut(v, r){
 
 function viewToday(){
   const items = todayItems();
-  const what = {delivery:'Проверь почту: нет ли уведомления о недоставке', ig2:'Instagram: приняли запрос? Отправь вторую часть с карточкой', result:'Пришли результат: скриншот переписки или отметь вручную', follow:'Пора фоллоу-ап: одно новое сообщение с новой находкой', next:'Запланированный шаг'};
+  const what = {delivery:'Проверь почту: нет ли уведомления о недоставке', ig2:'Instagram: приняли запрос? Отправь вторую часть с карточкой', result:'Пришли результат: скриншот переписки или отметь вручную', follow:'Пора фоллоу-ап: одно новое сообщение с новой находкой', next:'Запланированный шаг', replied:'Ответили: подготовь ответ'};
   const html = items.map(it => {
     const t = it.i != null ? (it.v.touches || [])[it.i] : null;
+    const kind = it.kind === 'next' && it.v.status === 'replied' ? 'replied' : it.kind;
     return `<div class="it">
-      <div class="row" style="justify-content:space-between"><span class="what">${esc(what[it.kind])}</span>${t ? `<span class="small">${esc(label(CHANNELS, t.channel))}, ${fmtDate(t.at)}</span>` : ''}</div>
+      <div class="row" style="justify-content:space-between"><span class="what">${esc(what[kind])}</span>${t ? `<span class="small">${esc(label(CHANNELS, t.channel))}, ${fmtDate(t.at)}</span>` : ''}</div>
       <div><b>${esc(it.v.name)}</b>${it.kind === 'next' && it.v.next ? `: ${esc(it.v.next)}` : ''}</div>
-      <div class="row">${t ? quickBtns(it.v.id, it.i, t) : ''}${it.kind === 'follow' ? `<button class="btn small" data-act="followUp" data-v="${esc(it.v.id)}" data-i="${it.i}">Подготовить фоллоу-ап</button>` : ''}<button class="btn ghost small" data-act="openV" data-v="${esc(it.v.id)}">Открыть</button></div>
+      <div class="row">${t ? quickBtns(it.v.id, it.i, t) : ''}${it.kind === 'follow' ? `<button class="btn small" data-act="followUp" data-v="${esc(it.v.id)}" data-i="${it.i}">Подготовить фоллоу-ап</button>` : ''}${kind === 'replied' ? `<button class="btn small" data-act="openReply" data-v="${esc(it.v.id)}">Ответ получен</button>` : ''}${it.kind === 'next' ? `<button class="btn ghost small" data-act="doneNext" data-v="${esc(it.v.id)}">Сделано</button>` : ''}<button class="btn ghost small" data-act="openV" data-v="${esc(it.v.id)}">Открыть</button></div>
     </div>`;
   }).join('');
   return `<section class="panel"><h2>Сегодня</h2>
@@ -1373,6 +1387,9 @@ document.addEventListener('click', async e => {
   else if (act === 'sentReply') { const vv = S.venues.find(x => x.id === S.open); const r = S.pdata.replyOut; if (vv && r) actSentFrom(vv, 'reply', r.next_message.channel || vv.channel, (r.next_message.subject ? 'Subject: ' + r.next_message.subject + '\n\n' : '') + r.next_message.body); }
   else if (act === 'sentRecon') { const vv = S.venues.find(x => x.id === S.open); const r = S.pdata.reconOut; const ch = S.pdata.reconCh || (vv && vv.channel); if (vv && r) actSentFrom(vv, 'recontact', ch, sentText(r, ch), {ask:r.ask}); }
   else if (act === 'followUp') { S.tab = 'places'; S.open = v; S.panel = 'recon'; S.pdata.kind = 'follow_up'; S.pdata.reconOut = null; render(); }
+  else if (act === 'openReply') { S.tab = 'places'; S.open = v; S.panel = 'reply'; S.pdata.replyOut = null; const vv = S.venues.find(x => x.id === v); const lt = vv && (vv.touches || []).slice(-1)[0]; S.pdata.replyText = (lt && lt.reply) || ''; render(); window.scrollTo(0, 0); }
+  else if (act === 'doneNext') { const vv = S.venues.find(x => x.id === v); if (vv) { const c = clone(vv); c.next = ''; c.next_at = null; await putVenue(c); render(); } }
+  else if (act === 'saveVMeta') { const vv = S.venues.find(x => x.id === v); if (vv) { const c = clone(vv); const ci = $('#vContact'), bi = $('#vBasis'); if (ci) c.contact = ci.value.trim(); if (bi) c.basis = bi.value; await putVenue(c); toast('Сохранено'); render(); } }
   else if (act === 'stopV') { const vv = S.venues.find(x => x.id === v); if (vv) { const c = clone(vv); c.status = 'stopped'; if (c.contact) await addStop(c.contact); await putVenue(c); render(); } }
   else if (act === 'addStop') { const inp = $('#stopIn'); if (inp && inp.value.trim()) { await addStop(inp.value); inp.value = ''; render(); } }
   else if (act === 'csv') csv();
