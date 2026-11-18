@@ -1,0 +1,449 @@
+<title>London Civic Hack 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<style>
+/* Layout: an editorial report on a street-plate theme. Wide single column (max 1080px), sections divided by
+   plate-red rules; winners alternate text and phone screenshots; the idea bank is a filterable table. */
+:root {
+  --paper: #F2F4F5; --surface: #FFFFFF; --surface-2: #E8ECEF; --ink: #101418; --ink-2: #39424B;
+  --muted: #5B6670; --line: #D6DCE1; --signal: #C62B33; --thames: #0B6870;
+  --ok: #1B7449; --ok-bg: #E2F2E9; --warn: #8F5400; --warn-bg: #FAEFD9; --bad: #B3261E; --bad-bg: #FBE5E3; --info-bg: #DDEFF0;
+  --plate: #FFFFFF; --plate-ink: #101418; --plate-red: #C62B33;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0C1013; --surface: #141A1F; --surface-2: #1B2228; --ink: #E8ECEF; --ink-2: #C2CAD1;
+  --muted: #94A0AA; --line: #28313A; --signal: #FF5D66; --thames: #4CC1C8;
+  --ok: #4CC38A; --ok-bg: #11291C; --warn: #F0A43C; --warn-bg: #2C2211; --bad: #FF6E64; --bad-bg: #331718; --info-bg: #0F2829;
+  --plate: #E4E8EB; --plate-ink: #0C1013; --plate-red: #B8262E; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0C1013; --surface: #141A1F; --surface-2: #1B2228; --ink: #E8ECEF; --ink-2: #C2CAD1;
+  --muted: #94A0AA; --line: #28313A; --signal: #FF5D66; --thames: #4CC1C8;
+  --ok: #4CC38A; --ok-bg: #11291C; --warn: #F0A43C; --warn-bg: #2C2211; --bad: #FF6E64; --bad-bg: #331718; --info-bg: #0F2829;
+  --plate: #E4E8EB; --plate-ink: #0C1013; --plate-red: #B8262E; color-scheme: dark }
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 400 1rem/1.55 var(--font-body); margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 56px; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+a { color: var(--thames); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--thames); outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+.eyebrow { font: 800 .74rem/1.2 var(--font-display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h2 { font: 800 clamp(1.5rem, 3.2vw, 2.1rem)/1.15 var(--font-display); letter-spacing: .005em; text-wrap: balance; }
+h3 { font: 700 1.12rem/1.3 var(--font-body); text-wrap: balance; }
+.lead { font-size: clamp(1.05rem, 2vw, 1.22rem); color: var(--ink-2); max-width: 64ch; }
+.muted { color: var(--muted); }
+.small { font-size: .9rem; }
+.tiny { font-size: .8rem; }
+.section { display: grid; gap: 22px; }
+.section > header { display: grid; gap: 8px; padding-top: 18px; border-top: 3px solid var(--signal); }
+.section > header .lead { margin-top: 4px; }
+
+/* Street plate hero */
+.plate { position: relative; background: var(--plate); color: var(--plate-ink); border: 3px solid var(--plate-ink); border-radius: 16px;
+  padding: 18px 22px 26px; box-shadow: inset 0 0 0 4px var(--plate), inset 0 0 0 6px var(--plate-ink); display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.plate::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: 11px; height: 5px; border-radius: 3px; background: var(--plate-red); }
+.plate h1 { font: 800 clamp(1.9rem, 6.4vw, 3.6rem)/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; text-wrap: balance; }
+.plate .sub { font-size: clamp(.9rem, 1.8vw, 1.05rem); color: #3B4650; margin-top: 8px; }
+.plate .district { font: 800 clamp(1rem, 2.4vw, 1.4rem)/1 var(--font-display); color: var(--plate-red); letter-spacing: .06em; white-space: nowrap; }
+.hero { display: grid; gap: 22px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; }
+.stat b { font: 800 2rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: .9rem; color: var(--muted); }
+
+/* Process timeline (a real sequence) */
+.steps { list-style: none; padding: 0; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 12px; }
+.steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); font: 800 .95rem/1 var(--font-display); }
+.steps b { font-size: .98rem; }
+.steps span { font-size: .86rem; color: var(--ink-2); }
+
+/* Insight figures */
+.insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.insight { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.insight .fig { font: 800 1.8rem/1.05 var(--font-display); color: var(--signal); font-variant-numeric: tabular-nums; }
+.insight p { font-size: .95rem; }
+.insight .so { font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+
+/* World lessons */
+.world { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.lesson { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.lesson .where { font: 800 .72rem/1.2 var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lesson.anti { background: var(--bad-bg); border-color: transparent; }
+.lesson.anti .where { color: var(--bad); }
+.lesson p { font-size: .92rem; }
+.lesson .to { font-size: .88rem; color: var(--thames); font-weight: 700; }
+
+/* Winners */
+.winner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+.winner .text { display: grid; gap: 14px; min-width: 0; }
+.winner .tagline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.dist { font: 800 .85rem/1 var(--font-display); color: var(--plate-red); background: var(--plate); border: 2px solid var(--plate-ink); border-radius: 7px; padding: 5px 8px; letter-spacing: .06em; }
+.track { font-size: .82rem; color: var(--muted); font-weight: 700; }
+.score { font: 800 .85rem/1 var(--font-display); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 5px 10px; }
+.winner h3.name { font: 800 clamp(1.4rem, 3vw, 1.9rem)/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .03em; }
+.kv { display: grid; gap: 10px; }
+.kv div { display: grid; gap: 2px; }
+.kv dt { font: 800 .72rem/1.2 var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 0; font-size: .96rem; }
+.kv ul { padding-left: 1.1em; display: grid; gap: 4px; }
+.live { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.shots img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); display: block; background: var(--surface-2); }
+.shots figcaption { font-size: .8rem; color: var(--muted); margin-top: 6px; text-align: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 18px; border-radius: 999px; font-weight: 700; text-decoration: none; background: var(--ink); color: var(--paper); border: 0; cursor: pointer; font-family: var(--font-body); font-size: 1rem; }
+.btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--line); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Idea bank */
+.bank-tools { display: grid; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: 700 .86rem/1.2 var(--font-body); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.search { width: 100%; max-width: 360px; min-height: 44px; padding: 8px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font: inherit; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th, td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; font-size: .92rem; }
+thead th { border-top: 0; font: 800 .72rem/1.2 var(--font-display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); position: sticky; top: 0; }
+td.num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.bar { display: inline-block; height: 6px; border-radius: 3px; background: var(--thames); vertical-align: middle; margin-left: 8px; }
+tr.idea { cursor: pointer; }
+tr.idea:hover td { background: var(--surface-2); }
+tr.detail td { background: var(--paper); font-size: .9rem; }
+tr.detail ul { padding-left: 1.1em; display: grid; gap: 4px; margin: 0; }
+.status { font-size: .78rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.status.built { background: var(--ok-bg); color: var(--ok); }
+.status.next { background: var(--warn-bg); color: var(--warn); }
+.status.backlog { background: var(--surface-2); color: var(--muted); }
+.rubric { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.rubric div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: .88rem; }
+.rubric b { display: block; font: 800 1.3rem/1 var(--font-display); }
+
+/* Jury, roadmap, limits */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.card ul, .card ol { padding-left: 1.2em; display: grid; gap: 6px; }
+.card.tint { background: var(--info-bg); border-color: transparent; }
+.card.warnc { background: var(--warn-bg); border-color: transparent; }
+blockquote { margin: 0; padding: 12px 16px; border-left: 4px solid var(--signal); background: var(--surface); border-radius: 0 12px 12px 0; font-size: 1.02rem; }
+footer.foot { display: grid; gap: 6px; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+
+@media (max-width: 760px) {
+  .winner { grid-template-columns: 1fr; padding: 18px; }
+  .wrap { gap: 44px; }
+}
+@media (max-width: 560px) {
+  .stats, .steps { grid-template-columns: 1fr 1fr; }
+  .stat:last-child, .steps li:last-child { grid-column: 1 / -1; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="plate">
+      <div>
+        <h1>London Civic Hack 2026</h1>
+        <p class="sub">Demo Day · 18 ноября 2026 · бесплатные приложения для жителей и гостей Лондона</p>
+      </div>
+      <span class="district">E16</span>
+    </div>
+    <p class="lead">Задача хакатона: найти бесплатные сервисы, про которые мэрия, TfL, полиция и NHS сказали бы «это реально полезно горожанам». Мы начинали с жалоб и данных, а не с технологий. Шесть аналитиков изучили медиа, опросы, отчёты компаний и продукты мира, судьи оценили 72 идеи, пять команд собрали работающие прототипы.</p>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b>6</b><span>аналитиков: жалобы, туристы, опросы, аудитории, отчёты и будущее, продукты мира</span></div>
+      <div class="stat" role="listitem"><b>250 КБ</b><span>исследований с источниками и пометками уверенности</span></div>
+      <div class="stat" role="listitem"><b>72</b><span>идеи в 6 треках, каждая привязана к доказанной боли</span></div>
+      <div class="stat" role="listitem"><b>5</b><span>работающих прототипов на открытых данных Лондона</span></div>
+      <div class="stat" role="listitem"><b>£0</b><span>стоимость работы: статичный хостинг, без серверов и трекинга</span></div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="h-process">
+    <header><span class="eyebrow">Формат</span><h2 id="h-process">Как проходил хакатон</h2></header>
+    <ol class="steps">
+      <li><b>Исследование</b><span>6 параллельных аналитиков: медиа и жалобы, туристы, опросы, аудитории и возрасты, отчёты компаний и политика, продукты мира</span></li>
+      <li><b>Синтез</b><span>Карта болей: жалоба → кого бьёт → что уже есть → разрыв</span></li>
+      <li><b>Банк идей</b><span>72 идеи в 6 треках, каждая с доказательством</span></li>
+      <li><b>Судейство</b><span>Взвешенная рубрика: польза, ценность для властей, разрыв, реализуемость, бесплатность, охват</span></li>
+      <li><b>Адвокат дьявола</b><span>Независимый критик атакует шорт-лист</span></li>
+      <li><b>Сборка</b><span>5 команд параллельно, общий дизайн-кит и регламент точности</span></li>
+      <li><b>Demo Day</b><span>Эта страница: результаты, прототипы, план пилотов</span></li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="h-pain">
+    <header><span class="eyebrow">Исследование</span><h2 id="h-pain">Что на самом деле болит Лондону</h2>
+      <p class="lead">Семь выводов, которые изменили выбор продуктов. Полная карта болей и исходные отчёты лежат в репозитории.</p></header>
+    <div class="insights">
+      <div class="insight"><span class="fig">86%</span><p>лондонцев одобряют общественный транспорт: 1-е место в Европе (Time Out Index 2025).</p><p class="so">Ещё один планировщик маршрутов не нужен. Ценны узкие боли: лифты, давка, забастовки, жара.</p></div>
+      <div class="insight"><span class="fig">37,7 / 100</span><p>балл Лондона за безопасность в IMD Smart City Index 2025, худший в топ-10.</p><p class="so">Безопасность — главное слабое место города в глазах жителей.</p></div>
+      <div class="insight"><span class="fig">44% vs 5,2%</span><p>тревожатся о преступности против тех, кто реально пострадал за квартал (опросы 2025).</p><p class="so">Продукт должен давать действие и контроль, а не страх.</p></div>
+      <div class="insight"><span class="fig">£246,5 млн</span><p>Pension Credit в Лондоне ежегодно остаются невостребованными.</p><p class="so">Инструменты есть, но не доходят до людей: 61016, StreetLink, 159, льготы.</p></div>
+      <div class="insight"><span class="fig">32 + 1</span><p>боро и Сити, плюс TfL, Met, BTP, NHS и коммунальщики. Единого «311» нет.</p><p class="so">OneService (Сингапур) и NYC311 доказали, что «одна дверь» работает.</p></div>
+      <div class="insight"><span class="fig">200 000</span><p>лондонцев старше 75 лет никогда не были онлайн; 2,2 млн офлайн по стране.</p><p class="so">Офлайн-режим, простой язык и крупный шрифт обязательны.</p></div>
+      <div class="insight"><span class="fig">£20 vs €178</span><p>официальная ETA против цен сайтов-посредников; Heathrow Express около £25 против ~£13.</p><p class="so">Гости переплачивают в первые же часы.</p></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-world">
+    <header><span class="eyebrow">Product Hunt · Ближний Восток · США · Европа · Азия</span><h2 id="h-world">Чему учит мир</h2>
+      <p class="lead">Что уже доказало пользу в других городах и чего в Лондоне до сих пор нет. И два провала, которые мы не повторяем.</p></header>
+    <div class="world">
+      <div class="lesson"><span class="where">Сингапур · OneService</span><h3>Одна точка для жалоб</h3><p>Больше 620 000 пользователей и 2,5 млн обращений: город сам решает, чьё это дело.</p><span class="to">→ Report It Right</span></div>
+      <div class="lesson"><span class="where">Нью-Йорк · NYC311</span><h3>«Одна дверь» в мегаполисе</h3><p>36,5 млн контактов в 2025, из них 2,6 млн через приложение.</p><span class="to">→ Report It Right</span></div>
+      <div class="lesson"><span class="where">Абу-Даби · TAMM, Сингапур · LifeSG</span><h3>Услуги по жизненным событиям</h3><p>TAMM: 3,8 млн пользователей и больше 1 150 услуг. Навигация по ситуации, а не по ведомствам.</p><span class="to">→ следующий спринт: London Life Events</span></div>
+      <div class="lesson"><span class="where">Япония · Safety tips</span><h3>Алерты для туристов на их языке</h3><p>Официальные оповещения и инструкции на 14–15 языках.</p><span class="to">→ London Ready, экстренная карточка</span></div>
+      <div class="lesson"><span class="where">UK · GoodSAM, США · PulsePoint</span><h3>Мерить действие, а не скачивания</h3><p>В Линкольне из 15 000 подписчиков алерты включили лишь 4 600.</p><span class="to">→ метрики наших пилотов</span></div>
+      <div class="lesson"><span class="where">Германия · Wheelmap</span><h3>Открытые данные + сообщество</h3><p>Около 1,5 млн мест с данными о доступности на OpenStreetMap.</p><span class="to">→ Step-Free & Calm, Free London</span></div>
+      <div class="lesson"><span class="where">UK · Refill</span><h3>Лёгкий городской продукт</h3><p>Точек бесплатной воды в Лондоне стало больше 4 500 против ~200 в 2018.</p><span class="to">→ Free London Today</span></div>
+      <div class="lesson"><span class="where">Израиль · United Hatzalah</span><h3>Волонтёры рядом</h3><p>Ближайшие медики-волонтёры приезжают быстрее скорой (около 90 секунд в городах по данным самой организации).</p><span class="to">→ бэклог: AED & CPR Coach</span></div>
+      <div class="lesson anti"><span class="where">Антипример · Citizen (США)</span><h3>Лента страха</h3><p>Самосуд, награда $30 000 за невиновного, платная «защита» за $19,99 в месяц.</p><span class="to">Мы не делаем ленту инцидентов</span></div>
+      <div class="lesson anti"><span class="where">Антипример · Whim (Хельсинки)</span><h3>Подписка поверх чужого транспорта</h3><p>Банкротство в 2024 после €75,5 млн инвестиций.</p><span class="to">Мы дополняем TfL, а не перепродаём его</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-bank">
+    <header><span class="eyebrow">Судейство</span><h2 id="h-bank">Банк из 72 идей</h2>
+      <p class="lead">Каждая идея опирается на боль из исследования. Оценки от 0 до 5 по шести критериям, итог взвешенный (максимум 5,0) с штрафом за риск вреда или закрытые данные. Нажмите на строку, чтобы увидеть доказательства.</p></header>
+    <div class="rubric">
+      <div><b>25%</b>Польза жителю</div><div><b>20%</b>Ценность для властей</div><div><b>20%</b>Разрыв: этого нет</div>
+      <div><b>15%</b>Реализуемость</div><div><b>10%</b>Бесплатно и приватно</div><div><b>10%</b>Охват аудиторий</div>
+    </div>
+    <div class="bank-tools">
+      <div class="chips" id="track-chips" role="group" aria-label="Трек"></div>
+      <div class="chips" id="status-chips" role="group" aria-label="Статус"></div>
+      <label class="tiny muted" for="bank-q">Поиск по идеям</label>
+      <input id="bank-q" class="search" type="search" placeholder="Например: туалеты, жара, мошенники">
+    </div>
+    <div class="table-wrap">
+      <table aria-describedby="bank-count">
+        <thead><tr><th>#</th><th>Идея</th><th>Трек</th><th>Итог</th><th>Статус</th></tr></thead>
+        <tbody id="bank-body"></tbody>
+      </table>
+    </div>
+    <p class="tiny muted" id="bank-count"></p>
+  </section>
+
+  <section class="section" aria-labelledby="h-win">
+    <header><span class="eyebrow">Победители треков</span><h2 id="h-win">Пять работающих прототипов</h2>
+      <p class="lead">Мобильные веб-приложения: их можно установить на телефон, они работают без регистрации и трекинга. Живые данные TfL, police.uk и OpenStreetMap приходят прямо в браузер. Внутри этой страницы внешние данные заблокированы песочницей, поэтому живые блоки показывают честное «недоступно». Всё остальное работает.</p></header>
+
+    <article class="winner" aria-labelledby="w1">
+      <div class="text">
+        <div class="tagline"><span class="dist">W1</span><span class="track">Безопасность</span><span class="score">4,70</span></div>
+        <h3 class="name" id="w1">PhoneGuard London</h3>
+        <dl class="kv">
+          <div><dt>Боль</dt><dd>71 391 кража и грабёж телефонов в 2025 (−12% за год, но +54% к 2022). Возвращают около 2,4% телефонов. Около 40% краж приходится на Westminster и West End.</dd></div>
+          <div><dt>Что делает</dt><dd><ul>
+            <li>Чек-лист «броня телефона» для iPhone и Android: Stolen Device Protection, SIM PIN, Theft protection, IMEI.</li>
+            <li>Живая карта мест краж по данным police.uk, без ярлыка «опасный район».</li>
+            <li>План «Украли: первые 15 минут» на 6 языках: заблокировать, SIM, полиция, банк через 159, фишинговые «мы нашли ваш телефон».</li></ul></dd></div>
+          <div><dt>Ценность для властей</dt><dd>Met, MOPAC и мэр: прямой приоритет (Command Cell и £4,5 млн с февраля 2026). Быстрая блокировка обесценивает краденое.</dd></div>
+        </dl>
+        <div class="live"><span class="pill ok">Офлайн: чек-лист и план действий</span><span class="pill warn">Онлайн: карта police.uk</span></div>
+        <div class="actions"><a class="btn" href="apps/phoneguard/index.html">Открыть прототип</a></div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/phoneguard-stolen.jpg" alt="Экран «Украли?»: выбор языка и пошаговый план" width="780" height="1688" loading="lazy"><figcaption>План на 6 языках</figcaption></figure>
+        <figure><img src="shots/phoneguard-prepare.jpg" alt="Чек-лист защиты телефона для iPhone" width="780" height="1688" loading="lazy"><figcaption>Броня телефона</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="winner" aria-labelledby="w2">
+      <div class="text">
+        <div class="tagline"><span class="dist">E16</span><span class="track">Город и я</span><span class="score">4,80</span></div>
+        <h3 class="name" id="w2">Report It Right</h3>
+        <dl class="kv">
+          <div><dt>Боль</dt><dd>32 боро и Сити, TfL, Met, BTP, NHS и коммунальщики: люди не знают, куда идти. На сети TfL в 2025 зафиксировано 4 593 преступления против женщин и девушек, до обвинения дошли около 3%.</dd></div>
+          <div><dt>Что делает</dt><dd><ul>
+            <li>20 ситуаций → кто отвечает, самый быстрый канал, что указать, куда за поддержкой.</li>
+            <li>Конструктор SMS для британской транспортной полиции (61016): линия, направление, вагон, время.</li>
+            <li>Совет своего боро по геолокации или индексу, «быстрый выход» для пострадавших от домашнего насилия, обращения хранятся только на телефоне.</li></ul></dd></div>
+          <div><dt>Ценность для властей</dt><dd>GLA и LOTI, Met, BTP, боро: меньше звонков не туда в 999 и 101, больше сообщений о том, о чём молчат.</dd></div>
+        </dl>
+        <div class="live"><span class="pill ok">Офлайн: все 20 сценариев и SMS в BTP</span><span class="pill warn">Онлайн: поиск боро по индексу</span></div>
+        <div class="actions"><a class="btn" href="apps/report-it/index.html">Открыть прототип</a></div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/report-result.jpg" alt="Результат: харассмент в метро, пишите в BTP 61016" width="780" height="1688" loading="lazy"><figcaption>Харассмент в метро → 61016</figcaption></figure>
+        <figure><img src="shots/report-btp.jpg" alt="Готовое SMS для британской транспортной полиции" width="780" height="1688" loading="lazy"><figcaption>SMS в BTP за 20 секунд</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="winner" aria-labelledby="w3">
+      <div class="text">
+        <div class="tagline"><span class="dist">TW6</span><span class="track">До поездки</span><span class="score">4,30</span></div>
+        <h3 class="name" id="w3">London Ready</h3>
+        <dl class="kv">
+          <div><dt>Боль</dt><dd>Официальная ETA стоит £20, посредники берут до $99–€178. Heathrow Express около £25 против ~£13 по Elizabeth line. Гостей путают Oyster и contactless, service charge и аферы у достопримечательностей.</dd></div>
+          <div><dt>Что делает</dt><dd><ul>
+            <li>«Нужна ли мне ETA» по паспорту и проверка «официальный сайт или нет».</li>
+            <li>Из 6 аэропортов в центр: время, ценовые ловушки, предупреждение о нелегальных таксистах.</li>
+            <li>Contactless-коуч, калькулятор service charge, экстренная карточка на 6 языках, NHS для гостей, живой статус линий.</li></ul></dd></div>
+          <div><dt>Ценность для властей</dt><dd>Home Office (официальный путь ETA), TfL, VisitBritain, Met, NHS.</dd></div>
+        </dl>
+        <div class="live"><span class="pill ok">Офлайн: почти всё</span><span class="pill warn">Онлайн: статус линий и тариф TfL</span></div>
+        <div class="actions"><a class="btn" href="apps/london-ready/index.html">Открыть прототип</a></div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/ready-eta-check.jpg" alt="Проверка ссылки: это не официальный сайт" width="780" height="1688" loading="lazy"><figcaption>Поддельный ETA-сайт пойман</figcaption></figure>
+        <figure><img src="shots/ready-arrive.jpg" alt="Варианты из Хитроу: Elizabeth line, Piccadilly line, Heathrow Express" width="780" height="1688" loading="lazy"><figcaption>Из аэропорта без переплаты</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="winner" aria-labelledby="w4">
+      <div class="text">
+        <div class="tagline"><span class="dist">N1C</span><span class="track">Передвижение</span><span class="score">4,30</span></div>
+        <h3 class="name" id="w4">Step-Free &amp; Calm</h3>
+        <dl class="kv">
+          <div><dt>Боль</dt><dd>Без ступенек только 94 из 272 станций метро (цель — 50% к 2030). Лифты ломаются надолго. Люди с инвалидностью совершают 5,84 поездки в неделю против 17 в среднем.</dd></div>
+          <div><dt>Что делает</dt><dd><ul>
+            <li>Поиск по 509 станциям без интернета.</li>
+            <li>Живой статус лифтов и удобства станции.</li>
+            <li>План Б: ближайшие станции без ступенек на тех же линиях.</li>
+            <li>Загруженность сейчас против обычной, тихие часы на неделю, избранное с последним статусом.</li></ul></dd></div>
+          <div><dt>Ценность для властей</dt><dd>TfL: цель по доступности и разгрузка часа пик. Использует новые данные TfL о неисправностях лифтов.</dd></div>
+        </dl>
+        <div class="live"><span class="pill ok">Офлайн: справочник станций и кэш</span><span class="pill warn">Онлайн: лифты и загруженность TfL</span></div>
+        <div class="actions"><a class="btn" href="apps/step-free/index.html">Открыть прототип</a></div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/stepfree-stations.jpg" alt="Поиск станций и быстрый выбор пересадочных узлов" width="780" height="1688" loading="lazy"><figcaption>509 станций офлайн</figcaption></figure>
+        <figure><img src="shots/stepfree-station.jpg" alt="Карточка King's Cross St. Pancras с линиями и статусом лифтов" width="780" height="1688" loading="lazy"><figcaption>Станция: лифты, план Б, загрузка</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="winner" aria-labelledby="w5">
+      <div class="text">
+        <div class="tagline"><span class="dist">WC1B</span><span class="track">Бесплатный Лондон</span><span class="score">4,15</span></div>
+        <h3 class="name" id="w5">Free London Today</h3>
+        <dl class="kv">
+          <div><dt>Боль</dt><dd>26% лондонцев живут в бедности после оплаты жилья; 31% людей 16–29 лет одиноки. За 10 лет закрыли 97 общественных туалетов, открыли 32.</dd></div>
+          <div><dt>Что делает</dt><dd><ul>
+            <li>78 бесплатных мест: музеи, смотровые площадки, парки, фермы, службы с хором. Статус «открыто сейчас» считается по лондонскому времени.</li>
+            <li>В дождь первыми показывает крытые места; собирает бесплатный полудень из трёх точек рядом.</li>
+            <li>Ищет поблизости воду, туалеты и библиотеки; фильтры: с детьми, без ступенек, за пределами зоны 1.</li></ul></dd></div>
+          <div><dt>Ценность для властей</dt><dd>GLA: стоимость жизни, культура, одиночество. London & Partners: увести гостей за пределы центра.</dd></div>
+        </dl>
+        <div class="live"><span class="pill ok">Офлайн: каталог и фильтры</span><span class="pill warn">Онлайн: погода, карта, вода и туалеты</span></div>
+        <div class="actions"><a class="btn" href="apps/free-london/index.html">Открыть прототип</a></div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/free-today.jpg" alt="Список бесплатных мест, открытых сейчас" width="780" height="1688" loading="lazy"><figcaption>Открыто сейчас рядом</figcaption></figure>
+        <figure><img src="shots/free-explore.jpg" alt="Фильтры: открыто сейчас, в помещении, с детьми" width="780" height="1688" loading="lazy"><figcaption>Фильтры и категории</figcaption></figure>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" aria-labelledby="h-jury">
+    <header><span class="eyebrow">Критическое мышление</span><h2 id="h-jury">Вердикт адвоката дьявола</h2>
+      <p class="lead">Независимый критик получил банк идей и исследования и пытался разбить наш выбор.</p></header>
+    <!--JURY-->
+  </section>
+
+  <section class="section" aria-labelledby="h-next">
+    <header><span class="eyebrow">Дальше</span><h2 id="h-next">Как превратить прототипы в пилоты</h2></header>
+    <div class="two">
+      <div class="card">
+        <h3>1. Проверить факты</h3>
+        <p class="small">В README каждого приложения есть список «To verify before launch»: телефоны, цены, пути в меню, переводы. Живые API нужно один раз прогнать в окружении с открытой сетью.</p>
+      </div>
+      <div class="card">
+        <h3>2. Включить GitHub Pages</h3>
+        <p class="small">Репозиторий публичный. Settings → Pages → Deploy from a branch → <code>claude/optimistic-brown-m222fd</code>, папка <code>/ (root)</code>. Прототипы откроются по адресу <code>helloishi.github.io/1/hackathon/</code> с живыми данными, геолокацией и установкой на телефон.</p>
+      </div>
+      <div class="card">
+        <h3>3. Пилот на 6–8 недель с одним партнёром</h3>
+        <p class="small">Мерить действие, а не скачивания: сколько людей прошли план «украли — первые 15 минут»; сколько сообщений ушло в правильный канал с первого раза; сколько поездок спланировано с планом Б.</p>
+      </div>
+      <div class="card">
+        <h3>4. Куда нести</h3>
+        <p class="small">LOTI (London Office of Technology &amp; Innovation) и GLA — Report It Right; MOPAC и Met — PhoneGuard; TfL — Step-Free &amp; Calm; London &amp; Partners и VisitBritain — London Ready; Age UK London и боро — Free London Today.</p>
+      </div>
+    </div>
+    <div class="card tint">
+      <h3>Следующий спринт</h3>
+      <p class="small">Лучшие из непостроенных идей: <b>Heat Buddy</b> (к лету 2027, План жары мэрии), <b>Benefit &amp; Help Finder</b> (£246,5 млн невостребованных льгот), <b>Where Should I Go?</b> (навигатор NHS), <b>Scam Shield 70+</b> (больше £21 млн у пожилых через курьерское мошенничество), <b>Lonely No More</b>, <b>London Life Events</b>.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-limits">
+    <header><span class="eyebrow">Честно</span><h2 id="h-limits">Ограничения</h2></header>
+    <div class="card warnc">
+      <ul class="small">
+        <li>Исследование опирается на поисковую выдачу: прямое чтение сайтов и PDF было закрыто сетевой политикой. Цифры помечены уверенностью, первоисточники перечислены для проверки.</li>
+        <li>Внешние API не были доступны из среды сборки. Парсеры проверены только на синтетических примерах, которые не попали в приложения. Живые данные работают в браузере пользователя.</li>
+        <li>Переводы экстренных экранов на 5 языков сделаны машинно: нужна вычитка носителями.</li>
+        <li>Прототипы не связаны с TfL, мэрией, Met или NHS и не заменяют 999.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Код, исследования и банк идей: репозиторий <a href="https://github.com/helloishi/1/tree/claude/optimistic-brown-m222fd/hackathon">helloishi/1 · hackathon/</a>.</p>
+    <p>Данные: Powered by TfL Open Data · police.uk (Open Government Licence v3.0) · © OpenStreetMap contributors · Open-Meteo (CC BY 4.0) · postcodes.io.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const IDEAS = /*IDEAS_JSON*/[];
+  const TRACKS = /*TRACKS_JSON*/{};
+  const STATUS = { built: "собран", next: "следующий спринт", backlog: "бэклог" };
+  const state = { track: "all", status: "all", q: "" };
+  const body = document.getElementById("bank-body");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function chips(el, items, key) {
+    el.innerHTML = "";
+    items.forEach(([v, label]) => {
+      const b = document.createElement("button");
+      b.className = "chip"; b.type = "button"; b.textContent = label;
+      b.setAttribute("aria-pressed", String(state[key] === v));
+      b.addEventListener("click", () => { state[key] = v; render(); chips(el, items, key); });
+      el.append(b);
+    });
+  }
+  function render() {
+    const q = state.q.trim().toLowerCase();
+    const rows = IDEAS.filter((i) => (state.track === "all" || i.track === state.track) && (state.status === "all" || i.status === state.status) &&
+      (!q || (i.title + " " + i.pitch + " " + i.pain_evidence + " " + i.gap).toLowerCase().includes(q)));
+    body.innerHTML = "";
+    rows.forEach((i) => {
+      const tr = document.createElement("tr");
+      tr.className = "idea"; tr.tabIndex = 0; tr.setAttribute("aria-expanded", "false");
+      tr.innerHTML = `<td class="num">${i.rank}</td><td><b>${esc(i.title)}</b><br><span class="tiny muted">${esc(i.pitch)}</span></td><td class="small">${esc(i.track_ru)}</td>` +
+        `<td class="num">${i.total.toFixed(2).replace(".", ",")}<span class="bar" style="width:${Math.round(i.total * 12)}px"></span></td>` +
+        `<td><span class="status ${i.status}">${STATUS[i.status]}</span></td>`;
+      const det = document.createElement("tr");
+      det.className = "detail"; det.hidden = true;
+      const s = i.scores;
+      det.innerHTML = `<td></td><td colspan="4"><ul>` +
+        `<li><b>Боль и доказательства:</b> ${esc(i.pain_evidence)}</li>` +
+        `<li><b>Что есть и чего не хватает:</b> ${esc(i.gap)}</li>` +
+        `<li><b>Кому из властей ценно:</b> ${esc(i.authority)} · <b>Данные:</b> ${esc(i.data)}</li>` +
+        `<li><b>Оценки:</b> польза ${s.citizen} · власти ${s.gov} · разрыв ${s.gap} · реализуемость ${s.feasible} · бесплатность ${s.free} · охват ${s.reach}${i.penalty ? " · штраф −" + String(i.penalty).replace(".", ",") : ""}</li></ul></td>`;
+      const toggle = () => { det.hidden = !det.hidden; tr.setAttribute("aria-expanded", String(!det.hidden)); };
+      tr.addEventListener("click", toggle);
+      tr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+      body.append(tr, det);
+    });
+    document.getElementById("bank-count").textContent = `Показано ${rows.length} из ${IDEAS.length}. Пересчёт оценок: hackathon/ideas/build_idea_bank.py.`;
+  }
+  chips(document.getElementById("track-chips"), [["all", "Все треки"], ...Object.entries(TRACKS)], "track");
+  chips(document.getElementById("status-chips"), [["all", "Любой статус"], ["built", "Собраны"], ["next", "Следующий спринт"], ["backlog", "Бэклог"]], "status");
+  document.getElementById("bank-q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
+  render();
+})();
+</script>

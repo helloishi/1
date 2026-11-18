@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Step-Free &amp; Calm</title>
+<meta name="description" content="Check station lifts, find a step-free Plan B and see when stations are quiet.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../shared/civic.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="app">
+  <header class="plate">
+    <div><h1>Step-Free &amp; Calm</h1><p class="plate-sub">Lifts, Plan B and quiet times for every station</p></div>
+    <div class="plate-actions">
+      <span class="district">N1C</span>
+      <button class="icon-btn" id="settings-btn" type="button" aria-label="Settings and about" aria-haspopup="dialog"></button>
+    </div>
+  </header>
+  <div class="banner info" id="offline" hidden role="status"><span>You are offline. Saved stations and favourites still work. Live lift and crowd checks need a connection.</span></div>
+
+  <section id="view-stations" class="stack-lg" aria-labelledby="h-stations">
+    <h2 id="h-stations" class="sr-only">Stations</h2>
+    <div class="card" id="search-card"></div>
+    <div class="card" id="near-card">
+      <h3>Stations near you</h3>
+      <p class="small muted">Uses your location on this device only. Nothing is sent to us.</p>
+      <div><button class="btn btn-accent" id="near-btn" type="button">Find stations near me</button></div>
+      <div id="near-out" aria-live="polite"></div>
+    </div>
+    <div class="stack" id="favs-wrap">
+      <h3>Favourites</h3>
+      <div id="favs-out"></div>
+    </div>
+  </section>
+
+  <section id="view-station" class="stack-lg" aria-label="Station" hidden></section>
+
+  <section id="view-quiet" class="stack-lg" aria-labelledby="h-quiet" hidden>
+    <div class="stack">
+      <h2 id="h-quiet">Quiet times</h2>
+      <p class="lead">Pick a station to see when it is usually calmer.</p>
+    </div>
+    <div class="card" id="quiet-pick"></div>
+    <div id="quiet-out" class="stack-lg" aria-live="polite"></div>
+    <div class="card">
+      <h3>Calm-travel tips</h3>
+      <ul class="tips">
+        <li>Travel off-peak when you can.</li>
+        <li>Every Elizabeth line and DLR station is step-free.</li>
+        <li>TfL's free "Please offer me a seat" badge and the Travel Support Card let you show staff what help you need.</li>
+        <li>The Sunflower lanyard signals a hidden disability and is widely recognised on UK transport.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="view-help" class="stack-lg" aria-labelledby="h-help" hidden>
+    <h2 id="h-help">Help</h2>
+    <div class="card">
+      <h3>Turn-up-and-go assistance</h3>
+      <p>Ask any member of staff. They can help you get on and off trains. You do not need to book.</p>
+    </div>
+    <div class="card">
+      <h3>Tell staff about a broken lift</h3>
+      <p>Tell a member of staff at the gateline. They can report it and help you plan another step-free route. TfL may arrange other transport if a lift is out.</p>
+    </div>
+    <div class="card">
+      <h3>TfL information</h3>
+      <ul class="tips">
+        <li><a href="https://tfl.gov.uk/transport-accessibility/" target="_blank" rel="noopener">TfL accessibility information</a></li>
+        <li><a href="https://tfl.gov.uk/help-and-contact" target="_blank" rel="noopener">TfL help and contact</a></li>
+      </ul>
+      <p class="tiny muted">Links open tfl.gov.uk in a new tab.</p>
+    </div>
+    <div class="card">
+      <h3>How the data works, and its limits</h3>
+      <ul class="tips">
+        <li>Lift and crowding information comes live from TfL's open data, straight to your phone.</li>
+        <li>A lift can break between TfL updates. "No lift problems reported" is not a guarantee.</li>
+        <li>Busyness shows TfL's typical level at the station gates, not seats on trains.</li>
+        <li>Plan B lists nearby stations on the same lines. It is not a checked route.</li>
+        <li>When live data is not available, the app says so. It never shows made-up numbers.</li>
+      </ul>
+    </div>
+    <div class="sos"><span>In an emergency</span><a class="sos-num" href="tel:999">999</a></div>
+  </section>
+</main>
+<div class="tabbar"><nav aria-label="Sections" id="tabnav"></nav></div>
+<script src="../shared/civic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

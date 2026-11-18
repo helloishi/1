@@ -1,0 +1,2783 @@
+[
+ {
+  "id": "british-museum",
+  "name": "British Museum",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Bloomsbury",
+  "lat": 51.5194,
+  "lon": -0.127,
+  "approx": false,
+  "nearestStation": "Tottenham Court Road",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "One of the world's great museums, with the Rosetta Stone, Egyptian mummies and the Parthenon sculptures. Permanent collection is free.",
+  "tip": "Pick two or three galleries rather than trying to see everything.",
+  "url": "https://www.britishmuseum.org",
+  "checkNote": "Some galleries open later on certain days and special exhibitions are ticketed."
+ },
+ {
+  "id": "national-gallery",
+  "name": "National Gallery",
+  "category": "museums",
+  "borough": "Westminster",
+  "area": "Trafalgar Square",
+  "lat": 51.5089,
+  "lon": -0.1283,
+  "approx": false,
+  "nearestStation": "Charing Cross",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Western European paintings from the 13th to the early 20th century, including Van Gogh's Sunflowers and Turner. Free to enter.",
+  "tip": "Free guided talks and Friday late openings run at set times; check the site.",
+  "url": "https://www.nationalgallery.org.uk",
+  "checkNote": "Special exhibitions are ticketed."
+ },
+ {
+  "id": "npg",
+  "name": "National Portrait Gallery",
+  "category": "museums",
+  "borough": "Westminster",
+  "area": "St Martin's Place",
+  "lat": 51.5094,
+  "lon": -0.128,
+  "approx": false,
+  "nearestStation": "Leicester Square",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Portraits of the people who shaped British history, from Tudor monarchs to modern icons. Free to enter; reopened after major refurbishment in 2023.",
+  "tip": "Start at the top floor for the Tudor galleries and work down.",
+  "url": "https://www.npg.org.uk",
+  "checkNote": "Opening hours vary by day and it opens late some evenings."
+ },
+ {
+  "id": "tate-modern",
+  "name": "Tate Modern",
+  "category": "museums",
+  "borough": "Southwark",
+  "area": "Bankside",
+  "lat": 51.5076,
+  "lon": -0.0994,
+  "approx": false,
+  "nearestStation": "Southwark",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Modern and contemporary art in the old Bankside power station. The collection displays and the Turbine Hall installations are free.",
+  "tip": "The Turbine Hall is free and often hosts large commissions.",
+  "url": "https://www.tate.org.uk",
+  "checkNote": "Paid exhibitions are separate. Some days it opens later."
+ },
+ {
+  "id": "tate-modern-terrace",
+  "name": "Tate Modern viewing level",
+  "category": "views",
+  "borough": "Southwark",
+  "area": "Bankside",
+  "lat": 51.5075,
+  "lon": -0.0993,
+  "approx": false,
+  "nearestStation": "Southwark",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Free viewing terrace on level 10 of the Blavatnik Building with 360-degree views of St Paul's, the City and the Thames.",
+  "tip": "Go before sunset for the best light. Hours follow the museum.",
+  "url": "https://www.tate.org.uk",
+  "checkNote": "The viewing level can close in bad weather or at busy times."
+ },
+ {
+  "id": "tate-britain",
+  "name": "Tate Britain",
+  "category": "museums",
+  "borough": "Westminster",
+  "area": "Millbank",
+  "lat": 51.491,
+  "lon": -0.1276,
+  "approx": false,
+  "nearestStation": "Pimlico",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "British art from 1500 to today, including Turner, Constable, the Pre-Raphaelites and Hockney. The collection is free.",
+  "tip": "The Turner galleries are a quiet corner on busy days.",
+  "url": "https://www.tate.org.uk",
+  "checkNote": "Special exhibitions are ticketed."
+ },
+ {
+  "id": "v-and-a",
+  "name": "Victoria and Albert Museum",
+  "category": "museums",
+  "borough": "Kensington and Chelsea",
+  "area": "South Kensington",
+  "lat": 51.4966,
+  "lon": -0.1722,
+  "approx": false,
+  "nearestStation": "South Kensington",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:45"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "The world's largest museum of art, design and performance, from fashion to ceramics and the Cast Courts. Free to enter.",
+  "tip": "The John Madejski Garden courtyard is a calm place to sit.",
+  "url": "https://www.vam.ac.uk",
+  "checkNote": "Friday late opening can vary, and exhibitions are ticketed."
+ },
+ {
+  "id": "young-v-and-a",
+  "name": "Young V&A",
+  "category": "museums",
+  "borough": "Tower Hamlets",
+  "area": "Bethnal Green",
+  "lat": 51.5329,
+  "lon": -0.0554,
+  "approx": false,
+  "nearestStation": "Bethnal Green",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "recommended",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A museum for children and young people, with play, design and toy collections. Entry is free.",
+  "tip": "Check the site for a timed free slot to avoid queues at weekends.",
+  "url": "https://www.vam.ac.uk",
+  "checkNote": "Booking a free timed slot may be advised at busy times."
+ },
+ {
+  "id": "vam-east-storehouse",
+  "name": "V&A East Storehouse",
+  "category": "museums",
+  "borough": "Newham",
+  "area": "Queen Elizabeth Olympic Park",
+  "lat": 51.5469,
+  "lon": -0.0118,
+  "approx": true,
+  "nearestStation": "Stratford",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "recommended",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A free open-access store at Stratford where thousands of objects are on view and you can order an object to see up close. Opened in 2025.",
+  "tip": "Ordering an object to view usually needs booking ahead.",
+  "url": "https://www.vam.ac.uk",
+  "checkNote": "Opening days vary; check before travelling."
+ },
+ {
+  "id": "science-museum",
+  "name": "Science Museum",
+  "category": "museums",
+  "borough": "Kensington and Chelsea",
+  "area": "South Kensington",
+  "lat": 51.4978,
+  "lon": -0.1745,
+  "approx": false,
+  "nearestStation": "South Kensington",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Hands-on galleries on space, medicine, energy and technology. Entry to the main galleries is free.",
+  "tip": "The Wonderlab and some exhibitions are paid; the main galleries need no ticket.",
+  "url": "https://www.sciencemuseum.org.uk",
+  "checkNote": "Some exhibitions and the Wonderlab are ticketed. Free entry may need a booked slot at busy times."
+ },
+ {
+  "id": "natural-history-museum",
+  "name": "Natural History Museum",
+  "category": "museums",
+  "borough": "Kensington and Chelsea",
+  "area": "South Kensington",
+  "lat": 51.4967,
+  "lon": -0.1764,
+  "approx": false,
+  "nearestStation": "South Kensington",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:50"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Dinosaurs, the blue whale skeleton in Hintze Hall, minerals and the Earth galleries. Permanent galleries are free.",
+  "tip": "Go early on weekends and school holidays to beat the queue.",
+  "url": "https://www.nhm.ac.uk",
+  "checkNote": "Special exhibitions are ticketed."
+ },
+ {
+  "id": "iwm-london",
+  "name": "Imperial War Museum London",
+  "category": "museums",
+  "borough": "Southwark",
+  "area": "Lambeth Road",
+  "lat": 51.4959,
+  "lon": -0.1089,
+  "approx": false,
+  "nearestStation": "Lambeth North",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "How war has shaped lives, from the First World War to today, including the Holocaust and Second World War galleries. Free to enter.",
+  "tip": "The Holocaust Galleries are not suitable for children under 14.",
+  "url": "https://www.iwm.org.uk",
+  "checkNote": "Some exhibitions are ticketed."
+ },
+ {
+  "id": "nmm",
+  "name": "National Maritime Museum",
+  "category": "museums",
+  "borough": "Greenwich",
+  "area": "Greenwich",
+  "lat": 51.481,
+  "lon": -0.0053,
+  "approx": false,
+  "nearestStation": "Cutty Sark for Maritime Greenwich",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Britain's seafaring story, with Nelson's uniform, ship models and the Great Map. Free entry.",
+  "tip": "Combine it with Greenwich Park next door.",
+  "url": "https://www.rmg.co.uk",
+  "checkNote": "Special exhibitions are ticketed."
+ },
+ {
+  "id": "queens-house",
+  "name": "Queen's House",
+  "category": "museums",
+  "borough": "Greenwich",
+  "area": "Greenwich",
+  "lat": 51.4809,
+  "lon": -0.0098,
+  "approx": false,
+  "nearestStation": "Cutty Sark for Maritime Greenwich",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Inigo Jones's 17th-century villa, with its Tulip Stairs and royal art collection. Free to enter.",
+  "tip": "Look up in the Great Hall; the floor pattern and ceiling are the highlight.",
+  "url": "https://www.rmg.co.uk",
+  "checkNote": "Some rooms can close for events."
+ },
+ {
+  "id": "london-museum-docklands",
+  "name": "London Museum Docklands",
+  "category": "museums",
+  "borough": "Tower Hamlets",
+  "area": "Canary Wharf",
+  "lat": 51.507,
+  "lon": -0.0227,
+  "approx": false,
+  "nearestStation": "West India Quay",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "The history of the Thames, the port and the people of London, in a Georgian warehouse. Main galleries are free.",
+  "tip": "Check the site for family sessions during school holidays.",
+  "url": "https://www.londonmuseum.org.uk",
+  "checkNote": "Some exhibitions are ticketed. Check opening days."
+ },
+ {
+  "id": "wellcome-collection",
+  "name": "Wellcome Collection",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Euston Road",
+  "lat": 51.5255,
+  "lon": -0.1344,
+  "approx": false,
+  "nearestStation": "Euston Square",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Free museum and library about health, medicine and what it means to be human. Quirky objects and changing exhibitions.",
+  "tip": "The reading room has comfy seating and free Wi-Fi.",
+  "url": "https://wellcomecollection.org",
+  "checkNote": "Usually closed on Mondays. Check hours."
+ },
+ {
+  "id": "soane",
+  "name": "Sir John Soane's Museum",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Lincoln's Inn Fields",
+  "lat": 51.5169,
+  "lon": -0.1176,
+  "approx": false,
+  "nearestStation": "Holborn",
+  "hours": {
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "partial",
+  "kids": false,
+  "booking": "recommended",
+  "evening": false,
+  "outerBorough": false,
+  "description": "The architect's home, packed with antiquities, paintings and architectural models. Free to enter, with timed entry at busy times.",
+  "tip": "Queues can be long; booking a free slot or going on a weekday helps.",
+  "url": "https://www.soane.org",
+  "checkNote": "Closed Monday and Tuesday. Candlelit evenings are ticketed."
+ },
+ {
+  "id": "wallace-collection",
+  "name": "Wallace Collection",
+  "category": "museums",
+  "borough": "Westminster",
+  "area": "Manchester Square",
+  "lat": 51.5171,
+  "lon": -0.1537,
+  "approx": false,
+  "nearestStation": "Bond Street",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Old masters, armour and French 18th-century art in a grand townhouse. Free to enter.",
+  "tip": "The covered courtyard cafe is a pleasant place for a warm-up.",
+  "url": "https://www.wallacecollection.org",
+  "checkNote": "Check hours; the house can close for events."
+ },
+ {
+  "id": "horniman",
+  "name": "Horniman Museum and Gardens",
+  "category": "museums",
+  "borough": "Lewisham",
+  "area": "Forest Hill",
+  "lat": 51.4411,
+  "lon": -0.0612,
+  "approx": false,
+  "nearestStation": "Forest Hill",
+  "hours": {
+   "mon": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "tue": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "wed": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "sun": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Natural history, world cultures and musical instruments, plus 16 acres of gardens with views over London. Museum and gardens are free.",
+  "tip": "The aquarium and butterfly house are paid; the museum and gardens are free.",
+  "url": "https://www.horniman.ac.uk",
+  "checkNote": "Aquarium, butterfly house and some exhibitions cost extra. Gardens may have different hours."
+ },
+ {
+  "id": "william-morris-gallery",
+  "name": "William Morris Gallery",
+  "category": "museums",
+  "borough": "Waltham Forest",
+  "area": "Walthamstow",
+  "lat": 51.5896,
+  "lon": -0.0194,
+  "approx": false,
+  "nearestStation": "Walthamstow Central",
+  "hours": {
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Textiles, wallpaper and design by William Morris in his Georgian family home, set in Lloyd Park. Free to enter.",
+  "tip": "Lloyd Park next door has a moat and picnic space.",
+  "url": "https://www.wmgallery.org.uk",
+  "checkNote": "Closed Monday and Tuesday. Check hours."
+ },
+ {
+  "id": "museum-of-the-home",
+  "name": "Museum of the Home",
+  "category": "museums",
+  "borough": "Hackney",
+  "area": "Hoxton",
+  "lat": 51.532,
+  "lon": -0.0765,
+  "approx": false,
+  "nearestStation": "Hoxton",
+  "hours": {
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Rooms from different centuries show how Londoners have lived at home, in historic almshouses with a walled garden. Free to enter.",
+  "tip": "Walk through period rooms from 1600 to today in order.",
+  "url": "https://www.museumofthehome.org.uk",
+  "checkNote": "Closed Mondays. Some events are ticketed."
+ },
+ {
+  "id": "grant-museum",
+  "name": "Grant Museum of Zoology",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Bloomsbury",
+  "lat": 51.5233,
+  "lon": -0.1337,
+  "approx": true,
+  "nearestStation": "Euston Square",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "unknown",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "UCL's collection of animal skeletons and specimens, including the dodo and the quagga. Free to enter.",
+  "tip": "Small and quick: a good 30-minute stop near the British Museum.",
+  "url": "https://www.ucl.ac.uk",
+  "checkNote": "Opening days and hours are limited; check before you go."
+ },
+ {
+  "id": "petrie-museum",
+  "name": "Petrie Museum of Egyptian Archaeology",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Bloomsbury",
+  "lat": 51.5248,
+  "lon": -0.1336,
+  "approx": true,
+  "nearestStation": "Euston Square",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "unknown",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "UCL's collection of about 80,000 Egyptian and Sudanese objects, from early pottery to papyri. Free to enter.",
+  "tip": "Quiet and compact, with a lot packed into a few rooms.",
+  "url": "https://www.ucl.ac.uk",
+  "checkNote": "Limited opening days and hours; check before you go."
+ },
+ {
+  "id": "hunterian-museum",
+  "name": "Hunterian Museum",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Lincoln's Inn Fields",
+  "lat": 51.5156,
+  "lon": -0.117,
+  "approx": false,
+  "nearestStation": "Holborn",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Anatomical and surgical collections at the Royal College of Surgeons, reopened in 2023. Free to enter.",
+  "tip": "Some displays show human remains and may not suit everyone.",
+  "url": "https://www.rcseng.ac.uk",
+  "checkNote": "Check opening days before you go."
+ },
+ {
+  "id": "bank-of-england-museum",
+  "name": "Bank of England Museum",
+  "category": "museums",
+  "borough": "City of London",
+  "area": "Threadneedle Street",
+  "lat": 51.5143,
+  "lon": -0.0886,
+  "approx": false,
+  "nearestStation": "Bank",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "The story of the Bank, from 1694 to today, with a gold bar you can lift and Roman and modern banknotes. Free to enter.",
+  "tip": "Closed at weekends, so pair it with a weekday City walk.",
+  "url": "https://www.bankofengland.co.uk",
+  "checkNote": "Closed weekends and bank holidays. Check hours."
+ },
+ {
+  "id": "guildhall-art-gallery",
+  "name": "Guildhall Art Gallery and Roman Amphitheatre",
+  "category": "museums",
+  "borough": "City of London",
+  "area": "Guildhall Yard",
+  "lat": 51.5155,
+  "lon": -0.0922,
+  "approx": false,
+  "nearestStation": "Bank",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "City of London art collection, plus the remains of Roman London's amphitheatre in the basement. Free to enter.",
+  "tip": "The amphitheatre is the highlight; head downstairs first.",
+  "url": "https://www.cityoflondon.gov.uk",
+  "checkNote": "Hours vary; check before you go."
+ },
+ {
+  "id": "british-library",
+  "name": "British Library Treasures",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "King's Cross",
+  "lat": 51.5299,
+  "lon": -0.1272,
+  "approx": false,
+  "nearestStation": "King's Cross St Pancras",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Free Sir John Ritblat Treasures gallery, with the Magna Carta, Shakespeare's First Folio and Beatles lyrics. Free public spaces and cafes.",
+  "tip": "Free to enter the building, with comfy seating and Wi-Fi in public areas.",
+  "url": "https://www.bl.uk",
+  "checkNote": "Hours vary by day; check the site. Exhibitions are ticketed."
+ },
+ {
+  "id": "serpentine",
+  "name": "Serpentine Galleries",
+  "category": "museums",
+  "borough": "Westminster",
+  "area": "Kensington Gardens",
+  "lat": 51.5046,
+  "lon": -0.1741,
+  "approx": true,
+  "nearestStation": "Lancaster Gate",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Contemporary art in two galleries in Kensington Gardens. Free to enter.",
+  "tip": "Combine with a Kensington Gardens walk and the Serpentine Pavilion in summer.",
+  "url": "https://www.serpentinegalleries.org",
+  "checkNote": "Exhibition changeovers close galleries; check before you go."
+ },
+ {
+  "id": "whitechapel-gallery",
+  "name": "Whitechapel Gallery",
+  "category": "museums",
+  "borough": "Tower Hamlets",
+  "area": "Whitechapel",
+  "lat": 51.5153,
+  "lon": -0.072,
+  "approx": false,
+  "nearestStation": "Aldgate East",
+  "hours": {
+   "tue": [
+    [
+     "11:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Contemporary art gallery in the East End, with changing exhibitions. Free to enter.",
+  "tip": "Thursday late opening is a good option after work.",
+  "url": "https://www.whitechapelgallery.org",
+  "checkNote": "Closed Mondays. Some exhibitions may be ticketed."
+ },
+ {
+  "id": "design-museum",
+  "name": "Design Museum (free collection display)",
+  "category": "museums",
+  "borough": "Kensington and Chelsea",
+  "area": "Kensington",
+  "lat": 51.501,
+  "lon": -0.2004,
+  "approx": false,
+  "nearestStation": "High Street Kensington",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "The free Designer Maker User display explores everyday objects and the thinking behind them. Temporary exhibitions are ticketed.",
+  "tip": "Only the ground-floor and top collection display is free.",
+  "url": "https://designmuseum.org",
+  "checkNote": "Temporary exhibitions cost extra."
+ },
+ {
+  "id": "raf-museum",
+  "name": "RAF Museum London",
+  "category": "museums",
+  "borough": "Barnet",
+  "area": "Hendon",
+  "lat": 51.604,
+  "lon": -0.2438,
+  "approx": false,
+  "nearestStation": "Colindale",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Aircraft from early flying machines to jets in historic hangars at Hendon. Free to enter.",
+  "tip": "The site is large; wear comfortable shoes.",
+  "url": "https://www.rafmuseum.org.uk",
+  "checkNote": "Some experiences and parking are paid."
+ },
+ {
+  "id": "national-army-museum",
+  "name": "National Army Museum",
+  "category": "museums",
+  "borough": "Kensington and Chelsea",
+  "area": "Chelsea",
+  "lat": 51.4856,
+  "lon": -0.1637,
+  "approx": false,
+  "nearestStation": "Sloane Square",
+  "hours": {
+   "mon": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "The story of the British Army across five centuries, with interactive galleries for families. Free to enter.",
+  "tip": "Look for family trails and activities in school holidays.",
+  "url": "https://www.nam.ac.uk",
+  "checkNote": "Special exhibitions may be ticketed."
+ },
+ {
+  "id": "brunei-gallery",
+  "name": "Brunei Gallery, SOAS",
+  "category": "museums",
+  "borough": "Camden",
+  "area": "Bloomsbury",
+  "lat": 51.5222,
+  "lon": -0.1306,
+  "approx": true,
+  "nearestStation": "Russell Square",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "SOAS gallery of art and culture from Asia, Africa and the Middle East. Free to enter, with a roof garden.",
+  "tip": "The roof garden is a hidden spot in Bloomsbury.",
+  "url": "https://www.soas.ac.uk",
+  "checkNote": "Closed between exhibitions; check before you go."
+ },
+ {
+  "id": "sky-garden",
+  "name": "Sky Garden",
+  "category": "views",
+  "borough": "City of London",
+  "area": "Fenchurch Street",
+  "lat": 51.5112,
+  "lon": -0.0836,
+  "approx": false,
+  "nearestStation": "Monument",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "required",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Free public garden and viewing terrace on top of 20 Fenchurch Street, with views over the Thames. Free tickets must be booked online.",
+  "tip": "Release dates and times are limited; book as soon as slots open.",
+  "url": "https://skygarden.london",
+  "checkNote": "Booking required; no walk-ins at busy times. Bring photo ID."
+ },
+ {
+  "id": "horizon-22",
+  "name": "Horizon 22",
+  "category": "views",
+  "borough": "City of London",
+  "area": "Bishopsgate",
+  "lat": 51.517,
+  "lon": -0.082,
+  "approx": true,
+  "nearestStation": "Liverpool Street",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "required",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Free viewing platform on top of 22 Bishopsgate, with views over the City. Booking is required.",
+  "tip": "Book a sunset slot as early as possible.",
+  "url": "https://www.horizon22.london",
+  "checkNote": "Booking required; check availability and opening days."
+ },
+ {
+  "id": "garden-at-120",
+  "name": "The Garden at 120",
+  "category": "views",
+  "borough": "City of London",
+  "area": "Fenchurch Street",
+  "lat": 51.5115,
+  "lon": -0.0793,
+  "approx": true,
+  "nearestStation": "Fenchurch Street",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "recommended",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Rooftop garden on the 15th floor of 120 Fenchurch Street. Free to enter.",
+  "tip": "Quieter than the nearby Sky Garden.",
+  "url": "https://www.thegardenat120.com",
+  "checkNote": "Weekday opening only; check before you go and whether booking is needed."
+ },
+ {
+  "id": "one-new-change",
+  "name": "One New Change roof terrace",
+  "category": "views",
+  "borough": "City of London",
+  "area": "St Paul's",
+  "lat": 51.5133,
+  "lon": -0.0954,
+  "approx": false,
+  "nearestStation": "St Paul's",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Free open-air terrace on top of the shopping centre next to St Paul's Cathedral, with direct views of the dome.",
+  "tip": "Take the lifts to the top; the terrace is outdoors, so skip in rain.",
+  "url": "https://www.onenewchange.com",
+  "checkNote": "Terrace can close in bad weather; check hours."
+ },
+ {
+  "id": "parliament-hill",
+  "name": "Parliament Hill",
+  "category": "views",
+  "borough": "Camden",
+  "area": "Hampstead Heath",
+  "lat": 51.5598,
+  "lon": -0.15,
+  "approx": false,
+  "nearestStation": "Gospel Oak",
+  "hours": "always",
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A grassy hilltop on Hampstead Heath with a wide view across the London skyline. Free and open at all hours.",
+  "tip": "A great spot for kite-flying and sunsets.",
+  "url": "https://www.cityoflondon.gov.uk",
+  "checkNote": "The hill is steep. Paths can be muddy."
+ },
+ {
+  "id": "primrose-hill",
+  "name": "Primrose Hill",
+  "category": "views",
+  "borough": "Camden",
+  "area": "Primrose Hill",
+  "lat": 51.5395,
+  "lon": -0.1608,
+  "approx": false,
+  "nearestStation": "Chalk Farm",
+  "hours": {
+   "mon": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "tue": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "wed": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "thu": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "fri": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sat": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sun": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": true,
+  "description": "A grassy hill north of Regent's Park with one of the best free views of London's skyline.",
+  "tip": "Pop to the village for coffee, then walk up for sunset.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Park hours vary through the year."
+ },
+ {
+  "id": "greenwich-park",
+  "name": "Greenwich Park",
+  "category": "parks",
+  "borough": "Greenwich",
+  "area": "Greenwich",
+  "lat": 51.4769,
+  "lon": 0.0005,
+  "approx": false,
+  "nearestStation": "Cutty Sark for Maritime Greenwich",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Royal park with the Royal Observatory hill, the Prime Meridian line and views to Canary Wharf. The park is free to enter.",
+  "tip": "Climb the hill for the best view; the Observatory itself charges.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Park gates close at dusk; the Royal Observatory is a paid ticket."
+ },
+ {
+  "id": "kyoto-garden",
+  "name": "Kyoto Garden, Holland Park",
+  "category": "parks",
+  "borough": "Kensington and Chelsea",
+  "area": "Holland Park",
+  "lat": 51.503,
+  "lon": -0.203,
+  "approx": false,
+  "nearestStation": "Holland Park",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A Japanese garden with a waterfall, koi carp and peacocks inside Holland Park. Free to enter.",
+  "tip": "Peaceful in the morning; weekends can be busy.",
+  "url": "https://www.rbkc.gov.uk",
+  "checkNote": "Closes at dusk."
+ },
+ {
+  "id": "crystal-palace-dinosaurs",
+  "name": "Crystal Palace Park dinosaurs",
+  "category": "parks",
+  "borough": "Bromley",
+  "area": "Crystal Palace",
+  "lat": 51.4226,
+  "lon": -0.0733,
+  "approx": false,
+  "nearestStation": "Crystal Palace",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Victorian life-size dinosaur sculptures from 1854 on islands in a lake, in Crystal Palace Park. Free to visit.",
+  "tip": "Pair with the maze and the park's cafe and playground.",
+  "url": "https://www.bromley.gov.uk",
+  "checkNote": "Park gates close in the evening; check seasonal times."
+ },
+ {
+  "id": "richmond-park",
+  "name": "Richmond Park",
+  "category": "parks",
+  "borough": "Richmond upon Thames",
+  "area": "Richmond",
+  "lat": 51.4437,
+  "lon": -0.2845,
+  "approx": false,
+  "nearestStation": "Richmond",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Royal park of 2,500 acres with herds of wild red and fallow deer and views of St Paul's. Free to enter.",
+  "tip": "Keep well back from the deer, especially in autumn.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Pedestrian gate times vary through the year."
+ },
+ {
+  "id": "postmans-park",
+  "name": "Postman's Park",
+  "category": "parks",
+  "borough": "City of London",
+  "area": "St Martin's Le Grand",
+  "lat": 51.5164,
+  "lon": -0.0977,
+  "approx": false,
+  "nearestStation": "St Paul's",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "unknown",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Quiet City garden with the Memorial to Heroic Self-Sacrifice: ceramic plaques for ordinary people who died saving others.",
+  "tip": "Good place for a quiet lunch break.",
+  "url": "https://www.cityoflondon.gov.uk",
+  "checkNote": "Open daytime; check seasonal closing times."
+ },
+ {
+  "id": "st-dunstan",
+  "name": "St Dunstan in the East",
+  "category": "parks",
+  "borough": "City of London",
+  "area": "Lower Thames Street",
+  "lat": 51.5098,
+  "lon": -0.082,
+  "approx": false,
+  "nearestStation": "Monument",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "unknown",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Bombed-out church ruins turned into a secret garden, with ivy-covered walls. Free to enter.",
+  "tip": "Often quiet at lunchtime; photographers love it.",
+  "url": "https://www.cityoflondon.gov.uk",
+  "checkNote": "Opens daytime hours only."
+ },
+ {
+  "id": "hyde-park",
+  "name": "Hyde Park",
+  "category": "parks",
+  "borough": "Westminster",
+  "area": "Hyde Park",
+  "lat": 51.5073,
+  "lon": -0.1657,
+  "approx": false,
+  "nearestStation": "Hyde Park Corner",
+  "hours": {
+   "mon": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "tue": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "wed": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "thu": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "fri": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sat": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sun": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "One of London's largest royal parks, with a lake (the Serpentine), Speakers' Corner and Kensington Gardens next door. Free.",
+  "tip": "Walk the Serpentine, then cross into Kensington Gardens.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Park hours vary during some events."
+ },
+ {
+  "id": "st-james-park",
+  "name": "St James's Park",
+  "category": "parks",
+  "borough": "Westminster",
+  "area": "Westminster",
+  "lat": 51.5025,
+  "lon": -0.1348,
+  "approx": false,
+  "nearestStation": "St James's Park",
+  "hours": {
+   "mon": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "tue": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "wed": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "thu": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "fri": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sat": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ],
+   "sun": [
+    [
+     "05:00",
+     "24:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Central royal park with a lake, pelicans, flower beds and views to Buckingham Palace and Horse Guards. Free.",
+  "tip": "Spot the pelicans near Duck Island.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Park hours vary during some events."
+ },
+ {
+  "id": "regents-park",
+  "name": "Regent's Park",
+  "category": "parks",
+  "borough": "Camden",
+  "area": "Regent's Park",
+  "lat": 51.5268,
+  "lon": -0.1544,
+  "approx": false,
+  "nearestStation": "Regent's Park",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Royal park with Queen Mary's Gardens, a boating lake, playgrounds and open lawns. Free to enter (the zoo charges).",
+  "tip": "Queen Mary's Gardens are at their best in June.",
+  "url": "https://www.royalparks.org.uk",
+  "checkNote": "Closing time changes with the season."
+ },
+ {
+  "id": "little-venice",
+  "name": "Little Venice and Regent's Canal",
+  "category": "parks",
+  "borough": "Westminster",
+  "area": "Maida Vale",
+  "lat": 51.5218,
+  "lon": -0.1832,
+  "approx": false,
+  "nearestStation": "Warwick Avenue",
+  "hours": "always",
+  "indoor": false,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": true,
+  "description": "Where the Grand Union and Regent's Canal meet, with painted narrowboats. A towpath walk runs on to Camden. Free.",
+  "tip": "Walk the towpath from Little Venice to Camden in about 50 minutes.",
+  "url": "https://canalrivertrust.org.uk",
+  "checkNote": "Towpath can be narrow and slippery; check closures."
+ },
+ {
+  "id": "thames-barrier-park",
+  "name": "Thames Barrier Park",
+  "category": "parks",
+  "borough": "Newham",
+  "area": "Silvertown",
+  "lat": 51.4961,
+  "lon": 0.0376,
+  "approx": false,
+  "nearestStation": "Pontoon Dock",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Riverside park with a dramatic green dock, fountains and views of the Thames Barrier. Free to enter.",
+  "tip": "The fountain jets are a hit with kids on warm days.",
+  "url": "https://www.newham.gov.uk",
+  "checkNote": "Closes at dusk; check seasonal times."
+ },
+ {
+  "id": "leadenhall-market",
+  "name": "Leadenhall Market",
+  "category": "markets",
+  "borough": "City of London",
+  "area": "Leadenhall",
+  "lat": 51.5129,
+  "lon": -0.0835,
+  "approx": false,
+  "nearestStation": "Bank",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "A Victorian covered market with a painted roof, shops and cafes. Free to walk through.",
+  "tip": "Visit at lunchtime on a weekday when the market is lively.",
+  "url": "https://www.leadenhallmarket.co.uk",
+  "checkNote": "Busiest on weekdays; hours vary by shop."
+ },
+ {
+  "id": "borough-market",
+  "name": "Borough Market",
+  "category": "markets",
+  "borough": "Southwark",
+  "area": "Borough",
+  "lat": 51.5055,
+  "lon": -0.091,
+  "approx": false,
+  "nearestStation": "London Bridge",
+  "hours": {
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "09:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "16:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Famous food market at the foot of the Shard. Free to enter, with plenty of samples.",
+  "tip": "Go early on Saturday to avoid crowds; samples are free.",
+  "url": "https://boroughmarket.org.uk",
+  "checkNote": "Limited trading on other days; hours change at bank holidays."
+ },
+ {
+  "id": "columbia-road",
+  "name": "Columbia Road Flower Market",
+  "category": "markets",
+  "borough": "Tower Hamlets",
+  "area": "Bethnal Green",
+  "lat": 51.529,
+  "lon": -0.0693,
+  "approx": false,
+  "nearestStation": "Hoxton",
+  "hours": {
+   "sun": [
+    [
+     "08:00",
+     "15:00"
+    ]
+   ]
+  },
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Sunday flower market on a pretty East End street, with independent shops and cafes. Free to browse.",
+  "tip": "Prices fall in the afternoon as stalls sell off flowers.",
+  "url": "https://www.columbiaroad.info",
+  "checkNote": "Sundays only. Hours may change at bank holidays."
+ },
+ {
+  "id": "camden-market",
+  "name": "Camden Market",
+  "category": "markets",
+  "borough": "Camden",
+  "area": "Camden Town",
+  "lat": 51.5415,
+  "lon": -0.1465,
+  "approx": false,
+  "nearestStation": "Camden Town",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Street food, crafts and vintage stalls beside Regent's Canal. Free to browse.",
+  "tip": "Weekdays are calmer than weekends.",
+  "url": "https://www.camdenmarket.com",
+  "checkNote": "Stall hours vary; check before you go."
+ },
+ {
+  "id": "southbank-centre",
+  "name": "Southbank Centre foyers and free events",
+  "category": "music",
+  "borough": "Lambeth",
+  "area": "South Bank",
+  "lat": 51.5055,
+  "lon": -0.1166,
+  "approx": false,
+  "nearestStation": "Waterloo",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Free foyer music, exhibitions, the Poetry Library and open-air events on the South Bank, alongside a daily programme of ticketed shows.",
+  "tip": "Check the free events listing before you go.",
+  "url": "https://www.southbankcentre.co.uk",
+  "checkNote": "Free events change daily. Check the what's on page."
+ },
+ {
+  "id": "barbican-conservatory",
+  "name": "Barbican Conservatory",
+  "category": "music",
+  "borough": "City of London",
+  "area": "Barbican",
+  "lat": 51.52,
+  "lon": -0.0937,
+  "approx": false,
+  "nearestStation": "Barbican",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "partial",
+  "kids": true,
+  "booking": "required",
+  "evening": false,
+  "outerBorough": false,
+  "description": "A tropical conservatory with over 1,500 plant species in the Barbican Centre. Free entry on limited days; booking is required.",
+  "tip": "Open only on selected days. Book a free ticket as early as you can.",
+  "url": "https://www.barbican.org.uk",
+  "checkNote": "Limited opening days; free tickets must be booked; check availability."
+ },
+ {
+  "id": "westminster-abbey-evensong",
+  "name": "Choral Evensong at Westminster Abbey",
+  "category": "music",
+  "borough": "Westminster",
+  "area": "Westminster",
+  "lat": 51.4994,
+  "lon": -0.1273,
+  "approx": false,
+  "nearestStation": "Westminster",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Daily sung evening service by the Abbey choir. Attending the service is free; sightseeing visits cost.",
+  "tip": "Arrive early and keep phones silent: it is worship.",
+  "url": "https://www.westminster-abbey.org",
+  "checkNote": "Service times vary by day, and some services are closed to the public."
+ },
+ {
+  "id": "st-pauls-evensong",
+  "name": "Choral Evensong at St Paul's Cathedral",
+  "category": "music",
+  "borough": "City of London",
+  "area": "St Paul's",
+  "lat": 51.5138,
+  "lon": -0.0984,
+  "approx": false,
+  "nearestStation": "St Paul's",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Choral Evensong in the cathedral, free to attend. Sightseeing entry is ticketed.",
+  "tip": "Arrive early; keep phones off and sit where staff guide you.",
+  "url": "https://www.stpauls.co.uk",
+  "checkNote": "Service times vary by day; check before you go."
+ },
+ {
+  "id": "st-martins-concerts",
+  "name": "St Martin-in-the-Fields lunchtime concerts",
+  "category": "music",
+  "borough": "Westminster",
+  "area": "Trafalgar Square",
+  "lat": 51.5091,
+  "lon": -0.1264,
+  "approx": false,
+  "nearestStation": "Charing Cross",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Regular lunchtime concerts in the church beside Trafalgar Square. Free entry, with donations welcome.",
+  "tip": "Come about 20 minutes early for a good seat.",
+  "url": "https://www.stmartin-in-the-fields.org",
+  "checkNote": "Concert days and times change; check the site."
+ },
+ {
+  "id": "houses-of-parliament",
+  "name": "Houses of Parliament public galleries",
+  "category": "public",
+  "borough": "Westminster",
+  "area": "Westminster",
+  "lat": 51.4999,
+  "lon": -0.1248,
+  "approx": false,
+  "nearestStation": "Westminster",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Watch Commons or Lords debates from the public galleries when sitting. Free, with security checks and queues.",
+  "tip": "Join the queue at St Stephen's Entrance; you may need ID.",
+  "url": "https://www.parliament.uk",
+  "checkNote": "Only open when Parliament is sitting; check the sitting calendar. Tours cost."
+ },
+ {
+  "id": "royal-courts-of-justice",
+  "name": "Royal Courts of Justice",
+  "category": "public",
+  "borough": "Westminster",
+  "area": "Strand",
+  "lat": 51.5139,
+  "lon": -0.113,
+  "approx": false,
+  "nearestStation": "Temple",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "partial",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Victorian Gothic courthouse where major civil cases are heard. Public galleries are free; security checks apply.",
+  "tip": "Check the daily list of cases at the entrance hall.",
+  "url": "https://www.judiciary.uk",
+  "checkNote": "Open weekdays only. Security checks and rules apply."
+ },
+ {
+  "id": "old-bailey",
+  "name": "Old Bailey public gallery",
+  "category": "public",
+  "borough": "City of London",
+  "area": "Newgate Street",
+  "lat": 51.5155,
+  "lon": -0.1025,
+  "approx": false,
+  "nearestStation": "St Paul's",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "partial",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Watch trials from the public gallery at the Central Criminal Court. Free. Strict rules: no phones, bags or cameras allowed inside.",
+  "tip": "Leave bags and phones at home; there is no cloakroom.",
+  "url": "https://www.cityoflondon.gov.uk",
+  "checkNote": "Check before you go: strict rules on phones and bags, age limits and open days apply."
+ },
+ {
+  "id": "supreme-court",
+  "name": "UK Supreme Court",
+  "category": "public",
+  "borough": "Westminster",
+  "area": "Parliament Square",
+  "lat": 51.501,
+  "lon": -0.1264,
+  "approx": false,
+  "nearestStation": "Westminster",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Visit the UK's highest court, watch hearings and see the building and exhibition. Free to enter with security checks.",
+  "tip": "Check the site for visiting rules before you travel.",
+  "url": "https://www.supremecourt.uk",
+  "checkNote": "Open weekdays only and may be closed on some days; check."
+ },
+ {
+  "id": "changing-the-guard",
+  "name": "Changing the Guard",
+  "category": "public",
+  "borough": "Westminster",
+  "area": "Buckingham Palace",
+  "lat": 51.5014,
+  "lon": -0.1419,
+  "approx": false,
+  "nearestStation": "St James's Park",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Ceremonial handover of the King's Guard outside Buckingham Palace, with a marching band. Free to watch from the pavements.",
+  "tip": "Arrive 45 minutes early for a front-row spot.",
+  "url": "https://www.royal.uk",
+  "checkNote": "Schedule varies and can be cancelled in bad weather; check the official times."
+ },
+ {
+  "id": "westminster-cathedral",
+  "name": "Westminster Cathedral",
+  "category": "faith",
+  "borough": "Westminster",
+  "area": "Victoria",
+  "lat": 51.496,
+  "lon": -0.1393,
+  "approx": false,
+  "nearestStation": "Victoria",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Byzantine-style Catholic cathedral with striped brickwork and mosaics. Free to enter; the tower lift costs.",
+  "tip": "Go inside the vast nave and look up at the mosaics.",
+  "url": "https://westminstercathedral.org.uk",
+  "checkNote": "Closed during some services; check hours."
+ },
+ {
+  "id": "baps-mandir",
+  "name": "BAPS Shri Swaminarayan Mandir",
+  "category": "faith",
+  "borough": "Brent",
+  "area": "Neasden",
+  "lat": 51.5503,
+  "lon": -0.2758,
+  "approx": false,
+  "nearestStation": "Neasden",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "One of Europe's first traditional Hindu stone temples, carved from marble and limestone. Visitors are welcome free of charge.",
+  "tip": "Dress modestly and remove shoes in the temple.",
+  "url": "https://www.londonmandir.baps.org",
+  "checkNote": "Opening times and visitor rules vary; check before you go."
+ },
+ {
+  "id": "southwark-cathedral",
+  "name": "Southwark Cathedral",
+  "category": "faith",
+  "borough": "Southwark",
+  "area": "Borough",
+  "lat": 51.5063,
+  "lon": -0.089,
+  "approx": false,
+  "nearestStation": "London Bridge",
+  "hours": null,
+  "indoor": true,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "Gothic cathedral beside Borough Market, with 1,000 years of history and Shakespeare links. Free to enter.",
+  "tip": "A calm stop between Borough Market and the Thames.",
+  "url": "https://cathedral.southwark.anglican.org",
+  "checkNote": "Closed for some services and events; check hours."
+ },
+ {
+  "id": "mudchute-farm",
+  "name": "Mudchute Park and Farm",
+  "category": "farms",
+  "borough": "Tower Hamlets",
+  "area": "Isle of Dogs",
+  "lat": 51.4905,
+  "lon": -0.0126,
+  "approx": true,
+  "nearestStation": "Mudchute",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A 32-acre city farm and park on the Isle of Dogs, with sheep, goats, llamas and Canary Wharf views. Free to enter.",
+  "tip": "Bring a picnic; donations to the charity are welcome.",
+  "url": "https://www.mudchute.org",
+  "checkNote": "Opening days and hours vary; some activities cost."
+ },
+ {
+  "id": "hackney-city-farm",
+  "name": "Hackney City Farm",
+  "category": "farms",
+  "borough": "Hackney",
+  "area": "Haggerston",
+  "lat": 51.5316,
+  "lon": -0.0637,
+  "approx": true,
+  "nearestStation": "Haggerston",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A small city farm with pigs, goats, chickens and a cafe in a Victorian yard. Free to enter.",
+  "tip": "Donations welcome; check the site for family workshops.",
+  "url": "https://hackneycityfarm.co.uk",
+  "checkNote": "Closed on some days; check hours."
+ },
+ {
+  "id": "vauxhall-city-farm",
+  "name": "Vauxhall City Farm",
+  "category": "farms",
+  "borough": "Lambeth",
+  "area": "Vauxhall",
+  "lat": 51.4875,
+  "lon": -0.1213,
+  "approx": true,
+  "nearestStation": "Vauxhall",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": false,
+  "description": "One of London's oldest city farms, with goats, sheep, pigs and rabbits. Free to enter.",
+  "tip": "Donations welcome; check the site for family sessions.",
+  "url": "https://www.vauxhallcityfarm.org",
+  "checkNote": "Opening days vary; check before you go."
+ },
+ {
+  "id": "spitalfields-city-farm",
+  "name": "Spitalfields City Farm",
+  "category": "farms",
+  "borough": "Tower Hamlets",
+  "area": "Spitalfields",
+  "lat": 51.5206,
+  "lon": -0.0634,
+  "approx": true,
+  "nearestStation": "Whitechapel",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "Community city farm near Brick Lane with goats, pigs and a community garden. Free to enter.",
+  "tip": "A quick animal visit before exploring Brick Lane.",
+  "url": "https://www.spitalfieldscityfarm.org",
+  "checkNote": "Hours vary; closed on some days; check before you go."
+ },
+ {
+  "id": "kentish-town-city-farm",
+  "name": "Kentish Town City Farm",
+  "category": "farms",
+  "borough": "Camden",
+  "area": "Kentish Town",
+  "lat": 51.5485,
+  "lon": -0.1427,
+  "approx": true,
+  "nearestStation": "Kentish Town",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A hands-on city farm with sheep, goats, pigs and a riding school. Free to enter.",
+  "tip": "Donations welcome; check for closure days.",
+  "url": "https://www.ktcityfarm.org.uk",
+  "checkNote": "Closed on some days; check hours."
+ },
+ {
+  "id": "surrey-docks-farm",
+  "name": "Surrey Docks Farm",
+  "category": "farms",
+  "borough": "Southwark",
+  "area": "Rotherhithe",
+  "lat": 51.4974,
+  "lon": -0.0352,
+  "approx": true,
+  "nearestStation": "Surrey Quays",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A riverside city farm with goats, sheep and a smithy in Rotherhithe. Free to enter.",
+  "tip": "Donations welcome; check the site for opening days.",
+  "url": "https://www.surreydocksfarm.org.uk",
+  "checkNote": "Limited opening days; check before you go."
+ },
+ {
+  "id": "leake-street",
+  "name": "Leake Street Arches",
+  "category": "unusual",
+  "borough": "Lambeth",
+  "area": "Waterloo",
+  "lat": 51.5017,
+  "lon": -0.1135,
+  "approx": false,
+  "nearestStation": "Waterloo",
+  "hours": "always",
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "A long tunnel under Waterloo station where street artists are allowed to paint. The art changes constantly.",
+  "tip": "Bring a camera; the art changes every few days.",
+  "url": "https://www.visitlondon.com",
+  "checkNote": "The tunnel can close for events; some events are ticketed."
+ },
+ {
+  "id": "brick-lane-art",
+  "name": "Brick Lane and Shoreditch street art",
+  "category": "unusual",
+  "borough": "Tower Hamlets",
+  "area": "Shoreditch",
+  "lat": 51.5215,
+  "lon": -0.0719,
+  "approx": true,
+  "nearestStation": "Aldgate East",
+  "hours": "always",
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": false,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": false,
+  "description": "Murals and street art on Brick Lane and the lanes around Shoreditch. A free open-air gallery that changes often.",
+  "tip": "Look down the side streets for the best pieces.",
+  "url": "https://www.towerhamlets.gov.uk",
+  "checkNote": "Art changes often; some shops close on Mondays."
+ },
+ {
+  "id": "greenwich-foot-tunnel",
+  "name": "Greenwich Foot Tunnel",
+  "category": "unusual",
+  "borough": "Greenwich",
+  "area": "Greenwich",
+  "lat": 51.4824,
+  "lon": -0.009,
+  "approx": false,
+  "nearestStation": "Cutty Sark for Maritime Greenwich",
+  "hours": "always",
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": true,
+  "description": "A 1902 tiled foot tunnel under the Thames from Greenwich to the Isle of Dogs, with a view of Greenwich from Island Gardens. Free.",
+  "tip": "Walk through, then look back at Greenwich from Island Gardens.",
+  "url": "https://www.royalgreenwich.gov.uk",
+  "checkNote": "Lifts at both ends; check they are working. Stairs can be steep."
+ },
+ {
+  "id": "woolwich-ferry",
+  "name": "Woolwich Ferry",
+  "category": "unusual",
+  "borough": "Greenwich",
+  "area": "Woolwich",
+  "lat": 51.4968,
+  "lon": 0.0642,
+  "approx": true,
+  "nearestStation": "Woolwich",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "yes",
+  "kids": true,
+  "booking": "no",
+  "evening": true,
+  "outerBorough": true,
+  "description": "A free vehicle and foot ferry across the Thames between Woolwich and North Woolwich, with river views. Free to ride.",
+  "tip": "Take your bike or buggy; it is a short free river trip.",
+  "url": "https://tfl.gov.uk",
+  "checkNote": "Service times vary and the ferry can be suspended; check TfL."
+ },
+ {
+  "id": "parkrun",
+  "name": "parkrun (free weekly 5k)",
+  "category": "unusual",
+  "borough": "Many London boroughs",
+  "area": "Parks across London",
+  "lat": 51.5072,
+  "lon": -0.1276,
+  "approx": true,
+  "nearestStation": "Check your local event",
+  "hours": null,
+  "indoor": false,
+  "stepFree": "unknown",
+  "kids": true,
+  "booking": "no",
+  "evening": false,
+  "outerBorough": true,
+  "description": "A free weekly 5k run or walk in many London parks on Saturday mornings. Register once on the website.",
+  "tip": "Walkers are welcome; most events start at about 9am.",
+  "url": "https://www.parkrun.org.uk",
+  "checkNote": "Pick an event near you on the website. Start times vary."
+ }
+]

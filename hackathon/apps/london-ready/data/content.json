@@ -1,0 +1,71 @@
+{
+  "eta": ["United States","Canada","Australia","New Zealand","Japan","South Korea","Singapore","Austria","Belgium","Bulgaria","Croatia","Cyprus","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Italy","Latvia","Lithuania","Luxembourg","Malta","Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden","Iceland","Liechtenstein","Norway","Switzerland","Israel","United Arab Emirates","Saudi Arabia","Qatar","Kuwait","Bahrain","Oman","Brazil","Mexico","Argentina","Chile"],
+  "none": ["United Kingdom (British citizen)","Ireland (Irish citizen)"],
+  "visa": ["China","India","Russia","Nigeria","Pakistan","South Africa","Turkey"],
+  "book": [
+    {"name":"Sky Garden","note":"Free. Book online in advance.","url":"https://skygarden.london"},
+    {"name":"Horizon 22","note":"Free. Book in advance.","url":"https://horizon22.co.uk"},
+    {"name":"Houses of Parliament public galleries","note":"Free to watch debates when the House is sitting.","url":"https://www.parliament.uk"},
+    {"name":"Changing the Guard","note":"Free. The schedule varies, so check the official schedule.","url":null}
+  ],
+  "airports": {
+    "Heathrow": [
+      {"mode":"Elizabeth line","time":"~30–40 min to central London","band":"££","price":"Around £13","contactless":"yes","step":"Step-free stations","tip":"Same fares as Oyster. Tap in and out with contactless."},
+      {"mode":"Piccadilly line","time":"~50–60 min","band":"£","price":null,"contactless":"yes","step":"Check step-free access for your stations","tip":"The cheapest rail option. Slower, and busy with luggage at peak times."},
+      {"mode":"Heathrow Express","time":"15 min to Paddington","band":"£££","price":"Walk-up around £25 (cheaper booked ahead)","contactless":"check","step":"Check with the operator","tip":"Fast, but you pay for speed. Book ahead for a lower fare."},
+      {"mode":"Taxi","time":"Varies with traffic","band":null,"price":null,"contactless":"check","step":"Check with the operator","tip":"Use the official black cab rank only."}
+    ],
+    "Gatwick": [
+      {"mode":"Thameslink or Southern","time":"~30–45 min to London Bridge / Victoria","band":"££","price":null,"contactless":"yes","step":"Check step-free access for your stations","tip":"Frequent trains. Pick the one that ends nearest your hotel."},
+      {"mode":"Gatwick Express","time":"~30 min to Victoria","band":"£££","price":null,"contactless":"check","step":"Check with the operator","tip":"Fast, non-stop, and costs more."},
+      {"mode":"Coach","time":"Slower than rail","band":null,"price":null,"contactless":"check","step":"Check with the operator","tip":"Coaches are the cheapest option but slower."}
+    ],
+    "Stansted": [
+      {"mode":"Stansted Express","time":"~50 min to Liverpool Street","band":"£££","price":null,"contactless":"accepted since March 2026 (Greater Anglia)","contactlessOk":true,"step":"Check with the operator","tip":"Tap in and out with contactless."},
+      {"mode":"Coach","time":"Slower than rail","band":null,"price":null,"contactless":"check","step":"Check with the operator","tip":"Coaches are the cheapest option but slower."}
+    ],
+    "Luton": [
+      {"mode":"Shuttle + train from Luton Airport Parkway","time":"~35–50 min to central London","band":"££","price":null,"contactless":"check","step":"Check with the operator","tip":"Take the shuttle from the terminal to Luton Airport Parkway station first."},
+      {"mode":"Coach","time":"Check times","band":null,"price":null,"contactless":"check","step":"Check with the operator","tip":"Coaches also run. Check times and fares with the operator."}
+    ],
+    "London City": [
+      {"mode":"DLR to Bank","time":"~20–25 min","band":"£","price":null,"contactless":"yes","contactlessOk":true,"step":"Step-free","tip":"The shortest trip into the City. Tap in and out."}
+    ],
+    "Southend": [
+      {"mode":"Greater Anglia train to Liverpool Street","time":"~55 min","band":"££","price":null,"contactless":"accepted since March 2026","contactlessOk":true,"step":"Check with the operator","tip":"Tap in and out with contactless."}
+    ]
+  },
+  "firstHour": [
+    "Tap the same card or phone for every journey.",
+    "Stand on the right on escalators.",
+    "London is mostly cashless.",
+    "Public toilets are scarce. Use the terminal or station toilets before you set off.",
+    "Many cafés offer free water refills. Look for the Refill sticker."
+  ],
+  "prep": [
+    {"id":"eta","t":"ETA approved, or visa","b":"Check the Do I need an ETA? tool above, then confirm on GOV.UK."},
+    {"id":"card","t":"Contactless card with no foreign transaction fees, or a phone wallet","b":"Ask your bank about foreign-card fees."},
+    {"id":"plug","t":"UK plug adapter","b":"Type G, 230 V."},
+    {"id":"data","t":"Mobile data plan or eSIM","b":"Sort this before you land."},
+    {"id":"ins","t":"Travel insurance","b":"NHS hospital care can be charged to overseas visitors."},
+    {"id":"addr","t":"Hotel address saved offline","b":"Screenshot it or save it in your notes."},
+    {"id":"phone","t":"Protect your phone","b":"See Phone Guard for simple habits.","link":"../phoneguard/","linkText":"Open Phone Guard"},
+    {"id":"view","t":"Book free viewpoints ahead","b":"See the Book ahead card below."},
+    {"id":"strike","t":"Check strikes before travel days","b":"tfl.gov.uk lists them. Strikes are announced in advance."}
+  ],
+  "scams": [
+    "Fake ETA websites: they charge far more than the official fee.",
+    "Street \"find the ball\" cup games (for example on Westminster Bridge): you can't win, and the people running them often work in groups.",
+    "Clipboard \"petition\" distractions near busy sights.",
+    "Unlicensed cabs.",
+    "Ticket touts for sold-out shows: buy from the official box office."
+  ],
+  "emergency": {
+    "en": {"name":"English","title":"Emergency numbers in the UK","e999":"Police, ambulance, fire, coastguard","n111":"Urgent medical help that isn't an emergency. Call, or go to 111.nhs.uk","pharm":"Pharmacies","pharmd":"Advice on minor illnesses without an appointment","ae":"A&E","aed":"Serious emergencies only","n101":"Police, non-emergency","btp":"British Transport Police, on trains and the Tube. Send a text","emb":"Find your embassy","copy":"Copy"},
+    "es": {"name":"Español","title":"Números de emergencia en el Reino Unido","e999":"Policía, ambulancia, bomberos, guardacostas","n111":"Ayuda médica urgente que no es una emergencia. Llame o visite 111.nhs.uk","pharm":"Farmacias","pharmd":"Consejo para dolencias leves sin cita previa","ae":"Urgencias (A&E)","aed":"Solo emergencias graves","n101":"Policía, sin emergencia","btp":"Policía de Transportes Británica, en trenes y metro. Envíe un mensaje de texto","emb":"Encuentre su embajada","copy":"Copiar"},
+    "fr": {"name":"Français","title":"Numéros d'urgence au Royaume-Uni","e999":"Police, ambulance, pompiers, garde côtière","n111":"Aide médicale urgente qui n'est pas une urgence vitale. Appelez ou allez sur 111.nhs.uk","pharm":"Pharmacies","pharmd":"Conseils pour les petits maux, sans rendez-vous","ae":"Urgences (A&E)","aed":"Urgences graves uniquement","n101":"Police, hors urgence","btp":"Police des transports britannique, dans les trains et le métro. Envoyez un SMS","emb":"Trouver votre ambassade","copy":"Copier"},
+    "ar": {"name":"العربية","dir":"rtl","title":"أرقام الطوارئ في المملكة المتحدة","e999":"الشرطة، الإسعاف، الإطفاء، خفر السواحل","n111":"مساعدة طبية عاجلة ليست حالة طوارئ. اتصل أو زر 111.nhs.uk","pharm":"الصيدليات","pharmd":"نصائح للأمراض البسيطة دون موعد","ae":"الطوارئ (A&E)","aed":"للحالات الخطيرة فقط","n101":"الشرطة، لغير الطوارئ","btp":"شرطة النقل البريطانية، في القطارات والمترو. أرسل رسالة نصية","emb":"ابحث عن سفارتك","copy":"نسخ"},
+    "zh": {"name":"中文（简体）","title":"英国紧急电话","e999":"警察、救护车、消防、海岸警卫","n111":"紧急但非危及生命的医疗帮助。可致电，或访问 111.nhs.uk","pharm":"药房","pharmd":"小病咨询，无需预约","ae":"急诊（A&E）","aed":"仅限严重紧急情况","n101":"警察，非紧急","btp":"英国交通警察，适用于火车和地铁。请发短信","emb":"查找您的大使馆","copy":"复制"},
+    "hi": {"name":"हिन्दी","title":"यूके में आपातकालीन नंबर","e999":"पुलिस, एम्बुलेंस, अग्निशमन, तटरक्षक","n111":"तत्काल चिकित्सा सहायता, जो आपातकाल नहीं है। फ़ोन करें या 111.nhs.uk देखें","pharm":"फ़ार्मेसी","pharmd":"मामूली बीमारियों की सलाह, बिना अपॉइंटमेंट","ae":"A&E (आपातकालीन विभाग)","aed":"केवल गंभीर आपात स्थिति के लिए","n101":"पुलिस, गैर-आपातकालीन","btp":"ब्रिटिश ट्रांसपोर्ट पुलिस, ट्रेन और ट्यूब में। टेक्स्ट संदेश भेजें","emb":"अपना दूतावास खोजें","copy":"कॉपी करें"}
+  }
+}

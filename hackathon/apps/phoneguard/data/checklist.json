@@ -1,0 +1,29 @@
+{
+  "iphone": [
+    {"id": "i-sdp", "title": "Turn on Stolen Device Protection (iOS 17.3+)", "look": "Settings › Face ID & Passcode › Stolen Device Protection", "why": "Someone who has seen your passcode still can't change your Apple Account password without Face ID and a security delay."},
+    {"id": "i-findmy", "title": "Turn on Find My, including Send Last Location", "look": "Settings › [your name] › Find My"},
+    {"id": "i-simpin", "title": "Set a SIM PIN", "look": "Settings › Mobile Service (or Cellular) › SIM PIN", "why": "Stops a thief moving your SIM to another phone to receive your security codes by text.", "warn": "You need your network's default PIN. Three wrong tries lock the SIM until you get the PUK code from your network."},
+    {"id": "i-cc", "title": "Block Control Centre on the lock screen", "look": "Settings › Face ID & Passcode › Allow Access When Locked › Control Centre (off)", "why": "Stops a thief switching on flight mode to go offline."},
+    {"id": "i-pass", "title": "Use a longer passcode (not a birthday) and shield it when you type in public"}
+  ],
+  "android": [
+    {"id": "a-theft", "title": "Turn on Theft protection: Theft Detection Lock, Offline Device Lock and Remote Lock", "look": "Settings › Google › All services › Theft protection. Names vary by manufacturer, and some features need newer Android versions.", "why": "The screen locks if someone snatches the phone and runs."},
+    {"id": "a-find", "title": "Turn on Find My Device (called Find Hub on newer phones)", "look": "Settings › Google › All services"},
+    {"id": "a-simpin", "title": "Set a SIM PIN", "look": "Settings › Security › SIM card lock (or similar)", "why": "Stops a thief moving your SIM to another phone to receive your security codes by text.", "warn": "You need your network's default PIN. Three wrong tries lock the SIM until you get the PUK code from your network."},
+    {"id": "a-idcheck", "title": "Turn on Identity Check, on supported phones with newer Android", "look": "Settings › Google or Security (varies by phone)", "why": "Asks for your fingerprint or face before key settings change away from trusted places."},
+    {"id": "a-pass", "title": "Use a longer PIN or password and shield it when you type in public"}
+  ],
+  "both": [
+    {"id": "b-imei", "title": "Write down your IMEI and keep it off the phone", "look": "Dial *#06# on the phone", "why": "Networks and police use it to block the phone."},
+    {"id": "b-2fa", "title": "Turn on two-step verification for email and banking", "why": "Prefer an authenticator app or passkeys over text codes."},
+    {"id": "b-backup", "title": "Back up photos and contacts"},
+    {"id": "b-numbers", "title": "Save your network's lost/stolen number and a trusted contact somewhere off your phone", "why": "Visitors: also save your home network's international number and your embassy's details."}
+  ],
+  "habits": [
+    "Keep your phone away from the kerb. Many snatches are from bikes and e-bikes.",
+    "Step into a doorway or shop to check maps.",
+    "Don't stop at station exits to use your phone.",
+    "On busy streets, keep it in a front zip pocket or use a wrist strap.",
+    "Stay extra alert in crowds."
+  ]
+}

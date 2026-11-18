@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PhoneGuard London</title>
+<meta name="description" content="Free phone-theft prevention checklist, live police.uk hotspot map and a step-by-step plan if your phone is stolen in London.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../shared/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="../shared/civic.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="app">
+  <header class="plate">
+    <div><h1>PhoneGuard London</h1><p class="plate-sub">Stop phone theft. Act fast if it happens.</p></div>
+    <div class="plate-actions">
+      <button class="icon-btn" id="open-settings" type="button" aria-label="Settings" aria-haspopup="dialog"></button>
+      <span class="district">W1</span>
+    </div>
+  </header>
+
+  <div class="banner warn" id="offline" hidden role="status"><span>You are offline. The checklist and the Stolen? steps still work. The map needs a connection.</span></div>
+
+  <section id="view-prepare" aria-labelledby="h-prepare" class="stack-lg" hidden>
+    <div class="stack">
+      <h2 id="h-prepare">Phone armour</h2>
+      <p class="lead">A few settings make a stolen phone much harder to use or sell. Do them now, while the phone is in your hand.</p>
+      <div class="chips" role="group" aria-label="Phone type">
+        <button class="chip" type="button" data-platform="iphone" aria-pressed="false">iPhone</button>
+        <button class="chip" type="button" data-platform="android" aria-pressed="false">Android</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="spread"><strong id="prog-label" aria-live="polite"></strong><button class="btn btn-ghost btn-sm" id="prog-reset" type="button">Clear ticks</button></div>
+      <div class="progress" role="progressbar" aria-labelledby="prog-label" aria-valuemin="0" aria-valuemax="100"><span id="prog-bar" style="width:0"></span></div>
+    </div>
+    <div class="card"><div class="checklist" id="check-platform"></div></div>
+    <div class="card"><h3>Both phones</h3><div class="checklist" id="check-both"></div></div>
+    <div class="card tint-info"><h3>Street habits</h3><ul class="habits" id="habits"></ul></div>
+  </section>
+
+  <section id="view-hotspots" aria-labelledby="h-hot" class="stack-lg" hidden>
+    <div class="stack">
+      <h2 id="h-hot">Hotspots</h2>
+      <div class="field">
+        <label for="area">Area</label>
+        <select class="select" id="area"></select>
+      </div>
+      <div class="cluster">
+        <button class="btn btn-sm" id="use-loc" type="button">Use my location</button>
+        <span class="small muted" id="loc-note" aria-live="polite"></span>
+      </div>
+      <div class="chips" role="group" aria-label="Report type">
+        <button class="chip" type="button" data-layer="theft-from-the-person" aria-pressed="true">Theft from the person</button>
+        <button class="chip" type="button" data-layer="robbery" aria-pressed="false">Robbery</button>
+      </div>
+    </div>
+    <div id="hot-status" aria-live="polite"></div>
+    <div id="map" class="map" role="region" aria-label="Map of reported theft locations"></div>
+    <p class="small muted" id="map-copy"></p>
+    <div class="card" id="top-card" hidden><h3>Top streets</h3><ol class="toplist" id="top-list"></ol></div>
+    <div class="card">
+      <label class="check" for="heads-up"><input type="checkbox" id="heads-up"><div><div class="check-title" style="text-decoration:none;color:inherit">Heads-up mode</div><div class="check-body">While this app is open, it can show a calm banner when you are near a busy spot. Your location stays on this phone.</div></div></label>
+      <p class="small muted" id="heads-note" aria-live="polite"></p>
+    </div>
+    <div class="banner ok" id="heads-banner" hidden role="status"></div>
+  </section>
+
+  <section id="view-stolen" aria-labelledby="h-stolen" class="stack-lg" hidden>
+    <div class="sos"><span>Emergency or in danger?</span><a class="sos-num" href="tel:999" id="sos-call">Call 999</a></div>
+    <div class="chips" id="lang-chips" role="group" aria-label="Language"></div>
+    <div id="stolen-body" class="stack-lg"></div>
+  </section>
+
+  <section id="view-about" aria-labelledby="h-about" class="stack-lg" hidden>
+    <h2 id="h-about">About PhoneGuard</h2>
+    <div class="card">
+      <h3>Why it exists</h3>
+      <div class="stack">
+        <div><div class="big-number">71,391</div><p class="small">mobile phone thefts and robberies recorded by the Met in London in 2025, down 12.3% from 81,365 in 2024, but up 54% since 2022. <a href="https://www.london.gov.uk/mayor-outlines-major-crackdown-mobile-phone-theft-new-mobile-phone-theft-command-cell-and-ps45m-more" target="_blank" rel="noopener">Mayor of London, Feb 2026</a>.</p></div>
+        <div><div class="big-number">£4.5m</div><p class="small">extra funding for a new Mobile Phone Theft Command Cell, set up by the Mayor (Feb 2026, same source).</p></div>
+        <div><div class="big-number">about 2.4%</div><p class="small">Of 587,498 phones reported stolen in London from 2017 to Feb 2024, only 13,998 were reported recovered. <a href="https://www.london.gov.uk/met-seizes-hundreds-stolen-phones-thefts-hit-four-year-low" target="_blank" rel="noopener">Reported by the GLA and the Met</a>. Medium confidence.</p></div>
+        <div><div class="big-number">about 40%</div><p class="small">of thefts reported to happen in Westminster and the West End, with around 37 victims a day in the West End. Met figures as reported in the press. Medium confidence.</p></div>
+      </div>
+      <p class="small">PhoneGuard helps in two ways: settings and habits that make theft less rewarding, and a calm plan to block the SIM and phone quickly. Faster blocking cuts resale value and account takeover, and gives police fuller reports.</p>
+    </div>
+    <div class="card">
+      <h3>How the data works</h3>
+      <p class="small">The hotspot map uses street-level crime data from police.uk. Your phone asks police.uk directly for the latest published month (usually about two months behind). Reports are grouped by their approximate location. Police.uk moves each report to a nearby anonymous point, so places are not exact. The map shows reports of theft from the person and robbery. Use it to stay alert, not to avoid places.</p>
+    </div>
+    <div class="card">
+      <h3>Privacy</h3>
+      <ul class="plain">
+        <li>No accounts, no analytics, no cookies, no trackers.</li>
+        <li>Your location stays on your phone. It is only used to centre the map and for Heads-up mode. Police.uk receives the map centre point (rounded) to return nearby reports, but not who you are.</li>
+        <li>Your ticks, settings and language are saved only in this browser.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Please note</h3>
+      <p class="small">This is a prototype. Menu names differ between phone makers and software versions, so look for similar wording. Check each network, bank and police service for the latest advice. If you are in danger, call 999.</p>
+      <button class="btn btn-ghost" id="copy-link" type="button">Copy link to this app</button>
+    </div>
+    <footer class="foot">
+      <p>Prototype from London Civic Hack 2026. Not affiliated with TfL, the Mayor of London, the Metropolitan Police or the NHS.</p>
+      <p>Contains public sector information licensed under the Open Government Licence v3.0 (police.uk).</p>
+      <p>© OpenStreetMap contributors · © CARTO map tiles.</p>
+    </footer>
+  </section>
+</main>
+
+<div class="tabbar"><nav aria-label="Sections" id="tabs"></nav></div>
+<script src="../shared/vendor/leaflet/leaflet.js"></script>
+<script src="../shared/civic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

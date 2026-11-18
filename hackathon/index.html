@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>London Civic Hack 2026</title>
+<meta name="description" content="Five free, open-data mobile web apps for Londoners and visitors, chosen from 72 evidence-based ideas.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="apps/shared/civic.css">
+<style>
+  .hub { max-width: 980px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 48px; display: grid; gap: 28px; }
+  .plate h1 { font-size: clamp(1.6rem, 5vw, 2.6rem); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+  .app-card { display: grid; gap: 12px; grid-template-columns: 112px minmax(0, 1fr); align-items: start; }
+  .app-card img { width: 112px; height: auto; border-radius: 14px; border: 1px solid var(--line); background: var(--surface-2); }
+  .app-card .district { font: 800 .8rem/1 var(--font-display); color: var(--plate-red); letter-spacing: .06em; }
+  .app-card h2 { font-size: 1.15rem; text-transform: uppercase; letter-spacing: .03em; }
+  .why { display: grid; gap: 10px; }
+  .why li { margin-left: 1.1em; }
+</style>
+</head>
+<body>
+<main class="hub">
+  <header class="plate">
+    <div><h1>London Civic Hack 2026</h1><p class="plate-sub">Five free apps for people who live in or visit London. Built from complaints and open data, not hype.</p></div>
+    <span class="district">E16</span>
+  </header>
+
+  <section class="card">
+    <p class="lead">Six research teams read media coverage, surveys, company reports and civic apps from around the world. Judges scored 72 ideas on value to residents, value to the city, the gap they fill, feasibility, privacy and reach. Five track winners became working prototypes: installable, free, no accounts, no tracking.</p>
+  </section>
+
+  <section class="grid" aria-label="Prototypes">
+    <article class="card app-card">
+      <img src="demo/shots/report-result.jpg" alt="Report It Right result card" width="112" height="242" loading="lazy">
+      <div class="stack"><span class="district">E16 · City and me</span><h2>Report It Right</h2>
+        <p class="small">No wrong door: 20 situations routed to the right service first time, a 61016 text builder for British Transport Police, borough finder, quick exit.</p>
+        <a class="btn btn-primary btn-sm" href="apps/report-it/">Open app</a></div>
+    </article>
+    <article class="card app-card">
+      <img src="demo/shots/phoneguard-stolen.jpg" alt="PhoneGuard stolen-phone plan" width="112" height="242" loading="lazy">
+      <div class="stack"><span class="district">W1 · Safety</span><h2>PhoneGuard London</h2>
+        <p class="small">Harden your phone before you go out, see live police.uk theft hotspots, and follow a calm 15-minute plan in six languages if it's taken.</p>
+        <a class="btn btn-primary btn-sm" href="apps/phoneguard/">Open app</a></div>
+    </article>
+    <article class="card app-card">
+      <img src="demo/shots/ready-eta-check.jpg" alt="London Ready ETA link checker" width="112" height="242" loading="lazy">
+      <div class="stack"><span class="district">TW6 · Before the trip</span><h2>London Ready</h2>
+        <p class="small">ETA: official or not; airport to central London without overpaying; contactless and tipping explained; emergency card in six languages.</p>
+        <a class="btn btn-primary btn-sm" href="apps/london-ready/">Open app</a></div>
+    </article>
+    <article class="card app-card">
+      <img src="demo/shots/stepfree-station.jpg" alt="Step-Free and Calm station card" width="112" height="242" loading="lazy">
+      <div class="stack"><span class="district">N1C · Getting around</span><h2>Step-Free &amp; Calm</h2>
+        <p class="small">Are the lifts working, what's Plan B, how busy is it now and when is it quiet, for any of 509 stations.</p>
+        <a class="btn btn-primary btn-sm" href="apps/step-free/">Open app</a></div>
+    </article>
+    <article class="card app-card">
+      <img src="demo/shots/free-today.jpg" alt="Free London Today list of places open now" width="112" height="242" loading="lazy">
+      <div class="stack"><span class="district">WC1B · Free London</span><h2>Free London Today</h2>
+        <p class="small">78 free places open near you right now, weather-aware, plus free water, toilets and libraries nearby.</p>
+        <a class="btn btn-primary btn-sm" href="apps/free-london/">Open app</a></div>
+    </article>
+  </section>
+
+  <section class="card why">
+    <h2>Why these five</h2>
+    <ul class="small">
+      <li>71,391 phone thefts and robberies in London in 2025, and only about 2.4% of stolen phones are recovered (Met, GLA).</li>
+      <li>32 boroughs plus the City, TfL, the Met, BTP and the NHS, and no single "311". Singapore's OneService and NYC311 show the model works.</li>
+      <li>Only 94 of 272 Tube stations are step-free; disabled Londoners make far fewer trips.</li>
+      <li>Official UK ETA: £20. Unofficial sites charge up to $99–€178.</li>
+      <li>26% of Londoners live in poverty after housing costs; free culture and essentials are under-used.</li>
+    </ul>
+    <p class="tiny muted">Figures come from web-search research with confidence marks; see the research folder before quoting them.</p>
+  </section>
+
+  <footer class="foot">
+    <p>Research, idea bank and code: <a href="https://github.com/helloishi/1/tree/claude/optimistic-brown-m222fd/hackathon">github.com/helloishi/1 · hackathon/</a></p>
+    <p>Prototypes from London Civic Hack 2026. Not affiliated with TfL, the Mayor of London, the Metropolitan Police or the NHS. Powered by TfL Open Data · police.uk (OGL v3.0) · © OpenStreetMap contributors · Open-Meteo (CC BY 4.0) · postcodes.io.</p>
+  </footer>
+</main>
+</body>
+</html>

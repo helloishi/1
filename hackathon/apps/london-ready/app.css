@@ -1,0 +1,37 @@
+:root { --accent: var(--thames); }
+.tab > span { display: grid; place-items: center; }
+.tab { text-align: center; }
+.plate-actions { align-items: flex-start; }
+.plate-actions .district { padding-top: 11px; }
+.plate-actions .icon-btn { width: 44px; height: 44px; }
+.card h2 { font-size: 1.15rem; }
+.verdict { display: grid; gap: 6px; padding: 14px; border-radius: var(--radius-sm); }
+.verdict.ok { background: var(--ok-bg); } .verdict.warn { background: var(--warn-bg); }
+.verdict.bad { background: var(--bad-bg); } .verdict.info { background: var(--info-bg); }
+.verdict .v-title { font: 800 1.15rem/1.25 var(--font-display); }
+.verdict.ok .v-title { color: var(--ok); } .verdict.warn .v-title { color: var(--warn); }
+.verdict.bad .v-title { color: var(--bad); } .verdict.info .v-title { color: var(--info); }
+.pick-list { display: grid; max-height: 220px; overflow: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.pick-list .row { min-height: 48px; padding: 8px 14px; }
+.opt { display: grid; gap: 8px; }
+.opt dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: .92rem; }
+.opt dt { color: var(--muted); } .opt dd { margin: 0; min-width: 0; }
+.band { font: 800 1.05rem/1 var(--font-display); letter-spacing: .04em; }
+.tips { margin: 0; padding-left: 1.2rem; display: grid; gap: 6px; }
+.status-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.status-item { display: grid; gap: 4px; }
+.status-item summary { cursor: pointer; list-style: none; }
+.status-item summary::-webkit-details-marker { display: none; }
+.status-item .reason { font-size: .82rem; color: var(--ink-2); padding: 6px 4px; }
+.status-name { font-weight: 700; font-size: .85rem; margin-right: 4px; }
+.em-num { font: 800 1.5rem/1 var(--font-display); letter-spacing: .02em; text-decoration: none; color: var(--ink); }
+.em-row { display: grid; gap: 4px; padding: 10px 0; border-top: 1px solid var(--line); }
+.em-row:first-of-type { border-top: 0; }
+.em-row .spread { align-items: flex-start; }
+.em-card[dir="rtl"] { text-align: right; }
+.total-line { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.sheet h2 { margin: 0; }
+.sheet .sheet-head { display: flex; justify-content: space-between; align-items: center; }
+.evid { display: grid; gap: 8px; padding-left: 1.1rem; margin: 0; font-size: .92rem; }
+.link-out { word-break: break-word; }

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>London Ready</title>
+<meta name="description" content="Before you fly, your first hours in London, paying and getting help. Avoid the traps first-timers fall into.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../shared/civic.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="app">
+  <header class="plate">
+    <div><h1>London Ready</h1><p class="plate-sub">Land with a plan. Skip the traps.</p></div>
+    <div class="plate-actions">
+      <span class="district">TW6</span>
+      <button class="icon-btn" id="open-settings" type="button" aria-label="Settings and About"></button>
+    </div>
+  </header>
+  <div class="banner warn" id="offline" hidden role="status"><span>You are offline. Everything saved on your phone still works. Live fares and line status need a connection.</span></div>
+
+  <section id="view-fly" class="stack-lg" aria-label="Before you fly" hidden></section>
+  <section id="view-arrive" class="stack-lg" aria-label="Arrive" hidden></section>
+  <section id="view-pay" class="stack-lg" aria-label="Pay and tips" hidden></section>
+  <section id="view-help" class="stack-lg" aria-label="Help" hidden></section>
+</main>
+<div class="tabbar"><nav aria-label="Sections">
+  <a class="tab" href="#fly" data-tab="fly"><span data-ic="plane"></span>Before you fly</a>
+  <a class="tab" href="#arrive" data-tab="arrive"><span data-ic="train"></span>Arrive</a>
+  <a class="tab" href="#pay" data-tab="pay"><span data-ic="card"></span>Pay &amp; tips</a>
+  <a class="tab" href="#help" data-tab="help"><span data-ic="heart"></span>Help</a>
+</nav></div>
+<script src="../shared/civic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2048 @@
+{
+ "weights": {
+  "citizen": 0.25,
+  "gov": 0.2,
+  "gap": 0.2,
+  "feasible": 0.15,
+  "free": 0.1,
+  "reach": 0.1
+ },
+ "tracks": {
+  "move": "Передвижение",
+  "safety": "Безопасность",
+  "free": "Бесплатный Лондон",
+  "ready": "До поездки",
+  "health": "Здоровье и климат",
+  "city": "Город и я"
+ },
+ "ideas": [
+  {
+   "id": "C01",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Report It Right",
+   "pitch": "Одна дверь в любые службы: категория → нужный канал (BTP 61016, Met, FixMyStreet, StreetLink, 159…), конструктор SMS в BTP, быстрый выход.",
+   "pain_evidence": "Лондон раздроблен на 32 боро + Сити, TfL, Met, BTP, NHS; VAWG на TfL — 4 593 преступления, обвинение около 3%; OneService (Сингапур) — больше 2,5 млн обращений, NYC311 — 36,5 млн контактов.",
+   "gap": "FixMyStreet покрывает только улицы; единого лондонского «311» нет.",
+   "authority": "GLA/LOTI, Met, BTP, боро",
+   "data": "Контент + postcodes.io",
+   "horizon": "now",
+   "audiences": [
+    "all",
+    "women",
+    "seniors",
+    "lgbtq",
+    "newcomers"
+   ],
+   "scores": {
+    "citizen": 5,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 5,
+    "free": 5,
+    "reach": 5
+   },
+   "penalty": 0,
+   "total": 4.8,
+   "status": "built",
+   "rank": 1
+  },
+  {
+   "id": "S01",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "PhoneGuard London",
+   "pitch": "Подготовка телефона, живые точки краж и план «украли — первые 15 минут» на 6 языках.",
+   "pain_evidence": "71 391 кража и грабёж телефонов в 2025 (−12%, но +54% к 2022); возвращено около 2,4%; мэр создал Command Cell и выделил £4,5 млн.",
+   "gap": "Советы разбросаны по сайтам Met, Apple и операторов; единого «что делать прямо сейчас» нет, тем более для туристов.",
+   "authority": "Met, MOPAC, мэр",
+   "data": "police.uk API (OGL) + контент",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "young",
+    "students",
+    "commuters"
+   ],
+   "scores": {
+    "citizen": 5,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 5,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.7,
+   "status": "built",
+   "rank": 2
+  },
+  {
+   "id": "M01",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Step-Free & Calm",
+   "pitch": "Живой статус лифтов, план Б при поломке, загруженность сейчас и тихие часы для любой станции.",
+   "pain_evidence": "Step-free 94 из 272 станций метро, цель 50% к 2030; 45 отключений лифтов дольше недели за 80 дней (трекер, низк. уверенность); 5,84 поездки в неделю у людей с инвалидностью против 17 в среднем.",
+   "gap": "TfL Go показывает часть сбоев лифтов, но не предлагает план Б и тихие часы; по загруженности TfL уступал Google (London TravelWatch).",
+   "authority": "TfL",
+   "data": "TfL Unified API: StopPoint, Crowding, Disruptions",
+   "horizon": "now",
+   "audiences": [
+    "disabled",
+    "parents",
+    "seniors",
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.3,
+   "status": "built",
+   "rank": 3
+  },
+  {
+   "id": "R01",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "London Ready",
+   "pitch": "Набор приезжего: ETA (официально или нет), трансфер из аэропорта, contactless, чаевые, экстренная карточка на 6 языках.",
+   "pain_evidence": "ETA £20 официально против $99–€178 у посредников; Heathrow Express около £25 против ~£13 на Elizabeth line; 71 391 кража телефонов.",
+   "gap": "Visit London app и TfL Go не закрывают ETA, мошенников и первые часы; у TfL Go нет офлайн-режима.",
+   "authority": "Home Office, TfL, VisitBritain, Met",
+   "data": "Контент + TfL API",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "newcomers",
+    "students"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.3,
+   "status": "built",
+   "rank": 4
+  },
+  {
+   "id": "R03",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "ETA Scam Shield (extension)",
+   "pitch": "Браузерное расширение: предупреждает на сайтах-клонах ETA и ведёт на gov.uk. Проверка ссылок уже есть внутри London Ready.",
+   "pain_evidence": "23–25 млн ETA в год; посредники берут в 5–10 раз больше.",
+   "gap": "Предупреждения только в СМИ.",
+   "authority": "Home Office",
+   "data": "Список доменов",
+   "horizon": "now",
+   "audiences": [
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 4.2,
+   "status": "next",
+   "rank": 5
+  },
+  {
+   "id": "C03",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "London Life Events",
+   "pitch": "Переезд, рождение ребёнка, утрата, пожилой родитель → шаги и ссылки моего боро (по модели LifeSG).",
+   "pain_evidence": "Deloitte Government Trends 2026: услуги по жизненным событиям; лондонского аналога LifeSG нет.",
+   "gap": "33 разных сайта советов.",
+   "authority": "GLA, LOTI, боро",
+   "data": "Контент + postcodes.io",
+   "horizon": "next",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.15,
+   "status": "next",
+   "rank": 6
+  },
+  {
+   "id": "F01",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Free London Today",
+   "pitch": "Что бесплатно открыто рядом прямо сейчас, с учётом погоды, плюс вода, туалеты и библиотеки.",
+   "pain_evidence": "Бедность 26% лондонцев после оплаты жилья; 31% людей 16–29 одиноки (ONS); прогноз VisitBritain снижен до 44,2 млн визитов.",
+   "gap": "Списки «бесплатного» есть, но нет живого «открыто сейчас + погода + доступность + базовые нужды».",
+   "authority": "GLA, London & Partners",
+   "data": "Курированный набор + Open-Meteo + OSM (Overpass)",
+   "horizon": "now",
+   "audiences": [
+    "low",
+    "students",
+    "parents",
+    "tourists",
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 5,
+    "free": 5,
+    "reach": 5
+   },
+   "penalty": 0,
+   "total": 4.15,
+   "status": "built",
+   "rank": 7
+  },
+  {
+   "id": "F02",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Lonely No More",
+   "pitch": "Бесплатное и социальное рядом сегодня: парк-раны, клубы в библиотеках, волонтёрство.",
+   "pain_evidence": "Одиночество от 8% до 35% по разным измерениям; сервиса «бесплатно рядом сегодня» для всех возрастов нет (аналитик №1).",
+   "gap": "Мероприятия разбросаны по Eventbrite, сайтам боро и библиотек.",
+   "authority": "GLA, NHS (социальные назначения)",
+   "data": "Открытые календари + курирование",
+   "horizon": "next",
+   "audiences": [
+    "seniors",
+    "young",
+    "students",
+    "newcomers"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.15,
+   "status": "next",
+   "rank": 8
+  },
+  {
+   "id": "H03",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Heat Buddy",
+   "pitch": "Алерты о жаре, «проверь соседа», прохладные места и бесплатная вода рядом.",
+   "pain_evidence": "Heat Ready London (июнь 2026); ущерб до £36 млрд в год к 2050-м; 2 877 смертей, связанных с жарой, в Англии в мае–июне 2026 (предварительно).",
+   "gap": "Предупреждения Met Office и карты Cool Spaces живут отдельно.",
+   "authority": "GLA, UKHSA, боро",
+   "data": "Open-Meteo + списки Cool Spaces + OSM",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "parents",
+    "low",
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 4.05,
+   "status": "next",
+   "rank": 9
+  },
+  {
+   "id": "S03",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Spiking Response Card",
+   "pitch": "Что делать в первый час после подмешивания: помощь, сообщение в полицию, режим для персонала заведений.",
+   "pain_evidence": "Больше 2 700 заявлений за декабрь 2024 – ноябрь 2025, обвинение около 3%.",
+   "gap": "Пошаговой помощи после инцидента в найденных материалах нет.",
+   "authority": "Met, MOPAC, ночной царь",
+   "data": "Контент + каналы Met/BTP",
+   "horizon": "now",
+   "audiences": [
+    "students",
+    "women",
+    "young"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 4.0,
+   "status": "next",
+   "rank": 10
+  },
+  {
+   "id": "S06",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Scam Shield 70+",
+   "pitch": "Для пожилых и их семей: «банк никогда не пришлёт курьера», сценарий перезвона через 159, режим помощника семьи.",
+   "pain_evidence": "Courier fraud в Лондоне — больше £21 млн в 2025, жертвы в основном 70+.",
+   "gap": "Предупреждения есть, но нет простого инструмента в момент звонка.",
+   "authority": "Met (Falcon), Trading Standards",
+   "data": "Контент + 159/7726",
+   "horizon": "now",
+   "audiences": [
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 4.0,
+   "status": "next",
+   "rank": 11
+  },
+  {
+   "id": "R02",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "New Londoner: First 30 Days",
+   "pitch": "Регистрация у GP, NI number, банк, council tax, проезд, библиотека, ESOL — пошагово по моему боро.",
+   "pain_evidence": "Новоприбывшие — пробел в данных у всех аналитиков; боли «деньги» и «инфо/права» ×3 (матрица №4).",
+   "gap": "Кусочки есть на GOV.UK и сайтах боро, сквозного маршрута нет.",
+   "authority": "GLA, боро, NHS",
+   "data": "Контент + postcodes.io",
+   "horizon": "now",
+   "audiences": [
+    "newcomers",
+    "students"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.95,
+   "status": "next",
+   "rank": 12
+  },
+  {
+   "id": "F06",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Food Help Map",
+   "pitch": "Общественные холодильники, фудбанки и бесплатное питание рядом, без стигмы.",
+   "pain_evidence": "Детская бедность 35–37%; бедность 26–27% (Trust for London).",
+   "gap": "Trussell и Hubbub ведут свои карты отдельно.",
+   "authority": "GLA, боро",
+   "data": "Открытые списки организаций",
+   "horizon": "now",
+   "audiences": [
+    "low",
+    "students",
+    "parents"
+   ],
+   "scores": {
+    "citizen": 5,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.9,
+   "status": "backlog",
+   "rank": 13
+  },
+  {
+   "id": "M02",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Strike Day Planner",
+   "pitch": "Личный план на дни забастовок: какие из моих привычных поездок сломаются и чем их заменить.",
+   "pain_evidence": "8 забастовок RMT объявлено на ноябрь 2026 – февраль 2027; Elizabeth line ходит, но переполнена.",
+   "gap": "Citymapper и TfL Go показывают сбои в моменте, но не планируют заранее по моему распорядку.",
+   "authority": "TfL",
+   "data": "TfL Line Status + сохранённые маршруты на устройстве",
+   "horizon": "now",
+   "audiences": [
+    "commuters",
+    "night",
+    "students"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.9,
+   "status": "next",
+   "rank": 14
+  },
+  {
+   "id": "M03",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Heat-Smart Tube",
+   "pitch": "В жару предлагает маршрут по линиям с кондиционерами, прохладные станции и воду.",
+   "pain_evidence": "До 34 °C на Central line; Heat Ready London (июнь 2026) — первый городской план по жаре.",
+   "gap": "Маршрутизации с учётом жары нет ни у кого.",
+   "authority": "TfL, GLA",
+   "data": "TfL API + список составов с кондиционерами (проверить) + Open-Meteo",
+   "horizon": "next",
+   "audiences": [
+    "commuters",
+    "seniors",
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 5,
+    "feasible": 3,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.9,
+   "status": "backlog",
+   "rank": 15
+  },
+  {
+   "id": "R07",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Student Arrival Kit",
+   "pitch": "Международным студентам: eVisa, жильё без мошенников, GP, банк, студенческий Oyster.",
+   "pain_evidence": "Мошенничество с жильём: около 5 000 случаев, £9 млн в 2024; переход UK на eVisa сбивает с толку (гипотеза).",
+   "gap": "Университеты дают свои памятки.",
+   "authority": "Университеты, Home Office",
+   "data": "Контент",
+   "horizon": "now",
+   "audiences": [
+    "students",
+    "newcomers"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.9,
+   "status": "backlog",
+   "rank": 16
+  },
+  {
+   "id": "S10",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "AED & CPR Coach",
+   "pitch": "Ближайший дефибриллятор, метроном СЛР и запись волонтёром в GoodSAM.",
+   "pain_evidence": "Паттерн PulsePoint/GoodSAM: важна доля включённых алертов (в Линкольне 4 600 из 15 000).",
+   "gap": "GoodSAM и The Circuit уже есть; ценность в массовости обучения.",
+   "authority": "London Ambulance Service",
+   "data": "OSM emergency=defibrillator, GoodSAM",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 2,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.9,
+   "status": "backlog",
+   "rank": 17
+  },
+  {
+   "id": "F07",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Warm & Cool Spaces Live",
+   "pitch": "Тёплые места зимой и прохладные летом с часами работы и доступностью.",
+   "pain_evidence": "Heat Ready London (2026); Cool Spaces публикуют мэр и боро; тёплые места работают зимой.",
+   "gap": "Карты статичны, часы и загруженность не видны.",
+   "authority": "GLA, боро",
+   "data": "Списки GLA/боро",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "low",
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.85,
+   "status": "backlog",
+   "rank": 18
+  },
+  {
+   "id": "S07",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Rental Scam Check",
+   "pitch": "Перед переводом залога: проверка агента, защиты депозита и Rogue Landlord Checker в одном месте.",
+   "pain_evidence": "Около 5 000 случаев мошенничества с арендой и £9 млн потерь в 2024; студенты особенно уязвимы.",
+   "gap": "Проверки разбросаны по разным реестрам.",
+   "authority": "Trading Standards, мэр",
+   "data": "Публичные реестры (ссылки)",
+   "horizon": "now",
+   "audiences": [
+    "students",
+    "newcomers",
+    "young"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.85,
+   "status": "next",
+   "rank": 19
+  },
+  {
+   "id": "S08",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "E-bike Battery Safety",
+   "pitch": "Проверь батарею и зарядку, где утилизировать, что делать при перегреве.",
+   "pain_evidence": "Рекордные 206 пожаров e-bike и e-scooter в Лондоне в 2025, 5 погибших с 2023 (LFB).",
+   "gap": "Советы LFB есть, но не доходят до курьеров и арендаторов.",
+   "authority": "LFB, OPSS",
+   "data": "Контент LFB + отзывы товаров OPSS",
+   "horizon": "now",
+   "audiences": [
+    "night",
+    "young",
+    "low"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.85,
+   "status": "next",
+   "rank": 20
+  },
+  {
+   "id": "C02",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Benefit & Help Finder",
+   "pitch": "5 вопросов → что мне положено в Лондоне: Pension Credit, Freedom Pass, Zip, бесплатное питание, скидки на council tax.",
+   "pain_evidence": "£246,5 млн невостребованного Pension Credit в Лондоне в год; бедность 26–27%.",
+   "gap": "Национальные калькуляторы (Turn2us, entitledto) не знают лондонских льгот.",
+   "authority": "GLA, DWP, боро",
+   "data": "Правила льгот (требуют проверки)",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "low",
+    "parents",
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 5,
+    "gov": 5,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 5
+   },
+   "penalty": 0.5,
+   "total": 3.8,
+   "status": "next",
+   "rank": 21
+  },
+  {
+   "id": "C09",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Digital Buddy",
+   "pitch": "Режим помощника: родственник или волонтёр проходит услугу вместе с человеком, который не в сети.",
+   "pain_evidence": "2,2 млн полностью офлайн, 200 000 лондонцев 75+ никогда не были онлайн.",
+   "gap": "Помощь есть только офлайн в библиотеках.",
+   "authority": "GLA, боро, Age UK London",
+   "data": "Контент",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "disabled",
+    "newcomers"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 22
+  },
+  {
+   "id": "C11",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Council Tax Discount Check",
+   "pitch": "Скидка 25% для одиноко живущих, CTR и другие скидки по моему боро.",
+   "pain_evidence": "Бедность после оплаты жилья 26–27%.",
+   "gap": "Информация на 33 сайтах.",
+   "authority": "Боро",
+   "data": "Правила боро",
+   "horizon": "now",
+   "audiences": [
+    "low",
+    "seniors",
+    "young"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 23
+  },
+  {
+   "id": "F03",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Free Kids London",
+   "pitch": "Бесплатные занятия по возрасту ребёнка, площадки, пеленальные, планы на дождливый день.",
+   "pain_evidence": "Только 41% считают Лондон подходящим для детей; детская бедность 35–37%.",
+   "gap": "Подборки в медиа, без фильтров по возрасту, погоде и доступности.",
+   "authority": "GLA, боро",
+   "data": "Курированный набор + OSM",
+   "horizon": "now",
+   "audiences": [
+    "parents",
+    "kids",
+    "low"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 24
+  },
+  {
+   "id": "F09",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Water & Loo Finder",
+   "pitch": "Питьевая вода, туалеты и Changing Places в одной карте, с официальным реестром.",
+   "pain_evidence": "Закрыто 97 туалетов и открыто 32 за 10 лет (Age UK London, 2025); в Westminster 176 туалетов, в Hackney 18; Refill — больше 4 500 точек.",
+   "gap": "Toilet Map и Refill живут отдельно; официального открытого реестра нет.",
+   "authority": "Мэр, боро, Age UK London",
+   "data": "Toilet Map + Refill + OSM",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "disabled",
+    "parents",
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 2,
+    "feasible": 4,
+    "free": 5,
+    "reach": 5
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 25
+  },
+  {
+   "id": "H01",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Where Should I Go?",
+   "pitch": "Навигатор NHS: аптека (Pharmacy First), UTC, 111, GP или A&E — простым языком и на разных языках.",
+   "pain_evidence": "Около двух третей пациентов сталкиваются с админ-проблемами NHS (King's Fund, 2026); 60% взрослых не были у NHS-дантиста 2 года.",
+   "gap": "NHS 111 online есть, но не для гостей и новоприбывших и не на их языке.",
+   "authority": "NHS England (London)",
+   "data": "NHS открытые данные + контент",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 5,
+    "gov": 5,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 5
+   },
+   "penalty": 0.5,
+   "total": 3.8,
+   "status": "next",
+   "rank": 26
+  },
+  {
+   "id": "M07",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Buggy-Friendly London",
+   "pitch": "Маршруты для колясок: лифты, пеленальные, туалеты, станции без ступенек.",
+   "pain_evidence": "Транспорт ×3 боли у семей с малышами (матрица аналитика №4); step-free около трети метро.",
+   "gap": "Частично покрывается step-free режимом TfL Go, но без пеленальных и туалетов.",
+   "authority": "TfL",
+   "data": "TfL API + OSM changing_table",
+   "horizon": "now",
+   "audiences": [
+    "parents"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 27
+  },
+  {
+   "id": "S11",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "London Alerts (15 languages)",
+   "pitch": "Официальные push-алерты для гостей на 15 языках: забастовки, жара, крупные происшествия.",
+   "pain_evidence": "Японское приложение Safety tips шлёт алерты на 14–15 языках; в Лондоне аналога не найдено.",
+   "gap": "Алерты есть только на английском и в разных каналах.",
+   "authority": "Мэр, London & Partners, Met",
+   "data": "TfL + официальные уведомления",
+   "horizon": "next",
+   "audiences": [
+    "tourists",
+    "newcomers"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 5,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.8,
+   "status": "backlog",
+   "rank": 28
+  },
+  {
+   "id": "S09",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Basement Flood Alert",
+   "pitch": "Предупреждения о ливневых подтоплениях для жильцов подвальных квартир и план действий.",
+   "pain_evidence": "Около 56 000 подвальных домов в зоне высокого риска поверхностного подтопления, осведомлённость «dangerously low».",
+   "gap": "Floodline предупреждает о реках, а о ливневых подтоплениях плохо.",
+   "authority": "GLA, Environment Agency, боро",
+   "data": "EA flood-monitoring API + карты риска",
+   "horizon": "next",
+   "audiences": [
+    "low",
+    "young"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.7,
+   "status": "backlog",
+   "rank": 29
+  },
+  {
+   "id": "F10",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Library Superpowers",
+   "pitch": "Что библиотека даёт бесплатно: Wi-Fi, цифровая помощь, ESOL, тёплое место, электронные книги.",
+   "pain_evidence": "2,2 млн офлайн в стране и 200 000 лондонцев 75+ никогда не были онлайн.",
+   "gap": "Сайты библиотек у каждого боро разные.",
+   "authority": "Боро, Libraries Connected",
+   "data": "Сайты библиотек",
+   "horizon": "now",
+   "audiences": [
+    "seniors",
+    "newcomers",
+    "low"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.65,
+   "status": "backlog",
+   "rank": 30
+  },
+  {
+   "id": "H07",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Cold Homes Help",
+   "pitch": "Гранты на отопление, скидки на энергию и тёплые места рядом.",
+   "pain_evidence": "Энергетическая бедность — пробел исследования (не изучена из-за лимита поиска).",
+   "gap": "Калькуляторы есть у благотворительных организаций.",
+   "authority": "GLA (Warmer Homes), боро",
+   "data": "Ссылки на программы",
+   "horizon": "now",
+   "audiences": [
+    "low",
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.65,
+   "status": "backlog",
+   "rank": 31
+  },
+  {
+   "id": "C07",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "My Street Changes",
+   "pitch": "Планирование, перекрытия и стройки рядом простым языком.",
+   "pain_evidence": "Проект London Plan опубликован 16 июля 2026; Oxford Street становится пешеходной.",
+   "gap": "Данные есть (London Planning Datahub), понятного вида нет.",
+   "authority": "GLA, боро",
+   "data": "Planning Datahub + TfL street works",
+   "horizon": "next",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.6,
+   "status": "backlog",
+   "rank": 32
+  },
+  {
+   "id": "F05",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Outer London Gems",
+   "pitch": "Уводит гостей за пределы зоны 1: бесплатные музеи, парки и фермы внешних боро.",
+   "pain_evidence": "Цель London & Partners — распределять поток туристов; Mastercard: AI направляет к менее известным местам.",
+   "gap": "Туристические приложения крутятся вокруг центра.",
+   "authority": "London & Partners, боро",
+   "data": "Курированный набор",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "parents"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.55,
+   "status": "backlog",
+   "rank": 33
+  },
+  {
+   "id": "R05",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Offline Visitor Pack",
+   "pitch": "Офлайн-набор гостя на 10 языках: карта, основное, экстренное.",
+   "pain_evidence": "Жалобы на отсутствие офлайн-режима в TfL Go, особенно у туристов.",
+   "gap": "TfL Go без офлайна, Visit London app расходует трафик.",
+   "authority": "TfL, London & Partners",
+   "data": "Контент + офлайн-тайлы",
+   "horizon": "now",
+   "audiences": [
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.55,
+   "status": "backlog",
+   "rank": 34
+  },
+  {
+   "id": "F04",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Student Survival London",
+   "pitch": "Бесплатная еда, скидки на проезд, бесплатные события и помощь в одном месте.",
+   "pain_evidence": "Студентам не хватает около £500 в месяц, 59% иногда пропускают еду (средн. уверенность).",
+   "gap": "Too Good To Go и Olio работают по отдельности.",
+   "authority": "Университеты, GLA",
+   "data": "Ссылки + курирование",
+   "horizon": "now",
+   "audiences": [
+    "students"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.5,
+   "status": "backlog",
+   "rank": 35
+  },
+  {
+   "id": "H06",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Outdoor Worker Heat Map",
+   "pitch": "Тень, вода и туалеты для курьеров и строителей в жару.",
+   "pain_evidence": "Ночные и сменные работники — около четверти рабочей силы; жара 2026 обошлась примерно в £2,5 млрд потерь.",
+   "gap": "Под работающих на улице никто не делает.",
+   "authority": "GLA, профсоюзы",
+   "data": "OSM + Open-Meteo",
+   "horizon": "next",
+   "audiences": [
+    "night",
+    "low"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.5,
+   "status": "backlog",
+   "rank": 36
+  },
+  {
+   "id": "R12",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Show-to-Staff Cards",
+   "pitch": "Карточки «покажи персоналу»: аллергии, нужды доступности, адрес — по-английски.",
+   "pain_evidence": "Языковой барьер у гостей и новоприбывших (гипотеза).",
+   "gap": "Переводчики есть, готовых карточек под Лондон нет.",
+   "authority": "—",
+   "data": "Контент",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "newcomers",
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 5,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.5,
+   "status": "backlog",
+   "rank": 37
+  },
+  {
+   "id": "S04",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Watch-Safe for Visitors",
+   "pitch": "Модуль для гостей Mayfair/Knightsbridge: как не стать целью грабежа ради часов, что делать после.",
+   "pain_evidence": "97 случаев за 6 месяцев, нож в 20% (ITV, октябрь 2026); основные цели — гости из стран Персидского залива.",
+   "gap": "Советы есть только в прессе.",
+   "authority": "Met, Westminster",
+   "data": "Контент + police.uk",
+   "horizon": "now",
+   "audiences": [
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.45,
+   "status": "backlog",
+   "rank": 38
+  },
+  {
+   "id": "C06",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Closing the Loop",
+   "pitch": "Публичный статус обращений и сроки ответа по боро.",
+   "pain_evidence": "Антипаттерн «сообщить без обратной связи» (StreetSafe).",
+   "gap": "FixMyStreet показывает статус частично.",
+   "authority": "Боро",
+   "data": "FixMyStreet/Open311",
+   "horizon": "next",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 39
+  },
+  {
+   "id": "F08",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Free Sport & Play",
+   "pitch": "Уличные тренажёры, бесплатные корты, детские бесплатные заплывы, parkrun.",
+   "pain_evidence": "Цели здоровья GLA; стоимость жизни (гипотеза для этого трека).",
+   "gap": "Данные у каждого боро свои.",
+   "authority": "Боро, Sport England",
+   "data": "OSM leisure=* + сайты боро",
+   "horizon": "now",
+   "audiences": [
+    "teens",
+    "young",
+    "low"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 40
+  },
+  {
+   "id": "H08",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Free Health Checks Near Me",
+   "pitch": "Бесплатные проверки давления и NHS Health Check 40–74 в аптеках рядом.",
+   "pain_evidence": "Стратегия неравенства в здоровье GLA 2025–2028.",
+   "gap": "Информация на сайте NHS разрознена.",
+   "authority": "NHS, GLA",
+   "data": "NHS данные",
+   "horizon": "now",
+   "audiences": [
+    "young",
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 41
+  },
+  {
+   "id": "M04",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Delay Refund Finder",
+   "pitch": "Читает выгрузку поездок contactless на телефоне и находит задержки 15+ минут для компенсации.",
+   "pain_evidence": "Возвраты и штрафы: A5×S2×U4 у аналитика №1; в среднем по стране подают 45% (Transport Focus); доля по TfL неизвестна (нужен FOI).",
+   "gap": "Подача только вручную через аккаунт TfL, подсказок нет.",
+   "authority": "London TravelWatch",
+   "data": "CSV истории поездок (на устройстве) + TfL Journey Planner",
+   "horizon": "now",
+   "audiences": [
+    "commuters"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 42
+  },
+  {
+   "id": "M05",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Bus Reliability Mirror",
+   "pitch": "Публичное «зеркало» надёжности автобусов по маршрутам + отметки пассажиров о пропущенных рейсах.",
+   "pain_evidence": "Средняя скорость автобусов 9,17 mph в 2024/25 против 10,27 в 2020/21; 33% говорят, что медленные автобусы мешают ездить чаще.",
+   "gap": "Данные о скорости есть у TfL, но не в понятном пассажиру виде по моему маршруту.",
+   "authority": "TfL, боро",
+   "data": "TfL Arrivals API + краудсорс",
+   "horizon": "next",
+   "audiences": [
+    "commuters",
+    "seniors",
+    "low"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 43
+  },
+  {
+   "id": "R06",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Accessible Visit Planner",
+   "pitch": "Достопримечательности без ступенек, доступные туалеты и Changing Places рядом.",
+   "pain_evidence": "У Visit London app в App Store не указаны функции доступности.",
+   "gap": "Euan's Guide существует, но без связки с транспортом.",
+   "authority": "London & Partners, TfL",
+   "data": "Euan's Guide/OSM + TfL",
+   "horizon": "now",
+   "audiences": [
+    "disabled",
+    "seniors",
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 44
+  },
+  {
+   "id": "R08",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Event & Closure Calendar",
+   "pitch": "Забастовки, марафон, карнавал, перекрытия: что учесть в мои даты поездки.",
+   "pain_evidence": "Забастовки объявлены до февраля 2027; Oxford Street становится пешеходной (решение февраля 2026).",
+   "gap": "Источники раздроблены.",
+   "authority": "TfL, GLA, Westminster",
+   "data": "TfL + календари событий",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "commuters"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.4,
+   "status": "backlog",
+   "rank": 45
+  },
+  {
+   "id": "C04",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Bin Day London",
+   "pitch": "Единые напоминания о вывозе мусора и правилах переработки по адресу.",
+   "pain_evidence": "33 разные системы (гипотеза о боли; данные не собирались).",
+   "gap": "Приложения есть у части боро.",
+   "authority": "Боро",
+   "data": "API боро (раздроблены)",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 2,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 46
+  },
+  {
+   "id": "C05",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Renters' Rights Helper",
+   "pitch": "Права арендатора по новому закону, сырость и плесень, проверка депозита.",
+   "pain_evidence": "Аренда — 41,6% дохода арендаторов (ONS 2024); средняя £2 332 к августу 2026.",
+   "gap": "Shelter и Citizens Advice дают советы, но не пошаговые сценарии.",
+   "authority": "Мэр, боро",
+   "data": "Контент (юридическая проверка)",
+   "horizon": "now",
+   "audiences": [
+    "young",
+    "students",
+    "low"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0.5,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 47
+  },
+  {
+   "id": "H05",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Teen Mind London",
+   "pitch": "Вход для подростков в бесплатную помощь с ментальным здоровьем.",
+   "pain_evidence": "Онлайн-вред — приоритет мэра (52–55% считают соцсети вредными для детей до 18).",
+   "gap": "Good Thinking (NHS London) уже есть.",
+   "authority": "NHS London, мэр",
+   "data": "Справочники",
+   "horizon": "now",
+   "audiences": [
+    "teens"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 2,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 48
+  },
+  {
+   "id": "M09",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Last Train Alarm",
+   "pitch": "Напоминает, что последняя пересадка домой скоро уйдёт, и предлагает ночной автобус.",
+   "pain_evidence": "Ночные работники — около четверти рабочей силы; 20% чувствуют себя небезопасно по дороге домой (UCL, 2025).",
+   "gap": "Расписания есть, проактивного напоминания нет.",
+   "authority": "TfL",
+   "data": "TfL Timetable/Journey Planner",
+   "horizon": "now",
+   "audiences": [
+    "night",
+    "students",
+    "women"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 49
+  },
+  {
+   "id": "M10",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Cap & Clash Coach",
+   "pitch": "Объясняет капы и «столкновение карт», помогает найти двойное списание.",
+   "pain_evidence": "Двойные списания и сбои валидаторов: A4×S3×U3 у аналитика №1; туристы путают карты и устройства.",
+   "gap": "TfL объясняет на сайте, но не помогает разобраться в моей выписке.",
+   "authority": "TfL",
+   "data": "Правила TfL + ручной ввод",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "commuters"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 50
+  },
+  {
+   "id": "R10",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Family Trip Planner",
+   "pitch": "Бесплатный проезд детей, пеленальные и площадки у достопримечательностей.",
+   "pain_evidence": "Семьи с малышами: транспорт и деньги — сильнейшие боли (матрица №4).",
+   "gap": "Разрозненные блоги.",
+   "authority": "TfL, London & Partners",
+   "data": "Контент + OSM",
+   "horizon": "now",
+   "audiences": [
+    "parents",
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.35,
+   "status": "backlog",
+   "rank": 51
+  },
+  {
+   "id": "H02",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "NHS Dentist Finder",
+   "pitch": "Кто из NHS-дантистов рядом принимает новых пациентов.",
+   "pain_evidence": "60% взрослых лондонцев (>4,2 млн) не были у NHS-дантиста 2 года (до июня 2024).",
+   "gap": "Данные на сайте NHS неудобны и часто устаревшие.",
+   "authority": "NHS England",
+   "data": "NHS Service Search API (нужен ключ)",
+   "horizon": "now",
+   "audiences": [
+    "low",
+    "parents",
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 2,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0.5,
+   "total": 3.3,
+   "status": "backlog",
+   "rank": 52
+  },
+  {
+   "id": "M12",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "LockSafe Bikes",
+   "pitch": "Где безопаснее оставить велосипед: защищённые парковки + карта краж + регистрация в BikeRegister.",
+   "pain_evidence": "Кражи велосипедов и e-bike: A3×S2×U4 у аналитика №1; рост велопоездок до ~1,5 млн в день.",
+   "gap": "Отдельные карты парковок есть, связки с данными о кражах нет.",
+   "authority": "TfL, Met",
+   "data": "TfL Cycling Infrastructure Database + police.uk",
+   "horizon": "now",
+   "audiences": [
+    "commuters",
+    "students"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.3,
+   "status": "backlog",
+   "rank": 53
+  },
+  {
+   "id": "S12",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Youth Safe Spaces",
+   "pitch": "Карта молодёжных клубов, безопасных мест и наставников для подростков.",
+   "pain_evidence": "Страх ножевого насилия у молодёжи; закрытие молодёжных клубов (аналитики №1, №4).",
+   "gap": "Каталоги есть у отдельных боро.",
+   "authority": "MOPAC (VRU), боро",
+   "data": "Справочники боро",
+   "horizon": "now",
+   "audiences": [
+    "teens"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.3,
+   "status": "backlog",
+   "rank": 54
+  },
+  {
+   "id": "H09",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Shade Map",
+   "pitch": "Карта тени и деревьев для прогулок в жару.",
+   "pain_evidence": "Жара как новый главный климатический риск Лондона (Heat Ready London).",
+   "gap": "Только исследовательские карты.",
+   "authority": "GLA",
+   "data": "Данные о деревьях + солнце",
+   "horizon": "future",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.25,
+   "status": "backlog",
+   "rank": 55
+  },
+  {
+   "id": "F11",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Culture Lates Free",
+   "pitch": "Бесплатные вечерние мероприятия музеев и концертных залов.",
+   "pain_evidence": "Гипотеза: молодым нужен недорогой досуг (54% 18–34 думали о переезде из-за стоимости).",
+   "gap": "Анонсы разбросаны.",
+   "authority": "GLA (культура)",
+   "data": "Календари площадок",
+   "horizon": "now",
+   "audiences": [
+    "young",
+    "students"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.2,
+   "status": "backlog",
+   "rank": 56
+  },
+  {
+   "id": "M06",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Superloop Nudge",
+   "pitch": "Подсказывает жителям внешнего Лондона, когда орбитальный экспресс Superloop быстрее радиальной поездки.",
+   "pain_evidence": "Коридоры Superloop растут на 12% быстрее остальной сети; маршруты SL11 и SL12 новые (2026).",
+   "gap": "Планировщики не продвигают Superloop как привычку.",
+   "authority": "TfL",
+   "data": "TfL Journey Planner",
+   "horizon": "now",
+   "audiences": [
+    "commuters"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.2,
+   "status": "backlog",
+   "rank": 57
+  },
+  {
+   "id": "R04",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Gulf Guest Companion",
+   "pitch": "Модуль на арабском, работает офлайн: halal, молельные места, безопасность часов и наличных, помощь на арабском.",
+   "pain_evidence": "Гости из Персидского залива — цель грабежей ради часов; рынок упал на 38% в 2026 из-за войны.",
+   "gap": "Арабоязычного офлайн-гида не найдено.",
+   "authority": "London & Partners, Met",
+   "data": "Контент",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "lgbtq"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 3,
+    "gap": 4,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.2,
+   "status": "backlog",
+   "rank": 58
+  },
+  {
+   "id": "C08",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "60-Second Consultations",
+   "pitch": "Участие в консультациях по модели Decidim: суть, карта, быстрый отзыв.",
+   "pain_evidence": "Decidim (Барселона): больше 32 000 участников (2019); следующий этап London Plan — EiP 2027.",
+   "gap": "Консультации длинные и непонятные.",
+   "authority": "GLA, боро",
+   "data": "Decidim (open source)",
+   "horizon": "next",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.15,
+   "status": "backlog",
+   "rank": 59
+  },
+  {
+   "id": "C12",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Lost & Found London",
+   "pitch": "Единый поиск потерянного: TfL, полиция, заведения.",
+   "pain_evidence": "Uber Lost & Found по Лондону данных не дал; потребность — гипотеза.",
+   "gap": "У TfL отдельный сервис находок.",
+   "authority": "TfL, Met",
+   "data": "Формы TfL",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 2,
+    "free": 5,
+    "reach": 4
+   },
+   "penalty": 0,
+   "total": 3.15,
+   "status": "backlog",
+   "rank": 60
+  },
+  {
+   "id": "R11",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Ask London (AI)",
+   "pitch": "Многоязычный ИИ-помощник поверх официальных источников: локальный слой к GOV.UK Chat.",
+   "pain_evidence": "GOV.UK Chat работает с весны 2026, но не знает лондонских услуг; LOTI запускает agentic AI для боро.",
+   "gap": "Национальный чат есть, лондонского слоя нет.",
+   "authority": "GLA, LOTI",
+   "data": "LLM + официальные страницы",
+   "horizon": "future",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 4,
+    "gap": 4,
+    "feasible": 3,
+    "free": 2,
+    "reach": 4
+   },
+   "penalty": 0.5,
+   "total": 3.15,
+   "status": "next",
+   "rank": 61
+  },
+  {
+   "id": "S02",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Safe Journey Home",
+   "pitch": "Поделиться поездкой, места, где можно переждать, ночные автобусы, текст в BTP 61016 — без обещаний «безопасного маршрута».",
+   "pain_evidence": "58% женщин чувствуют себя в безопасности, гуляя одни после темноты, против 68% всех (MOPAC, 2025/26); 4 593 VAWG-преступления на сети TfL в 2025.",
+   "gap": "Много стартапов (Walkable, Soter, Hollie Guard), но без официальных данных они не масштабируются.",
+   "authority": "Мэр (VAWG 2026–29), BTP, TfL",
+   "data": "TfL + открытые заведения (OSM) + 61016",
+   "horizon": "now",
+   "audiences": [
+    "women",
+    "night",
+    "students",
+    "lgbtq"
+   ],
+   "scores": {
+    "citizen": 4,
+    "gov": 5,
+    "gap": 2,
+    "feasible": 3,
+    "free": 4,
+    "reach": 4
+   },
+   "penalty": 0.5,
+   "total": 3.15,
+   "status": "next",
+   "rank": 62
+  },
+  {
+   "id": "H04",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Clean Air Walks",
+   "pitch": "Пешие маршруты в школу по менее загрязнённым улицам для детей и астматиков.",
+   "pain_evidence": "Смертность, связанная с загрязнением воздуха, снизилась примерно на 40% (2019→2024); продукт нужен в основном чувствительным группам.",
+   "gap": "London Air и Breathe London дают данные, но не маршруты.",
+   "authority": "GLA, TfL",
+   "data": "LAEI/Breathe London + OSM",
+   "horizon": "next",
+   "audiences": [
+    "kids",
+    "parents"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 4,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.05,
+   "status": "backlog",
+   "rank": 63
+  },
+  {
+   "id": "H10",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Quiet Spaces Map",
+   "pitch": "Тихие места и сенсорные комнаты для нейроотличных людей.",
+   "pain_evidence": "Сенсорная перегрузка — боль нейроотличных (аналитик №4).",
+   "gap": "Разрозненные списки.",
+   "authority": "GLA, боро",
+   "data": "Краудсорс",
+   "horizon": "now",
+   "audiences": [
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 3,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.05,
+   "status": "backlog",
+   "rank": 64
+  },
+  {
+   "id": "H11",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "A&E Wait Explainer",
+   "pitch": "Сколько ждать в A&E и есть ли быстрее рядом (UTC).",
+   "pain_evidence": "Долгое ожидание в A&E — A4×S5×U3 у аналитика №1.",
+   "gap": "Данные публикуются с задержкой и не по моему месту.",
+   "authority": "NHS England",
+   "data": "NHS статистика",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 2,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 3.05,
+   "status": "backlog",
+   "rank": 65
+  },
+  {
+   "id": "M11",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Robotaxi Passenger Guide",
+   "pitch": "Нейтральный гид пассажира роботакси: как узнать машину, права, жалобы, ночная безопасность.",
+   "pain_evidence": "Uber + Wayve запустили поездки с оператором в Лондоне 3 сентября 2026; полное развёртывание ожидается в 2027.",
+   "gap": "Информация только от операторов.",
+   "authority": "TfL (лицензирование PHV)",
+   "data": "Регламенты TfL/DfT",
+   "horizon": "future",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 3,
+    "gap": 4,
+    "feasible": 3,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 3.05,
+   "status": "backlog",
+   "rank": 66
+  },
+  {
+   "id": "S05",
+   "track": "safety",
+   "track_ru": "Безопасность",
+   "title": "Women's Safety Audit",
+   "pitch": "Краудсорс мест, где небезопасно (свет, тупики), для городских аудитов — с публичной обратной связью.",
+   "pain_evidence": "В стратегии VAWG 2026–29 (£37,4 млн) заложены аудиты безопасности в боро; Assembly просит ежегодный опрос о транспорте.",
+   "gap": "StreetSafe (Home Office) собирает отметки, но не показывает, что изменилось.",
+   "authority": "Мэр, боро",
+   "data": "Краудсорс с модерацией",
+   "horizon": "next",
+   "audiences": [
+    "women",
+    "teens"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 5,
+    "gap": 3,
+    "feasible": 3,
+    "free": 4,
+    "reach": 3
+   },
+   "penalty": 0.5,
+   "total": 3.0,
+   "status": "backlog",
+   "rank": 67
+  },
+  {
+   "id": "M08",
+   "track": "move",
+   "track_ru": "Передвижение",
+   "title": "Underground Signal Map",
+   "pitch": "Карта новой связи 4G/5G в тоннелях и подсказки, как вызвать помощь под землёй.",
+   "pain_evidence": "Около 60% станций уже с 4G/5G, завершение планировалось к концу 2026 (не подтверждено).",
+   "gap": "Покрытие публикуется пресс-релизами, единой карты нет.",
+   "authority": "TfL",
+   "data": "Пресс-данные TfL + краудсорс",
+   "horizon": "future",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 3,
+    "gap": 3,
+    "feasible": 3,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 2.95,
+   "status": "backlog",
+   "rank": 68
+  },
+  {
+   "id": "H12",
+   "track": "health",
+   "track_ru": "Здоровье и климат",
+   "title": "Changing Places Finder",
+   "pitch": "Туалеты Changing Places для людей с тяжёлой инвалидностью.",
+   "pain_evidence": "Туалеты — главная боль 65+ и людей с инвалидностью.",
+   "gap": "Карта changing-places.org уже есть.",
+   "authority": "Боро",
+   "data": "changing-places.org",
+   "horizon": "now",
+   "audiences": [
+    "disabled"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 3,
+    "gap": 1,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 2.85,
+   "status": "backlog",
+   "rank": 69
+  },
+  {
+   "id": "F12",
+   "track": "free",
+   "track_ru": "Бесплатный Лондон",
+   "title": "Evensong & Lunchtime Concerts",
+   "pitch": "Календарь бесплатных служб с хорами и обеденных концертов.",
+   "pain_evidence": "Гипотеза: малоизвестный бесплатный ресурс для гостей и пожилых.",
+   "gap": "Информация только на сайтах соборов.",
+   "authority": "Церкви, London & Partners",
+   "data": "Расписания площадок",
+   "horizon": "now",
+   "audiences": [
+    "tourists",
+    "seniors"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 2,
+    "gap": 3,
+    "feasible": 4,
+    "free": 5,
+    "reach": 2
+   },
+   "penalty": 0,
+   "total": 2.8,
+   "status": "backlog",
+   "rank": 70
+  },
+  {
+   "id": "C10",
+   "track": "city",
+   "track_ru": "Город и я",
+   "title": "Who Represents Me",
+   "pitch": "Мои депутаты, член Ассамблеи и советники и как к ним обратиться.",
+   "pain_evidence": "Доверие к службам 45–48% (опросы).",
+   "gap": "WriteToThem и TheyWorkForYou (mySociety) уже есть.",
+   "authority": "—",
+   "data": "mySociety",
+   "horizon": "now",
+   "audiences": [
+    "all"
+   ],
+   "scores": {
+    "citizen": 2,
+    "gov": 3,
+    "gap": 1,
+    "feasible": 4,
+    "free": 5,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 2.7,
+   "status": "backlog",
+   "rank": 71
+  },
+  {
+   "id": "R09",
+   "track": "ready",
+   "track_ru": "До поездки",
+   "title": "Luggage & Locker Finder",
+   "pitch": "Где оставить багаж между выездом из отеля и рейсом.",
+   "pain_evidence": "Камер хранения на вокзалах и в метро почти нет (аналитик №2).",
+   "gap": "Коммерческие сервисы (Stasher и др.) уже есть.",
+   "authority": "Network Rail, TfL",
+   "data": "Коммерческие API",
+   "horizon": "now",
+   "audiences": [
+    "tourists"
+   ],
+   "scores": {
+    "citizen": 3,
+    "gov": 2,
+    "gap": 2,
+    "feasible": 3,
+    "free": 4,
+    "reach": 3
+   },
+   "penalty": 0,
+   "total": 2.7,
+   "status": "backlog",
+   "rank": 72
+  }
+ ]
+}

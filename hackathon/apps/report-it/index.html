@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report It Right</title>
+<meta name="description" content="Send any London problem to the right place first time. No wrong door.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../shared/civic.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="app">
+  <header class="plate">
+    <div><h1>Report It Right</h1><p class="plate-sub">No wrong door for London</p></div>
+    <div class="plate-actions">
+      <button class="icon-btn" id="open-settings" type="button" aria-label="Settings" aria-haspopup="dialog"></button>
+      <span class="district">E16</span>
+    </div>
+  </header>
+
+  <!-- 1. REPORT -->
+  <section id="view-report" class="stack-lg" aria-label="Report a problem">
+    <div id="home" class="stack-lg">
+      <section class="card tint-bad gate" aria-labelledby="gate-h">
+        <h2 id="gate-h">Is someone in danger, or is a crime happening now?</h2>
+        <a class="btn btn-danger btn-block btn-xl" href="tel:999">Call 999</a>
+        <div class="copyline"><span><span class="mono">999</span> <span class="small muted">(112 also works)</span></span><button class="btn btn-sm" type="button" data-copy="999" aria-label="Copy 999">Copy</button></div>
+        <p>Can't speak? Call 999 from a mobile and stay on the line. When a recorded message asks, press 55 to be put through to the police.</p>
+        <p class="small">Deaf or speech-impaired? Register for emergencySMS in advance: text 'register' to 999.</p>
+      </section>
+
+      <section class="card" aria-labelledby="describe-h">
+        <h2 id="describe-h">Describe it in your own words</h2>
+        <div class="field">
+          <label for="describe" class="sr-only">What happened</label>
+          <textarea id="describe" class="textarea" rows="3" placeholder="For example: someone keeps following me on the Tube" autocomplete="off"></textarea>
+          <p class="hint">Matching happens on your phone. Nothing is sent anywhere.</p>
+        </div>
+        <div id="suggest" class="stack" aria-live="polite"></div>
+        <div id="claude-wrap" hidden class="stack">
+          <button id="claude-btn" class="btn btn-ghost btn-block" type="button">Ask Claude to suggest</button>
+          <p class="hint">This sends your description to Claude, only when you press the button.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="grid-h" class="stack">
+        <h2 id="grid-h">Or choose what happened</h2>
+        <div id="grid" class="cat-grid"></div>
+      </section>
+    </div>
+    <div id="flow" class="stack-lg" hidden aria-live="polite"></div>
+    <div id="data-error" class="banner warn" hidden>The reporting guide could not load. Reload the page. If you are in danger, call 999.</div>
+  </section>
+
+  <!-- 2. TEXT BTP -->
+  <section id="view-btp" class="stack-lg" hidden aria-label="Text British Transport Police">
+    <div class="stack">
+      <h2>Text British Transport Police</h2>
+      <p class="lead">Build a short, clear message for 61016. It is a discreet text service for non-emergencies on trains, Tube, Overground, Elizabeth line, DLR, trams and at stations.</p>
+      <div class="sos"><span>61016 is for non-emergencies. In an emergency call 999.</span><a class="sos-num" href="tel:999">999</a></div>
+    </div>
+    <form id="btp-form" class="card stack" autocomplete="off" onsubmit="return false">
+      <div class="field"><label for="b-what">What happened</label>
+        <select id="b-what" class="select">
+          <option>Harassment</option><option>Sexual harassment</option><option>Theft</option><option>Violence</option><option>Suspicious item</option><option>Other</option>
+        </select></div>
+      <div class="field"><label for="b-free">A few words about it (optional)</label>
+        <input id="b-free" class="input" type="text" maxlength="100" placeholder="For example: man touching me"></div>
+      <div class="field"><label for="b-where">Line or station</label>
+        <input id="b-where" class="input" type="text" list="dl-places" placeholder="For example: Central line, or Stratford">
+        <datalist id="dl-places"></datalist></div>
+      <div class="field"><label for="b-toward">Heading towards (station)</label>
+        <input id="b-toward" class="input" type="text" list="dl-stations" placeholder="For example: Epping">
+        <datalist id="dl-stations"></datalist></div>
+      <div class="field"><label for="b-car">Carriage number</label>
+        <input id="b-car" class="input" type="text" inputmode="numeric" maxlength="12" aria-describedby="b-car-h">
+        <p class="hint" id="b-car-h">Usually printed on the inside of the carriage, near the doors or at the end.</p></div>
+      <div class="field"><label for="b-time">Time (London time)</label>
+        <div class="cluster"><input id="b-time" class="input time-input" type="time"><button id="b-now" class="btn btn-sm btn-ghost" type="button">Use time now</button></div></div>
+      <div class="field"><label for="b-person">Description of the person (optional)</label>
+        <input id="b-person" class="input" type="text" maxlength="100" placeholder="For example: tall, grey hoodie, black rucksack"></div>
+    </form>
+    <section class="card stack" aria-labelledby="prev-h">
+      <h3 id="prev-h">Your message</h3>
+      <p id="b-preview" class="sms-preview mono"></p>
+      <p id="b-count" class="small muted" aria-live="polite"></p>
+      <div class="cluster">
+        <button id="b-copy" class="btn btn-accent" type="button">Copy text</button>
+        <a id="b-sms" class="btn btn-ghost" href="sms:61016">Open messages</a>
+      </div>
+      <p class="hint">Copy text always works: paste it into your messages app and send it to 61016. Open messages may not work on every device.</p>
+    </section>
+  </section>
+
+  <!-- 3. MY REPORTS -->
+  <section id="view-reports" class="stack-lg" hidden aria-label="My reports">
+    <div class="stack">
+      <h2>My reports</h2>
+      <p class="lead">A private note of what you reported and where. Saved only on this device.</p>
+    </div>
+    <div id="rep-list" class="stack"></div>
+    <button id="rep-copy" class="btn btn-ghost btn-block" type="button">Copy all as text</button>
+  </section>
+
+  <!-- 4. ABOUT -->
+  <section id="view-about" class="stack-lg" hidden aria-label="About">
+    <div class="stack">
+      <h2>About Report It Right</h2>
+      <p class="lead">London has no single number for reporting problems. Services are split across 32 boroughs and the City of London, TfL, the Met, British Transport Police, City of London Police, the NHS and utilities. Report It Right sends you to the right one first time.</p>
+    </div>
+    <section class="card stack">
+      <h3>The principle: no wrong door</h3>
+      <p>Whatever you choose, you get one clear next step, other ways to report, what to include, and support. You should never need to know who is responsible first.</p>
+    </section>
+    <section class="card stack">
+      <h3>Why this matters</h3>
+      <p><strong class="num">4,593</strong> violence against women and girls offences were recorded on the TfL network in 2025, and about 3% led to a charge (London Assembly figures reported in 2026, medium confidence). British Transport Police's discreet text service, 61016, exists, but under-reporting is high.</p>
+      <p>Fewer people should give up because they do not know where to go. Better routing can mean fewer misdirected 999 and 101 calls, more reports of under-reported crime and better data. It also works alongside FixMyStreet.</p>
+    </section>
+    <section class="card stack">
+      <h3>It works elsewhere</h3>
+      <ul class="plain">
+        <li>Singapore OneService: over 620,000 users and 2.5 million+ reports (MND Singapore, 2024).</li>
+        <li>NYC311: 36.5 million contacts in 2025, 2.6 million through the app (NYC Mayor's Management Report 2026).</li>
+        <li>UK FixMyStreet: over 1.1 million reports in 2025 (SocietyWorks).</li>
+      </ul>
+      <p class="small muted">London context from the hackathon research synthesis.</p>
+    </section>
+    <section class="card stack">
+      <h3>Who it helps</h3>
+      <p>Everyone. Especially women and girls, older people facing scams, LGBTQ+ and faith communities facing hate incidents, newcomers, and people who do not want to phone.</p>
+    </section>
+    <section class="card tint-info stack">
+      <h3>Privacy</h3>
+      <p>No accounts, no analytics, no cookies, no trackers. Nothing leaves your phone except the postcode lookup, and only when you ask for it. Your saved reports stay on this device. If you share this phone, you can delete them in My reports.</p>
+      <p>The optional "Ask Claude to suggest" button only appears where Claude is available. It sends your description when you press it.</p>
+    </section>
+    <section class="card tint-warn stack">
+      <h3>Disclaimer</h3>
+      <p>This is a prototype. It is not an official service and does not send reports for you. Numbers and links can change, and a few are marked "check". In an emergency call 999.</p>
+    </section>
+    <footer class="foot">
+      <p>Prototype from London Civic Hack 2026. Not affiliated with TfL, the Mayor of London, the Metropolitan Police or the NHS.</p>
+      <p>Postcode lookup by <a href="https://postcodes.io" target="_blank" rel="noopener">postcodes.io</a>.</p>
+    </footer>
+  </section>
+</main>
+
+<div class="tabbar"><nav aria-label="Sections">
+  <a class="tab" href="#report" data-tab="report"><span data-icon="shield"></span>Report</a>
+  <a class="tab" href="#btp" data-tab="btp"><span data-icon="phone"></span>Text BTP</a>
+  <a class="tab" href="#reports" data-tab="reports"><span data-icon="list"></span>My reports</a>
+  <a class="tab" href="#about" data-tab="about"><span data-icon="info"></span>About</a>
+</nav></div>
+<script src="../shared/civic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

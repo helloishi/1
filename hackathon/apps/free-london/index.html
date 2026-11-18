@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free London Today</title>
+<meta name="description" content="What can I do for free, near me, right now? Free places, water, toilets and libraries in London.">
+<meta name="theme-color" content="#F2F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1013" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../shared/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="../shared/civic.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="app">
+  <header class="plate">
+    <div><h1>Free London Today</h1><p class="plate-sub">What can I do for free, near me, right now?</p></div>
+    <div class="plate-right">
+      <span class="district">WC1B</span>
+      <button class="icon-btn" id="open-settings" type="button" aria-label="Settings and About" aria-haspopup="dialog"></button>
+    </div>
+  </header>
+
+  <div id="offline-banner" class="banner warn" role="status" hidden>You are offline. Saved places and the list of free places still work. Weather and the live map need a connection.</div>
+
+  <section id="view-today" class="stack-lg" aria-labelledby="h-today" hidden>
+    <h2 id="h-today" class="sr-only">Today</h2>
+    <div class="card" id="where">
+      <div class="spread">
+        <div class="grow"><span class="eyebrow">Showing places near</span><p class="h3" id="where-label">Central London</p></div>
+        <button class="btn btn-sm" id="use-loc" type="button">Use my location</button>
+      </div>
+      <details class="where-more">
+        <summary>Choose an area or postcode</summary>
+        <div class="stack where-form">
+          <div class="field"><label for="area-pick">Area</label><select class="select" id="area-pick"></select></div>
+          <form class="field" id="pc-form" novalidate>
+            <label for="pc-input">Postcode</label>
+            <div class="cluster nowrap"><input class="input grow" id="pc-input" type="text" inputmode="text" autocomplete="postal-code" placeholder="e.g. WC1B 3DG"><button class="btn btn-sm" type="submit">Go</button></div>
+            <p class="hint" id="pc-hint">Postcode lookup needs a connection. Your location stays on your device.</p>
+          </form>
+        </div>
+      </details>
+      <p class="small muted" id="loc-note" aria-live="polite"></p>
+    </div>
+    <div id="weather" aria-live="polite"></div>
+    <div class="stack">
+      <h2>Open now near you</h2>
+      <div id="open-now" class="stack" aria-live="polite"></div>
+    </div>
+    <div class="stack">
+      <h2>Make a free half-day</h2>
+      <div id="half-day" class="stack" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="view-explore" class="stack-lg" aria-labelledby="h-explore" hidden>
+    <h2 id="h-explore" class="sr-only">Explore</h2>
+    <div class="stack">
+      <div class="eyebrow">Filters</div>
+      <div class="chips" id="filter-chips" role="group" aria-label="Filters"></div>
+      <div class="eyebrow">Categories</div>
+      <div class="chips" id="cat-chips" role="group" aria-label="Categories"></div>
+    </div>
+    <div class="spread">
+      <p class="small muted" id="explore-count" aria-live="polite"></p>
+      <div class="seg" role="group" aria-label="View as">
+        <button type="button" class="seg-btn" id="seg-list" aria-pressed="true">List</button>
+        <button type="button" class="seg-btn" id="seg-map" aria-pressed="false">Map</button>
+      </div>
+    </div>
+    <div id="explore-list" class="stack"></div>
+    <div id="explore-map-wrap" class="stack" hidden>
+      <div id="explore-map" class="map map-tall" role="region" aria-label="Map of free places"></div>
+      <p class="small muted" id="map-note"></p>
+    </div>
+  </section>
+
+  <section id="view-essentials" class="stack-lg" aria-labelledby="h-ess" hidden>
+    <h2 id="h-ess">Free essentials</h2>
+    <p class="muted" id="ess-where"></p>
+    <div class="stack" id="ess-guidance"></div>
+    <div class="stack">
+      <div class="spread"><h2>Near you now</h2><button class="btn btn-sm" id="ess-reload" type="button">Refresh</button></div>
+      <div id="ess-live" class="stack" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="view-saved" class="stack-lg" aria-labelledby="h-saved" hidden>
+    <h2 id="h-saved">Saved places</h2>
+    <div id="saved-list" class="stack" aria-live="polite"></div>
+  </section>
+</main>
+
+<div class="tabbar"><nav aria-label="Sections">
+  <a class="tab" href="#today" data-tab="today"><span data-i="sun"></span>Today</a>
+  <a class="tab" href="#explore" data-tab="explore"><span data-i="search"></span>Explore</a>
+  <a class="tab" href="#essentials" data-tab="essentials"><span data-i="pin"></span>Essentials</a>
+  <a class="tab" href="#saved" data-tab="saved"><span data-i="heart"></span>Saved</a>
+</nav></div>
+
+<script src="../shared/civic.js"></script>
+<script src="../shared/vendor/leaflet/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
