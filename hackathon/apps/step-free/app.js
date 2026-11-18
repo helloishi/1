@@ -321,7 +321,7 @@
       el("div", { class: "cluster" }, favBtn, el("a", { class: "btn btn-ghost", href: "#stations" }, "Change station"))));
 
     const setPill = (status) => {
-      pillSlot.replaceChildren(status === "bad" ? pill("bad", "Lift problem reported") : status === "ok" ? pill("ok", "No lift problems reported") : pill("neutral", "Lift status unavailable"));
+      pillSlot.replaceChildren(status === "bad" ? pill("bad", "Lift problem reported") : status === "ok" ? pill("info", "No lift problems reported") : pill("neutral", "Lift status unavailable"));
     };
 
     // a) lifts & step-free
@@ -430,8 +430,8 @@
       el("p", { class: "small" }, "Plan B below shows nearby step-free stations. Staff can also help.")];
     }
     if (r.status === "ok") {
-      return [note("ok", "No lift problems reported by TfL at " + t + "."),
-        el("p", { class: "tiny muted" }, (r.okCalls < 2 ? "One of TfL's two lift checks was unavailable. " : "") + "A lift can fail between updates. Ask staff if unsure.")];
+      return [note("info", "No lift problems reported by TfL at " + t + "."),
+        el("p", { class: "tiny muted" }, (r.okCalls < 2 ? "One of TfL's two lift checks was unavailable. " : "") + "Only some lifts report faults automatically; others rely on staff reports, and a lift can fail between updates. Ask staff if unsure.")];
     }
     const last = store.get("sf:lift:" + st.id);
     return [note("info", "Live lift status needs a connection. Station facilities below are saved on your phone if you have opened this station before."),
@@ -502,14 +502,17 @@
     out.replaceChildren(loading("Checking nearby stations…"));
     const seen = new Map();
     for (const lid of st.lines) {
-      const arr = (DATA.lines[lid] && DATA.lines[lid].stations) || [];
-      const i = arr.indexOf(st.id);
-      if (i < 0) continue;
-      for (let d = 1; d <= 3; d++) for (const j of [i - d, i + d]) {
-        const sid = arr[j];
-        if (!sid || sid === st.id) continue;
-        const p = seen.get(sid);
-        if (!p || p.steps > d) seen.set(sid, { id: sid, steps: d, line: lid });
+      // routes = ordered station sequences, one per branch (lines[x].stations is only an unordered membership list)
+      const routes = (DATA.lines[lid] && DATA.lines[lid].routes) || [];
+      for (const arr of routes) {
+        const i = arr.indexOf(st.id);
+        if (i < 0) continue;
+        for (let d = 1; d <= 3; d++) for (const j of [i - d, i + d]) {
+          const sid = arr[j];
+          if (!sid || sid === st.id) continue;
+          const p = seen.get(sid);
+          if (!p || p.steps > d) seen.set(sid, { id: sid, steps: d, line: lid });
+        }
       }
     }
     const cands = [...seen.values()].sort((a, b) => a.steps - b.steps).slice(0, 14);
@@ -518,22 +521,28 @@
     if (!alive()) return;
     btn.disabled = false;
     btn.textContent = "Check again";
-    const good = [];
+    let good = [];
     res.forEach((r, i) => { if (r.status === "fulfilled" && stepFree(r.value.data.props) === true) good.push({ c: cands[i], name: r.value.data.name }); });
+    // A candidate with its own reported lift problem is no Plan B: check live status for the nearest few.
+    const top = good.slice(0, 4);
+    const lifts = await Promise.allSettled(top.map(({ c }) => checkLifts(byId[c.id] || { id: c.id, name: c.id, lines: [c.line] })));
+    if (!alive()) return;
+    top.forEach((g, i) => { g.lift = lifts[i].status === "fulfilled" ? lifts[i].value.status : "unknown"; });
+    good = top.filter((g) => g.lift !== "bad").concat(good.slice(4).map((g) => ({ ...g, lift: "unknown" })));
     const failed = res.filter((r) => r.status === "rejected").length;
     if (failed === res.length) { out.replaceChildren(note("info", "Plan B needs a connection to check nearby stations. Ask staff at the gateline. They can plan another step-free route.")); return; }
     if (!good.length) {
       out.replaceChildren(note("warn", "We could not confirm a step-free station within 3 stops on these lines." + (failed ? " Some stations could not be checked." : "") + " Ask staff for another route."));
       return;
     }
-    out.replaceChildren(el("div", { class: "list" }, good.slice(0, 2).map(({ c, name }) => {
+    out.replaceChildren(el("div", { class: "list" }, good.slice(0, 2).map(({ c, name, lift }) => {
       const s = byId[c.id] || { id: c.id, name: name || c.id, lines: [c.line] };
       return el("button", { class: "row", type: "button", onclick: () => { if (byId[c.id]) openStation(s); } },
         el("div", { class: "grow" }, el("span", { class: "row-title" }, s.name),
           el("span", { class: "small" }, c.steps + (c.steps === 1 ? " stop" : " stops") + " along the " + ((DATA.lines[c.line] || {}).name || c.line) + " line"),
-          pill("ok", "Step-free access reported")),
+          lift === "ok" ? pill("info", "Lift access listed · no problems reported") : pill("neutral", "Lift access listed · live status unknown")),
         el("span", { class: "chev", "aria-hidden": "true" }, "›"));
-    })), el("p", { class: "tiny muted" }, "Stop counts are along the line, not a checked journey. Lifts there can also be out of order." + (failed ? " Some stations could not be checked." : "")));
+    })), el("p", { class: "tiny muted" }, "Stop counts are along the line, not a checked journey. Check whether access is to the platform or to the train, and ask staff before you rely on a lift." + (failed ? " Some stations could not be checked." : "")));
   }
 
   // ---------- Quiet times ----------

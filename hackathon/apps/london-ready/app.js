@@ -19,14 +19,14 @@
     const out = el("div", { "aria-live": "polite" });
     function verdict(item) {
       let v;
-      if (!item) v = ["info", "Check GOV.UK", "We don't have this passport in our short list. Check GOV.UK to see what you need."];
-      else if (item.k === "eta") v = ["warn", "You need a UK ETA", item.n + " passport holders need an Electronic Travel Authorisation (ETA) before they travel. The official fee is £20 as of April 2026 — check GOV.UK."];
+      if (!item) v = ["info", "Check GOV.UK", "We don't have this passport in our short list. Use GOV.UK's official checker to see what you need."];
+      else if (item.k === "eta") v = ["warn", "Usually an ETA, not a visa", item.n + " passport holders usually need an Electronic Travel Authorisation (ETA) before a short visit. The official fee is £20 as of April 2026. Confirm with GOV.UK's checker before you book."];
       else if (item.k === "none") v = ["ok", "No ETA needed", "British and Irish citizens don't need an ETA."];
-      else v = ["bad", "You need a visa, not an ETA", item.n + " passport holders usually need a visa to visit the UK. An ETA is not the right document."];
+      else v = ["bad", "You probably need a visa", item.n + " passport holders have usually needed a visa to visit the UK, and an ETA is not a visa. Check GOV.UK's official tool before you book."];
       out.replaceChildren(el("div", { class: "verdict " + v[0] }, el("p", { class: "v-title" }, (item ? item.n + ": " : "") + v[1]), el("p", {}, v[2]),
-        el("p", { class: "small" }, "Rules change. Confirm on GOV.UK before you book."),
+        el("p", { class: "small" }, "This list is a guide, not a decision. Rules change, so confirm on GOV.UK before you book."),
         el("p", { class: "small" }, "Apply only on GOV.UK or the official “UK ETA” app from the Home Office."),
-        link(GOV_ETA, "Open gov.uk/eta")));
+        el("div", { class: "cluster" }, link("https://www.gov.uk/check-uk-visa", "Check on GOV.UK"), link(GOV_ETA, "Open gov.uk/eta"))));
     }
     function renderList() {
       const q = input.value.trim().toLowerCase();

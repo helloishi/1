@@ -16,7 +16,7 @@ A free, installable **mobile web app (PWA)** for Londoners and visitors. It is a
 - `../shared/civic.css`: tokens and components: `.plate` street-plate header, `.card`, `.btn*`, `.chip`, `.pill.ok|warn|bad|info|neutral`, `.list`/`.row`, `.banner.*`, `.sos` emergency strip, `.field`/`.input`, `.checklist`/`.check`, `.steps` (numbered, only for real sequences), `.tabbar`/`.tab`, `.sheet`, `.toast`, `.map`, `.copyline`, `.foot`, `.big-number`, utilities `.stack`, `.cluster`, `.spread`.
 - `../shared/civic.js` exposes `window.Civic`: `el()`, `$`, `$$`, `esc`, `store` (safe localStorage), `fetchJSON(url,{timeout})`, `cached(key, maxAgeMs, loader)`, `local(path)`, `geo()`, `inLondon()`, `distanceM()`, `fmtDistance()`, `walkMins()`, `londonNow()`, `relTime()`, `toast()`, `copy()`, `watchOnline()`, `prefs` (theme + text size), `tabs(views, fallback, onChange)` (hash views: use plain `#name` only), `registerSW()`, `i18n()`, `icon(name)`.
 - `../shared/vendor/leaflet/` (Leaflet 1.9.4) if your spec needs a map.
-- `../shared/data/stations.json`: real TfL station topology (509 stations, 20 lines: tube, DLR, Elizabeth line, the six named Overground lines, tram) with NaPTAN ids and line membership. No coordinates.
+- `../shared/data/stations.json`: real TfL station topology (509 stations, 20 lines: tube, DLR, Elizabeth line, the six named Overground lines, tram) with NaPTAN ids. `lines[x].stations` is an **unordered** membership list; `lines[x].routes` holds the ordered station sequences, one per branch. Use `routes` for anything about neighbouring stops. No coordinates.
 
 You may add app-specific CSS in `app.css`, but build on the kit: the street plate header, typography and tokens give all five apps one family look.
 

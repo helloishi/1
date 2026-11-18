@@ -203,15 +203,18 @@
     if (r.support && r.support.length) nodes.push(el("section", { class: "card stack" }, el("div", { class: "sec-title" }, "Support services"), r.support.map((id) => actionNode(id, false))));
     if (cat.borough || [r.primary].concat(r.others || []).includes("council")) nodes.push(locationHelper());
 
-    const saveBtn = el("button", { class: "btn btn-accent btn-block", type: "button" }, "Save to My reports");
-    saveBtn.addEventListener("click", () => {
-      saveReport(cat, r, answer);
-      saveBtn.disabled = true; saveBtn.textContent = "Saved to My reports";
-      Civic.toast("Saved on this device");
-    });
-    const saveWrap = el("div", { class: "stack" }, saveBtn,
-      el("p", { class: "small muted" }, sensitive ? "Saved only on this device. Anyone who can unlock this phone could see it. You can delete it any time." : "Saved only on this device."));
-    nodes.push(saveWrap);
+    if (sensitive) {
+      // Jury review: a saved note about abuse or exploitation can be found by the person causing harm.
+      nodes.push(el("p", { class: "small muted" }, "For your safety, nothing about this result is saved on this phone. Write numbers down somewhere safe if you need them later."));
+    } else {
+      const saveBtn = el("button", { class: "btn btn-accent btn-block", type: "button" }, "Save to My reports");
+      saveBtn.addEventListener("click", () => {
+        saveReport(cat, r, answer);
+        saveBtn.disabled = true; saveBtn.textContent = "Saved to My reports";
+        Civic.toast("Saved on this device");
+      });
+      nodes.push(el("div", { class: "stack" }, saveBtn, el("p", { class: "small muted" }, "Saved only on this device.")));
+    }
     nodes.push(el("button", { class: "btn btn-ghost btn-block", type: "button", onclick: showHome }, "Start again"));
     show(nodes, h);
   }

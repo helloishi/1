@@ -13,7 +13,7 @@
   let mapReady = false;
   Civic.tabs(views, "prepare", (k) => {
     document.title = "PhoneGuard London";
-    if (k === "hotspots") { initHotspots(); setTimeout(() => map && map.invalidateSize(), 50); }
+    if (k === "hotspots") setTimeout(() => { initHotspots(); setTimeout(() => map && map.invalidateSize(), 50); }, 0); // defer: the first call happens before later declarations run
   });
 
   // ---------- settings sheet ----------
@@ -138,7 +138,7 @@
     const box = $("#hot-status");
     if (!kind) return box.replaceChildren();
     if (kind === "loading") return box.replaceChildren(el("div", { class: "banner info" }, "Loading reports from police.uk…"));
-    box.replaceChildren(el("div", { class: "banner warn" }, el("div", null, el("strong", null, "Live hotspot data needs a connection to police.uk. "), msg || "")), evidenceHTML());
+    box.replaceChildren(el("div", { class: "banner warn" }, el("div", null, el("strong", null, "Hotspot data needs a connection to police.uk. "), msg || "")), evidenceHTML());
   }
 
   function initHotspots() {
@@ -153,7 +153,6 @@
       $$("[data-layer]").forEach((x) => x.setAttribute("aria-pressed", String(layersOn[x.dataset.layer])));
       load();
     }));
-    $("#heads-up").addEventListener("change", (e) => e.target.checked ? startWatch() : stopWatch());
     try {
       map = L.map("map", { zoomControl: true, attributionControl: true }).setView([center.lat, center.lon], 15);
       circleGroup = L.layerGroup().addTo(map);
@@ -207,7 +206,7 @@
       const rows = results.flat().filter((r) => isFinite(r[0]) && isFinite(r[1]));
       aggregate(rows);
       setStatus(null);
-      $("#map-copy").textContent = `Reports of theft from the person (pickpocketing and snatches of any item) in ${monthLabel(month)}, the latest month police.uk has published. Locations are approximate: police.uk moves each report to a nearby anonymous point. Use this to stay alert, not to avoid places.`;
+      $("#map-copy").textContent = `Not live: reports of theft from the person (pickpocketing and snatches of any item, not only phones) in ${monthLabel(month)}, the latest month police.uk has published, about two months ago. Locations are approximate: police.uk moves each report to a nearby anonymous point. Use this to stay alert, not to avoid places.`;
       if (map) { map.setView([center.lat, center.lon], 15); drawCircles(); }
       topStreets(rows);
     } catch (e) {
@@ -252,31 +251,9 @@
     if (!top.length) $("#hot-status").replaceChildren(el("div", { class: "banner info" }, "No reports found near this point for " + monthLabel(month) + "."));
   }
 
-  // Heads-up mode
-  let watchId = null;
-  function stopWatch() {
-    if (watchId != null) navigator.geolocation.clearWatch(watchId);
-    watchId = null; $("#heads-note").textContent = ""; $("#heads-banner").hidden = true;
-  }
-  function startWatch() {
-    const note = $("#heads-note"), box = $("#heads-up");
-    if (!("geolocation" in navigator)) { box.checked = false; note.textContent = "Location is not available on this device."; return; }
-    note.textContent = "Waiting for your location. This works only while the app is open.";
-    try {
-      watchId = navigator.geolocation.watchPosition((p) => {
-        userPos = { lat: p.coords.latitude, lon: p.coords.longitude };
-        note.textContent = points.length ? "Heads-up mode is on. Checked on this phone only." : "Heads-up mode is on, but there is no report data loaded for this area.";
-        const near = points.some((q) => q.n >= 5 && Civic.distanceM(userPos, q) <= 150);
-        const last = store.get("pg:headsAt", 0);
-        if (near && Date.now() - last > 10 * 60 * 1000) {
-          store.set("pg:headsAt", Date.now());
-          const b = $("#heads-banner");
-          b.replaceChildren(el("span", null, "Busy spot for phone snatches. Keep your phone close and away from the kerb."), el("button", { class: "btn btn-sm btn-ghost", type: "button", onclick: () => (b.hidden = true) }, "Dismiss"));
-          b.hidden = false;
-        }
-      }, () => { box.checked = false; stopWatch(); note.textContent = "Location is off, so Heads-up mode can't run."; }, { enableHighAccuracy: true, maximumAge: 15000, timeout: 30000 });
-    } catch (e) { box.checked = false; note.textContent = "Location is off, so Heads-up mode can't run."; }
-  }
+  // Heads-up mode was removed after jury review: it needed the phone in hand at the kerb, the data is
+  // ~2 months old and covers any stolen item, so a "busy spot" banner would mislead.
+
 
   // ---------- Stolen? ----------
   let S = null;
